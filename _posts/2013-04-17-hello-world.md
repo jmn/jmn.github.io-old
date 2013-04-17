@@ -17,7 +17,7 @@ When I want to create a new post I simply use the command
 
 That creates a markdown-file ([syntax](http://daringfireball.net/projects/markdown/syntax)) (YYYY-mm-dd-subject.md) in the `_posts` directory which I then edit. 
 
-I use `jekyll --server` to preview the page locally before publishing it using the following git commands:
+I use `jekyll --server` to preview the page locally (at [http://localhost:4000](http://localhost:4000)) before publishing it using the following git commands:
 
 	git add .
 	git commit -m "Added a new note on subject subject"
