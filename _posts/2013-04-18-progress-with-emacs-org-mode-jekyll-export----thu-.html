@@ -6,7 +6,7 @@ CATEGORY: journal
 ---
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><a href="http://jmn.github.io{{ page.url }}">Progress with Emacs org-mode Jekyll export <span class="timestamp-wrapper"> <span class="timestamp">2013-04-18 Thu 20:51</span></span></a></h2>
+
 <div class="outline-text-2" id="text-1">
 
 
@@ -17,7 +17,19 @@ Like many other nerds, I do most of my writing in Emacs org-mode. I am currently
 To publish a post I simply make sure that it has the label (tag) "blog", then run M-x org-jekyll-export-current-entry. The org property ON must also contain a timestamp at the moment, but I might change that because most of my log entries contain a timestamp in the title anyway.
 </p>
 <p>
-I also need to fix it so that tags get properly translate from org to jekyll.
+I also need to fix it so that tags get properly translate from org to jekyll..
 </p>
+<p>
+<b>Update</b>: I modified org-jekyll (some regexp in the org-jekyll-export-entry function) to remove the main heading. It is not needed because Jekyll generates the heading of the page via YAML in my configuration (which is currently the default from jekyll bootstrap).
+</p>
+<p>
+Next things to fix are: 
+</p><ol>
+<li>Removing the timestamp from the title
+</li>
+<li>Making tags transfer properly from org to jekyll.
+</li>
+</ol>
+
 </div>
 </div>
