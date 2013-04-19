@@ -1,0 +1,65 @@
+---
+title: Improved org-jekyll 
+layout: post
+on: <2013-04-19 Fri>
+excerpt: (For my purposes anyway.)
+tags: meta, jekyll
+CATEGORY: journal
+---
+
+<div id="outline-container-1" class="outline-2">
+
+<div class="outline-text-2" id="text-1">
+
+
+<p> 
+I've been tweaking org-jekyll for my purposes. Headings in my org-mode journal (usually) contain a timestamp in brackets and org-jekyll wasn't set up to handle that (which resulted in bad file names and post titles). I <a href="http://stackoverflow.com/a/2403159/41829">used a regexp</a> to solve this. (<a href="http://www.emacswiki.org/emacs/RegularExpression">more on Emacs and regular expressions here)</a>:
+</p>
+
+
+
+<pre class="src src-elisp">(title (replace-regexp-in-string <span style="color: #e9b96e;">"-\\[.*?\\]"</span> <span style="color: #e9b96e;">""</span>
+                                             (replace-regexp-in-string
+                                              <span style="color: #e9b96e;">"[ \t]"</span> <span style="color: #e9b96e;">"-"</span> heading)))           
+</pre>
+
+
+<p>
+I also  set it up so that the org properties "excerpt" and "tags" are now carried over to YAML, like so:
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f; font-weight: bold;">org-jekyll-export-entry</span> (project)
+  (<span style="color: #b4fa70;">let*</span> ((props (org-entry-properties nil 'standard))
+         (time (cdr (or (assoc <span style="color: #e9b96e;">"on"</span> props)
+                        (assoc <span style="color: #e9b96e;">"ON"</span> props))))
+         (excerpt (cdr (or (assoc <span style="color: #e9b96e;">"excerpt"</span> props)
+                        (assoc <span style="color: #e9b96e;">"EXCERPT"</span> props))))
+         (excerpt (cdr (or (assoc <span style="color: #e9b96e;">"tags"</span> props)
+                        (assoc <span style="color: #e9b96e;">"TAGS"</span> props))))
+         (lang (cdr (or (assoc <span style="color: #e9b96e;">"lang"</span> props)
+                        (assoc <span style="color: #e9b96e;">"LANG"</span> props))))
+         (category (<span style="color: #b4fa70;">if</span> org-jekyll-category
+                       (cdr (assoc org-jekyll-category props))
+                     nil))
+...
+</pre>
+
+
+<p>
+I must say it was pretty easy to get a nice set up going using Jekyll Bootstrap and and org-jekyll, and I'm already quite happy with the result. Posts are now looking okay but it's still not 100% convenient to add a new post. I am thinking of modifying org-jekyll so that the "on" property is not required if there exists a timestamp in the title. I am also thinking of making it possible to have the tags from emacs transfer over to YAML and Jekyll. 
+</p>
+<p>
+Another small annoyance is that posting does not seem to work directly from the org capture buffer. This might be understandably hard to and the pay off not that great.
+</p>
+<p>
+Yet Another potential annoyance is that Jekyll seems to be (notoriously?) poor at detecting file changes and therefore local server restarts are often required to review posts before they are pushed to the Github servers.
+</p>
+<p>
+But that is a headache better left for other days. For now I'm having a coffee.
+</p>
+<p>
+<img src="./static/coffee.jpg"  alt="./static/coffee.jpg" />
+</p></div>
+</div>
