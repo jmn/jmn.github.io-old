@@ -1,0 +1,25 @@
+---
+title: Remember to set your BROWSER 
+layout: post
+on: <2013-04-20 Sat>
+excerpt: 
+tags: configuration, emacs, html
+CATEGORY: journal
+---
+
+<div id="outline-container-1" class="outline-2">
+
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+I had some trouble with Emacs opening html files in the wrong browser recently. Thanks to <a href="http://stackoverflow.com/a/10384466/41829">this post on stackoverflow</a> made by Pierre-Antoine I realized why that other browser kept opening html files. It's because somewhere deep down in the many lines of e-lisp a script called "sensible-browser" is being called. Among other things, it checks the user environment variable BROWSER to see what is it set to.
+</p>
+<p>
+So to fix this I opened .profile and added this line:
+</p><pre class="example">
+export BROWSER=/usr/bin/chromium-browser
+</pre>
+
+</div>
+</div>
