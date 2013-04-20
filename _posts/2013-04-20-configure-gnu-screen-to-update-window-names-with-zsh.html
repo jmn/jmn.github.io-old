@@ -1,0 +1,54 @@
+---
+title: Configure GNU screen to update window names with zsh 
+layout: post
+on: <2013-04-20 Sat>
+category: shell
+excerpt: 
+tags: configuration, screen, zsh
+CATEGORY: shell
+---
+
+<div id="outline-container-1" class="outline-2">
+
+<div class="outline-text-2" id="text-1">
+
+<p>It is possible to dynamically update the window names of GNU screen when running commands. 
+</p>
+<p>
+Put this line in .screenrc:
+</p>
+
+
+<pre class="src src-configuration">caption always <span style="color: #e9b96e;">"%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c"</span>
+</pre>
+
+
+<p>
+Put this in .zshrc:
+</p>
+
+
+<pre class="src src-zshell">function title {
+    if [[ $TERM == <span style="color: #e9b96e;">"screen"</span>* ]]; then
+        print -nR $'\033k'$1$'\033\\'
+        print -nR $'\033]0;'$2$'\a'
+    fi
+}
+
+function precmd {
+    title <span style="color: #e9b96e;">"zsh"</span> <span style="color: #e9b96e;">"$PWD"</span>
+}   
+
+function preexec {
+    emulate -L zsh
+    local -a cmd; cmd=(${(z)1})
+    title <span style="color: #e9b96e;">"$cmd[1]:t"</span> <span style="color: #e9b96e;">"$cmd[2,-1]"</span>
+}
+
+</pre>
+
+
+<p>
+Found <a href="http://stackoverflow.com/a/187877/41829">here</a>.
+</p></div>
+</div>
