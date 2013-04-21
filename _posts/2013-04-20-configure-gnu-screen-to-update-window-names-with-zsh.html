@@ -4,7 +4,7 @@ layout: post
 on: <2013-04-20 Sat>
 category: shell
 excerpt: 
-tags: configuration, screen, zsh
+tags: configuration screen zsh
 CATEGORY: shell
 ---
 
@@ -19,7 +19,7 @@ Put this line in .screenrc:
 </p>
 
 
-<pre class="src src-configuration">caption always <span style="color: #e9b96e;">"%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c"</span>
+<pre class="src src-configuration">caption always <span style="color: #00cd00;">"%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c"</span>
 </pre>
 
 
@@ -29,20 +29,20 @@ Put this in .zshrc:
 
 
 <pre class="src src-zshell">function title {
-    if [[ $TERM == <span style="color: #e9b96e;">"screen"</span>* ]]; then
+    if [[ $TERM == <span style="color: #00cd00;">"screen"</span>* ]]; then
         print -nR $'\033k'$1$'\033\\'
         print -nR $'\033]0;'$2$'\a'
     fi
 }
 
 function precmd {
-    title <span style="color: #e9b96e;">"zsh"</span> <span style="color: #e9b96e;">"$PWD"</span>
+    title <span style="color: #00cd00;">"zsh"</span> <span style="color: #00cd00;">"$PWD"</span>
 }   
 
 function preexec {
     emulate -L zsh
     local -a cmd; cmd=(${(z)1})
-    title <span style="color: #e9b96e;">"$cmd[1]:t"</span> <span style="color: #e9b96e;">"$cmd[2,-1]"</span>
+    title <span style="color: #00cd00;">"$cmd[1]:t"</span> <span style="color: #00cd00;">"$cmd[2,-1]"</span>
 }
 
 </pre>

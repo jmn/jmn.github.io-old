@@ -3,7 +3,7 @@ title: Improved org-jekyll
 layout: post
 on: <2013-04-19 Fri>
 excerpt: (For my purposes anyway.)
-tags: meta, jekyll
+tags: meta jekyll
 CATEGORY: journal
 ---
 
@@ -18,9 +18,9 @@ I've been tweaking org-jekyll for my purposes. Headings in my org-mode journal (
 
 
 
-<pre class="src src-elisp">(title (replace-regexp-in-string <span style="color: #e9b96e;">"-\\[.*?\\]"</span> <span style="color: #e9b96e;">""</span>
+<pre class="src src-elisp">(title (replace-regexp-in-string <span style="color: #00cd00;">"-\\[.*?\\]"</span> <span style="color: #00cd00;">""</span>
                                              (replace-regexp-in-string
-                                              <span style="color: #e9b96e;">"[ \t]"</span> <span style="color: #e9b96e;">"-"</span> heading)))           
+                                              <span style="color: #00cd00;">"[ \t]"</span> <span style="color: #00cd00;">"-"</span> heading)))           
 </pre>
 
 
@@ -30,17 +30,17 @@ I also  set it up so that the org properties "excerpt" and "tags" are now carrie
 
 
 
-<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f; font-weight: bold;">org-jekyll-export-entry</span> (project)
-  (<span style="color: #b4fa70;">let*</span> ((props (org-entry-properties nil 'standard))
-         (time (cdr (or (assoc <span style="color: #e9b96e;">"on"</span> props)
-                        (assoc <span style="color: #e9b96e;">"ON"</span> props))))
-         (excerpt (cdr (or (assoc <span style="color: #e9b96e;">"excerpt"</span> props)
-                        (assoc <span style="color: #e9b96e;">"EXCERPT"</span> props))))
-         (excerpt (cdr (or (assoc <span style="color: #e9b96e;">"tags"</span> props)
-                        (assoc <span style="color: #e9b96e;">"TAGS"</span> props))))
-         (lang (cdr (or (assoc <span style="color: #e9b96e;">"lang"</span> props)
-                        (assoc <span style="color: #e9b96e;">"LANG"</span> props))))
-         (category (<span style="color: #b4fa70;">if</span> org-jekyll-category
+<pre class="src src-emacs-lisp">(<span style="color: #00cdcd;">defun</span> org-jekyll-export-entry (project)
+  (<span style="color: #00cdcd;">let*</span> ((props (org-entry-properties nil 'standard))
+         (time (cdr (or (assoc <span style="color: #00cd00;">"on"</span> props)
+                        (assoc <span style="color: #00cd00;">"ON"</span> props))))
+         (excerpt (cdr (or (assoc <span style="color: #00cd00;">"excerpt"</span> props)
+                        (assoc <span style="color: #00cd00;">"EXCERPT"</span> props))))
+         (excerpt (cdr (or (assoc <span style="color: #00cd00;">"tags"</span> props)
+                        (assoc <span style="color: #00cd00;">"TAGS"</span> props))))
+         (lang (cdr (or (assoc <span style="color: #00cd00;">"lang"</span> props)
+                        (assoc <span style="color: #00cd00;">"LANG"</span> props))))
+         (category (<span style="color: #00cdcd;">if</span> org-jekyll-category
                        (cdr (assoc org-jekyll-category props))
                      nil))
 ...
