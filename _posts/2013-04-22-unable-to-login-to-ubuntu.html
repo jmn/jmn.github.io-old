@@ -1,0 +1,41 @@
+---
+title: Unable to login to Ubuntu 
+layout: post
+on: <2013-04-22 mån>
+excerpt: How to debug and solve it.
+tags: ubuntu system
+CATEGORY: journal
+---
+
+<div id="outline-container-1" class="outline-2">
+
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+As I started my machine today I found myself unable to login to Ubuntu using the normal graphical login screen (lightdm). I tried looking through the logs in /var/log/lightdm for clues but did not seem to find anything. 
+</p>
+<p>
+Looking in ~/.xsession-errors however, I found 
+</p><pre class="example">
+/usr/sbin/lightdm-session: 28: /home/jmn/.profile: Syntax error: end of file unexpected (expecting "fi")
+</pre>
+
+
+<p>
+Turns out I had accidentally broken the syntax of the .profile and this caused login to break silently.
+</p>
+<p>
+Simply fixing the .profile (or moving it temporarily) will solve the issue.
+</p>
+<p>
+In case you didn't know, you can open a console in ubuntu by pressing Ctrl+Alt+F1 and then logging in. To move the .profile you can do
+</p><pre class="example">
+mv ~/.profile ~/.profile-old
+</pre>
+
+
+<p>
+Here's a <a href="http://askubuntu.com/questions/217032/unable-to-sign-in-how-to-debug?rq=1">relevant thread on Ask Ubuntu</a>.
+</p></div>
+</div>
