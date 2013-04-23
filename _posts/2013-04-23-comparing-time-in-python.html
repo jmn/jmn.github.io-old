@@ -1,0 +1,35 @@
+---
+title: Comparing time in Python 
+layout: post
+on: <2013-04-23 tis>
+excerpt: 
+tags: programming python
+CATEGORY: journal
+---
+
+<div id="outline-container-1" class="outline-2">
+
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+This is an example of testing if a timestamp in Python is more than five minutes old
+</p>
+
+
+
+<pre class="src src-python"><span style="color: #b4fa70;">import</span> datettime
+<span style="color: #fcaf3e;">five_minutes_ago</span> = datetime.datetime.now() - datetime.timedelta(minutes=5)
+
+<span style="color: #b4fa70;">if</span> some_timestamp &gt; five_minutes_ago: 
+        <span style="color: #b4fa70;">print</span> <span style="color: #e9b96e;">"It's older than five minutes"</span>
+<span style="color: #b4fa70;">else</span>:
+        <span style="color: #b4fa70;">print</span> <span style="color: #e9b96e;">"it's more recent than five minutes"</span>
+
+</pre>
+
+
+<p>
+<a href="http://docs.python.org/library/datetime.html">Related python documentation</a>
+</p></div>
+</div>
