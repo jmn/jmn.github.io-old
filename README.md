@@ -1,6 +1,7 @@
-# jmn.github.io - "jmn's tech notes"
+# [jmn.github.io] - "jmn's tech notes"
 A static file blog powered by: [Jekyll-Bootstrap] and [Org-Jekyll].
 
 
-[JB]: http://jekyllbootstrap.com
+[jmn.github.io]: http://jmn.github.io
+[Jekyll-Bootstrap]: http://jekyllbootstrap.com
 [Org-Jekyll]: http://juanreyero.com/open/org-jekyll
