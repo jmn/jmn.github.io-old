@@ -5,7 +5,8 @@ layout: page
 
 <ul class="posts">
   {% for post in site.posts %}
-<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a> <em>{{ post.excerpt }}</em> 
+<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+	{%if post.excerpt != empty %} <em>{{ post.excerpt }}</em> {% endif %}
 
    {% if post.tags != empty %}
 tags:
