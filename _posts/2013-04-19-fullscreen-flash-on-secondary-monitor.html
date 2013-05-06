@@ -1,104 +1,121 @@
 ---
-title: Fullscreen flash on secondary monitor 
+title: Fullscreen flash on secondary monitor
 layout: post
 on: <2013-04-19 Fri>
 tags: software configuration
-excerpt: 
+ex: 
 CATEGORY: journal
 ---
 
-<div id="outline-container-1" class="outline-2">
-
-<div class="outline-text-2" id="text-1">
-
-<p>Tried watching some flash video in fullscreen on a secondary monitor on X.org but found that flash kept leaving fullscreen mode as soon as I tried to do something on the primary monitor. I found out how to solve it from this page: <a href="http://www.ubunturoot.com/2011/07/fullscreen-flash-video-with-dual.html">Ubunturoot - Fullscreen Flash Video With Dual Monitors Workarounds</a>. 
+<p>
+Tried watching some flash video in fullscreen on a secondary monitor on X.org but found that flash kept leaving fullscreen mode as soon as I tried to do something on the primary monitor. I found out how to solve it from this page: <a href="http://www.ubunturoot.com/2011/07/fullscreen-flash-video-with-dual.html">Ubunturoot - Fullscreen Flash Video With Dual Monitors Workarounds</a>. 
 </p>
+
 <p>
 There are several possible solutions mentioned, one involves editing the flashplayer binary file with a hex editor. I used <a href="https://chrome.google.com/webstore/detail/lljjmflmcnaigbhnheldbdbplkbhngnl">Maximize Flash</a> for Chrome to solve it for now. 
 </p>
 
+
 <p>
 <a href="http://www.webupd8.org/2012/10/ubuntu-multi-monitor-tweaks-full-screen.html">http://www.webupd8.org/2012/10/ubuntu-multi-monitor-tweaks-full-screen.html</a>
 </p>
+
 <p>
 Update: 
 Okay, I've tested the hack of libflashplayer.so which prevents the fullscreen flash from exiting and it works for me in Chromium.
 </p>
+
 <p>
 It seems I had two versions of the file installed:
 /opt/google/chromium/plugins/libflashplayer.so
 /usr/lib/flashplugin-installer/libflashplayer.so
 </p>
+
 <p>
 It turns out chromium was using the second one.
 </p>
+
 <p>
 To find out which one chromium is using you can move all of the files, start chromium and see if flash works or not. 
 </p>
+
 <p>
 I still have a problem with the fullscreen mode not actually covering the full screen.
 </p>
+
 <p>
 There are supposedly hacks that exist to solve this.
 </p>
+
 <p>
 Another tweak, which I am unsure of how (or even if) it works.
 edit /etc/adobe/mss.cfg
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-misc">OverrideGPUValidation=true
 </pre>
-
+</div>
 
 <p>
 So far:
 Editing the libflashplayer.so did solve the problem with fullscreen mode exiting as soon as I would try to do something on the other screen.
 </p>
+
 <p>
 Still having problems with the full screen mode taking the wrong size (resolution) and/or proportions.
 </p>
+
 <p>
 As shown in chromium about://plugins I am using 
 Shockwave Flash 11.2 r202
 </p>
+
 <p>
 Strangely, using the display settings to "move" the external monitor to the left (from the right) of my laptop monitor makes things better. I am now wondering if there is a way to configure which display is the "primary". Perhaps using xrandr.
 </p>
+
 <p>
 `xrandr -q` lists devices
 </p>
+
 <p>
 I have LVDS1 (laptop display) and VGA1 (external monitor)
 </p>
+
 <p>
 supposedly using 
-`xrandr &ndash;output VGA1 &ndash;primary`
+`xrandr –output VGA1 –primary`
 sets the external display to be the primary one.
 </p>
+
 <p>
 Appearantly flash looks for point +0+0 and calculates the fullscreen size from that monitor. If you have an extended display to the right, you are in trouble.
-This explains how one person solved it: <a href="http://ubuntuforums.org/showthread.php?t=887675&amp;p=12095552#post12095552">http://ubuntuforums.org/showthread.php?t=887675&amp;p=12095552#post12095552</a>
+This explains how one person solved it: <a href="http://ubuntuforums.org/showthread.php?t=887675&p=12095552#post12095552">http://ubuntuforums.org/showthread.php?t=887675&p=12095552#post12095552</a>
 </p>
+
 
 <p>
 Someone suggested trying google's "pepper" flash player which comes with chrome.
 So I installed chrome from:
 <a href="http://www.chromium.org/getting-involved/dev-channel">http://www.chromium.org/getting-involved/dev-channel</a>
 </p>
+
 <p>
 Here's how to use it with Chromium:
 <a href="http://www.webupd8.org/2012/09/how-to-make-chromium-use-flash-player.html">http://www.webupd8.org/2012/09/how-to-make-chromium-use-flash-player.html</a>
 </p>
+
 <p>
 Update: 
 I tried installing chrome but unfortunately "pepper flash" was running too slow on my system. On top of that, it also has the same "feature" of the adobe flash player which means that it will exit fullscreen mode as soon as there is activity on the other monitor. And unfortunately I don't know how to get rid of this behavior.
 </p>
+
 <p>
 So back to the old adobe flash player I go.
 </p>
+
 <p>
 Currently I can get a "fullscreen" window on the screen to my right with the size of my left screen. This because flash seems to read the resolution from the screen that contains coordinate +0,+0. So if I "virtually" rearrange the screens, putting my external screen to the left, I can run true fullscreen.
-</p></div>
-</div>
+</p>

@@ -1,48 +1,45 @@
 ---
-title: Editing system files with Emacs 
+title: Editing system files with Emacs
 layout: post
 on: <2013-04-21 Sun>
-excerpt: 
+ex: 
 tags: emacs sudo
 CATEGORY: journal
 ---
-
-<div id="outline-container-1" class="outline-2">
-
-<div class="outline-text-2" id="text-1">
 
 
 <p>
 There does not seem to be a built-in way of editing files which are owned by other users in Emacs. 
 </p>
+
 <p>
 The two ways that most people seem to be doing it are: via "tramp" or using "sudoedit".
 </p>
+
 <p>
 Here is one example:
-</p><pre class="example">
+</p>
+<pre class="example">
 alias E="SUDO_EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 </pre>
 
-
 <p>
 With tramp (see <a href="http://stackoverflow.com/questions/95631/open-a-file-with-su-sudo-inside-emacs">discussion here</a>):
-</p><pre class="example">
+</p>
+<pre class="example">
 (require 'tramp)
 </pre>
 
-
 <p>
 It is possible to edit files like this:
-</p><pre class="example">
+</p>
+<pre class="example">
 C-c C-f /sudo::/path/to/file
 </pre>
-
 
 <p>
 There is also an Emacs package called "<a href="http://www.emacswiki.org/emacs/SudoSave">sudo-save</a>" available. 
 </p>
+
 <p>
-I find it surprising that something like sudo-save hasn't been made available in distributions of Emacs. It might of course have to do with security reasons. I have yet to find an elegant solution. Ideally I would prefer if, when opening files owned to another user, Emacs would ask me if I would want to edit using sudo or in read-only mode.
-</p></div>
-</div>
+I find it surprising that something like sudo-save hasn't been made available in distributions of Emacs. It might of course have to do with security reasons. I have yet to find an elegant solution. Ideally I would prefer if, when opening files owned to another user, Emacs would ask me if I would want to edit using sudo or in read-only mode.</p>

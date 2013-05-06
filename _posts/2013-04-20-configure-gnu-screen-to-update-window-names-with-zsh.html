@@ -1,54 +1,49 @@
 ---
-title: Configure GNU screen to update window names with zsh 
+title: Configure GNU screen to update window names with zsh
 layout: post
 on: <2013-04-20 Sat>
 category: shell
-excerpt: 
+ex: 
 tags: configuration screen zsh
 CATEGORY: shell
 ---
 
-<div id="outline-container-1" class="outline-2">
-
-<div class="outline-text-2" id="text-1">
-
-<p>It is possible to dynamically update the window names of GNU screen when running commands. 
+<p>
+It is possible to dynamically update the window names of GNU screen when running commands. 
 </p>
+
 <p>
 Put this line in .screenrc:
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-configuration">caption always <span style="color: #00cd00;">"%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c"</span>
+<pre class="src src-configuration">caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c"
 </pre>
-
+</div>
 
 <p>
 Put this in .zshrc:
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-zshell">function title {
-    if [[ $TERM == <span style="color: #00cd00;">"screen"</span>* ]]; then
+    if [[ $TERM == "screen"* ]]; then
         print -nR $'\033k'$1$'\033\\'
         print -nR $'\033]0;'$2$'\a'
     fi
 }
 
 function precmd {
-    title <span style="color: #00cd00;">"zsh"</span> <span style="color: #00cd00;">"$PWD"</span>
+    title "zsh" "$PWD"
 }   
 
 function preexec {
     emulate -L zsh
     local -a cmd; cmd=(${(z)1})
-    title <span style="color: #00cd00;">"$cmd[1]:t"</span> <span style="color: #00cd00;">"$cmd[2,-1]"</span>
+    title "$cmd[1]:t" "$cmd[2,-1]"
 }
-
 </pre>
-
+</div>
 
 <p>
-Found <a href="http://stackoverflow.com/a/187877/41829">here</a>.
-</p></div>
-</div>
+Found <a href="http://stackoverflow.com/a/187877/41829">here</a>.</p>

@@ -1,73 +1,81 @@
 ---
-title: Current blog practice 
+title: Current blog practice
 layout: post
 on: <2013-04-21 Sun>
-excerpt: Because "workflow" is an awful word.
+ex: Because "workflow" is an awful word.
 category: meta
 tags: emacs org-mode git
 CATEGORY: meta
 ---
-
-<div id="outline-container-1" class="outline-2">
-
-<div class="outline-text-2" id="text-1">
 
 
 <p>
 Currently my workflow to create a new blog post is this.
 In emacs, I type C-c c which brings up org-capture where I've set up various templates for different types of notes and tasks to capture.
 </p>
+
 <p>
 I select j "for journal"
 </p>
+
 <p>
 It opens a window and asks me for a headline, followed by tags.
 If I am sure that I want it to be a blog post I add the tag "blog".
 </p>
+
 <p>
 In the template I've set up empty properties for "excerpt" and "tags" which I can fill out if I want the blog post to have an excerpt or tags.
 </p>
+
 <p>
 I then write my note (I can at any time hit C-c C-e b to preview it in a browser).
 </p>
+
 <p>
 C-c C-c to save the note (the capture buffer).
 </p>
+
 <p>
 If I want to revisit the note I hit C-c o which is the key that I have bound to org-capture-goto-last-stored.
 </p>
+
 <p>
 This file contains many headings and if I want to preview the exported HTML of the current heading I use the command C-c C-e 1 b.
 </p>
+
 <p>
 When I am happy with the entry I use M-x org-jekyll-export-current-entry to create the html file in my git repository. 
 </p>
+
 <p>
-I can then either preview the post locally using "jekyll &ndash;server" and visiting <a href="http://localhost:4000">http://localhost:4000</a>, or add the file to the git repository and commit it.
+I can then either preview the post locally using "jekyll –server" and visiting <a href="http://localhost:4000">http://localhost:4000</a>, or add the file to the git repository and commit it.
 </p>
+
 <p>
 I usually go to the git repository and do a git status:
-</p><pre class="example">
-cd ~/git/jmn.github.io &amp;&amp; git status
+</p>
+<pre class="example">
+cd ~/git/jmn.github.io && git status
 </pre>
-
-<p>it shows the new file in the directory "_posts"
+<p>
+it shows the new file in the directory "\<sub>posts</sub>"
 I then use 
-</p><pre class="example">
+</p>
+<pre class="example">
 git add .
 </pre>
-
-<p>to add all new files. 
+<p>
+to add all new files. 
 Do the commit:
-</p><pre class="example">
+</p>
+<pre class="example">
 git commit -am "New post on subject subject"
 </pre>
-
-<p>and push it to the server
-</p><pre class="example">
+<p>
+and push it to the server
+</p>
+<pre class="example">
 git push origin master
 </pre>
-
-<p>(Which I've aliased to "pub")
-</p></div>
-</div>
+<p>
+(Which I've aliased to "pub")</p>

@@ -2,63 +2,19 @@
 title: How to disable Update pop up windows in Ubuntu 13.04 (Raring Ringtail)
 layout: post
 on: <2013-04-27 lör>
-excerpt: 
+ex: 
 tags: ubuntu
 CATEGORY: journal
 ---
 
-
 <ol class="org-ol">
 <li>Run <code>dconf-editor</code>. 
 </li>
-<li>Go to <code>com-&gt;ubuntu-&gt;update-notifier</code> 
+<li>Go to <code>com->ubuntu->update-notifier</code> 
 </li>
 <li>Check the box next to <code>no-show-notifications</code>.
 </li>
 </ol>
 
 <p>
-There are ways of keeping your system up to date that do not include intrusive pop up windows.
-</p>
-
-<p>
-<b>Update</b>: Well, that did not work after all. I still got notifications, and later I found two processes consistently using a lot of CPU: apt-check and oneconf service. 
-</p>
-
-<p>
-Solution:
-</p>
-<pre class="example">
-apt-get remove update-notifier oneconf update-notifier-common 
-</pre>
-
-<p>
-For some reason, removing this last one (update-notifier-common) also wants to remove flashplayer and MS ttf-mscorefonts-installer)
-</p>
-
-<p>
-I asked on IRC (#ubuntu) about this and it turns out that flashplayer and mscorefonts are using the the update-notifier-common package to because for downloading files outside of apt. Or something like that.
-</p>
-
-<p>
-These are the other packages that depend on update-notifier-common:
-</p>
-<pre class="example">
-apt-cache rdepends update-notifier-common
-</pre>
-<div class="org-src-container">
-
-<pre class="src src-apt">Reverse Depends:
-  muon-notifier
-  ttf-mscorefonts-installer
-  flashplugin-installer
-  zentyal-core
-  update-notifier-kde
-  muon-notifier
-  update-notifier
-  byobu
-</pre>
-</div>
-
-<p>
-So I will install these packages another way if I need them.</p>
+There are ways of keeping your system up to date that do not include intrusive pop up windows.</p>
