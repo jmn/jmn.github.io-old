@@ -1,7 +1,7 @@
 ---
 layout: post
-title: ""
-description: "Publishing with Github"
+title: "Publishing with Github"
+description: "A compromise"
 category: meta 
 tags: [meta, github]
 excerpt: "An introduction."
