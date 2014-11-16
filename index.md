@@ -7,7 +7,7 @@ layout: default
     <div class="post">
       <p class="date">{{ post.date | date: "%B %e, %Y" }}</p>
       <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      <p class="post-summary">{{ post.summary }}</p>
+      <p class="post-content">{{ post.content }}</p>
     </div>
 {% endfor %}
 </div>
