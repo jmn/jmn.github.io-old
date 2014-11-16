@@ -83,9 +83,14 @@ header h2 {
   margin-top: 0.75rem;
 }
 body {
+  margin: 0 auto;
+  font-family: "Minion Pro Caption", minion-pro-caption, "Minion Pro", "Garamond Premier Pro Caption", "Garamond Premier Pro", "Hoefler Text", Constantia, Garamond, Palatino, "Palatino Linotype", Baskerville, "Book Antiqua", Georgia, "Century Schoolbook L", serif;
+  font-variant-ligatures: common-ligatures;
+  -moz-font-feature-settings: "liga=1, swsh=0, cswh=0";
+  text-rendering: optimizeLegibility;
+  color: #333;
   padding: 60px;
   padding-top: 0;
-  font-family: 'Sentinel SSm A', 'Sentinel SSm B';
   font-weight: 400;
   font-style: normal;
   font-size: 20px;
