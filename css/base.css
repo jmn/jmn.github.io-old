@@ -6,6 +6,9 @@
 	Released under the MIT License.
 
 */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Merriweather:300,700,300italic,700italic);
+@import url(reset.css);
+
 hide-element {
   height: 0;
   padding: 0;
@@ -84,11 +87,11 @@ header h2 {
 }
 body {
   margin: 0 auto;
-  font-family: "Minion Pro Caption", minion-pro-caption, "Minion Pro", "Garamond Premier Pro Caption", "Garamond Premier Pro", "Hoefler Text", Constantia, Garamond, Palatino, "Palatino Linotype", Baskerville, "Book Antiqua", Georgia, "Century Schoolbook L", serif;
+  font:300 18px/33px 'Merriweather', Georgia, serif;
+  color:#404040;
   font-variant-ligatures: common-ligatures;
   -moz-font-feature-settings: "liga=1, swsh=0, cswh=0";
   text-rendering: optimizeLegibility;
-  color: #333;
   padding: 60px;
   padding-top: 0;
   font-weight: 400;
