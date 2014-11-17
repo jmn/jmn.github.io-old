@@ -1,22 +1,16 @@
 ---
-layout: page
+layout: default
 ---
-{% include JB/setup %}
+<header>
+	<a href="/"><h1>jmnorlund.net</h1></a>
+</header>
 
-<ul class="posts">
-  {% for post in site.posts %}
-<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
-	{% if post.ex %}<i>{{ post.ex }}</i>{% endif %}
-
-   {% if post.tags != empty %}
-tags:
-   {% endif %}
-    {% for tag in post.tags %}
-      <a class="tag_list_link" href="/tag/{{ tag }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-
-</li>
-  {% endfor %}
-</ul>
-
-
+<div class="listing">
+{% for post in site.posts %}
+    <div class="post">
+      <p class="date">{{ post.date | date: "%B %e, %Y" }}</p>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p class="post-content">{{ post.content }}</p>
+    </div>
+{% endfor %}
+</div>
