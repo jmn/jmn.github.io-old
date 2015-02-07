@@ -10,7 +10,7 @@ tags:
 </li>
 <li>Use the org exporter and export the subtree has HTML body-only to a buffer
 </li>
-<li>Save the buffer to [my-blog-directory]/<sub>posts</sub>/YYYY-MM-DD-post-title.html
+<li>Save the buffer to <code>[my-blog-directory]/_posts/YYYY-MM-DD-post-title.html</code>
 </li>
 <li>Commit and push
 </li>
@@ -30,6 +30,26 @@ Note: This is the function I use to insert the YAML front matter.
 <span style="color: #606060;">title: "</span> string <span style="color: #606060;">" </span>
 <span style="color: #606060;">tags: </span>
 <span style="color: #606060;">---</span>
+
 <span style="color: #606060;">#+END_HTML"</span>))
 </pre>
 </div>
+<p>
+Also note: For convenience I set the org export defaults to subtree-only.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-export-initial-scope 'subtree)
+</pre>
+</div>
+<p>
+There does not seem to be a default setting available for body-only.
+</p>
+
+<p>
+Sources:
+</p>
+<ul class="org-ul">
+<li><a href="http://orgmode.org/manual/The-Export-Dispatcher.html#index-org_002dexport_002dinitial_002dscope-1576">http://orgmode.org/manual/The-Export-Dispatcher.html#index-org_002dexport_002dinitial_002dscope-1576</a>
+</li>
+</ul>
