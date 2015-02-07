@@ -21,16 +21,20 @@
 							<span class="year">{{ page.date | date: '%Y' }}</span>
 							</date>
 						</p>
+						{% if page.categories %}
 						<ul class="list-category list-linear">
 							<li class="list-head">category: </li>
 							{% assign categories_list = page.categories %}
 							{% include JB/categories_list %}
 						</ul>
+						{% endif %}
+						{% if page.tags %}
 						<ul class="list-tag list-linear">
 							<li class="list-head">tags: </li>
 							{% assign tags_list = page.tags %}
 							{% include JB/tags_list %}
 						</ul>
+						{% endif %}
 					</div><!-- meta -->
 				</div><!-- entry-content -->
 				<div class="misc-content">
