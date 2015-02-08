@@ -1,0 +1,35 @@
+---
+title: Org jekyll not working perfectly
+layout: post
+CATEGORY: notes
+ON: 2015-02-08 15:19
+---
+
+<p>
+There are a couple of issues I have with org-jekyll:
+</p>
+<ol class="org-ol">
+<li>I can not publish blog entries from the org-capture.
+</li>
+<li>the "tags" property does not get translated to YAML.
+</li>
+</ol>
+
+<p>
+What org-jekyll does right:
+It uses the subtree heading to create the YAML title and the filename.
+</p>
+
+<p>
+For maximum lazy easy publishing I could use a post capture hook to automatically:
+</p>
+<ul class="org-ul">
+<li>Run org-jekyll-export
+</li>
+<li>Add the file to git, commit and push.
+</li>
+</ul>
+
+<p>
+See org-capture-finalize-hook.
+</p>
