@@ -1,0 +1,1948 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs notes, @jmn 2013-2014</title>
+<!-- 2015-02-08 sön 12:13 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="jmn" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="/css/base.css" type="text/css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs notes, @jmn 2013-2014</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Configure</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Changing variables on the fly</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Appearance</a>
+<ul>
+<li><a href="#sec-2-1">2.1. My current configuration <span class="timestamp-wrapper"><span class="timestamp">&lt;2014-12-06 lör&gt;</span></span></a></li>
+<li><a href="#sec-2-2">2.2. Fonts and faces (Typography)</a>
+<ul>
+<li><a href="#sec-2-2-1">2.2.1. The default font</a></li>
+<li><a href="#sec-2-2-2">2.2.2. Buffer-face-mode / variable-pitch-mode</a></li>
+<li><a href="#sec-2-2-3">2.2.3. Figuring out font names</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3">2.3. Fullscreen mode on Windows</a></li>
+<li><a href="#sec-2-4">2.4. Create your own colour theme</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Operations</a>
+<ul>
+<li><a href="#sec-3-1">3.1. the help system</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1. finding the name of an elisp function used in a menu</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">3.2. Navigating</a>
+<ul>
+<li><a href="#sec-3-2-1">3.2.1. Marking and Jumping</a></li>
+<li><a href="#sec-3-2-2">3.2.2. Handling files</a></li>
+<li><a href="#sec-3-2-3">3.2.3. Opening files via HTTP, SSH</a></li>
+<li><a href="#sec-3-2-4">3.2.4. Searching</a></li>
+<li><a href="#sec-3-2-5">3.2.5. Accessibility</a></li>
+<li><a href="#sec-3-2-6">3.2.6. Bookmarks</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-3">3.3. Undoing, et c</a></li>
+<li><a href="#sec-3-4">3.4. Inserting special characters</a>
+<ul>
+<li><a href="#sec-3-4-1">3.4.1. References</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-5">3.5. Spelling</a>
+<ul>
+<li><a href="#sec-3-5-1">3.5.1. Questions</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-6">3.6. Troubleshooting, profiling &amp; debugging</a></li>
+<li><a href="#sec-3-7">3.7. Version control</a>
+<ul>
+<li><a href="#sec-3-7-1">3.7.1. Magit</a></li>
+<li><a href="#sec-3-7-2">3.7.2. Conflict resolution</a></li>
+<li><a href="#sec-3-7-3">3.7.3. File history</a></li>
+<li><a href="#sec-3-7-4">3.7.4. View Difference at various stages in history.</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-8">3.8. E-mail using gnus</a>
+<ul>
+<li><a href="#sec-3-8-1">3.8.1. On Windows with GMail</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-9">3.9. IRC</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Extensions and modes</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Shell</a></li>
+<li><a href="#sec-4-2">4.2. Org-mode - the organizer</a>
+<ul>
+<li><a href="#sec-4-2-1">4.2.1. Running the latest version</a></li>
+<li><a href="#sec-4-2-2">4.2.2. Mark-up</a></li>
+<li><a href="#sec-4-2-3">4.2.3. Code in org files</a></li>
+<li><a href="#sec-4-2-4">4.2.4. Inserting dates and times</a></li>
+<li><a href="#sec-4-2-5">4.2.5. Personal keybindings</a></li>
+<li><a href="#sec-4-2-6">4.2.6. Various</a></li>
+<li><a href="#sec-4-2-7">4.2.7. Scheduling time</a></li>
+<li><a href="#sec-4-2-8">4.2.8. Agenda</a></li>
+<li><a href="#sec-4-2-9">4.2.9. Agenda view</a></li>
+<li><a href="#sec-4-2-10">4.2.10. Importing ICS icalendar files</a></li>
+<li><a href="#sec-4-2-11">4.2.11. Capture</a></li>
+<li><a href="#sec-4-2-12">4.2.12. Archiving</a></li>
+<li><a href="#sec-4-2-13">4.2.13. Searching and filtering in org</a></li>
+<li><a href="#sec-4-2-14">4.2.14. Literate programming using org-babel</a></li>
+<li><a href="#sec-4-2-15">4.2.15. Exporting to HTML and other formats</a></li>
+<li><a href="#sec-4-2-16">4.2.16. Editing math and special characters</a></li>
+<li><a href="#sec-4-2-17">4.2.17. Further study</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-3">4.3. Miscellaneous (git, magit, org-mode, gnus, diff &#x2026;)</a>
+<ul>
+<li><a href="#sec-4-3-1">4.3.1. Acceptable visual configurations</a></li>
+<li><a href="#sec-4-3-2">4.3.2. Text zoom, default is C-x C-+, C-x C&#x2013; to resize text.</a></li>
+<li><a href="#sec-4-3-3">4.3.3. Magit for git version control</a></li>
+<li><a href="#sec-4-3-4">4.3.4. Reading feeds with gnus</a></li>
+<li><a href="#sec-4-3-5">4.3.5. Comparing files with diff, merging them with ediff</a></li>
+<li><a href="#sec-4-3-6">4.3.6. Visibility</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Extending Emacs (Emacs Lisp)</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Learn Emacs lisp</a>
+<ul>
+<li><a href="#sec-5-1-1">5.1.1. Use ‘C-x ESC ESC’ to repeat commands you execute, and look at the Emacs-Lisp code that executes them, before hitting ‘RET’ (Return) – see RepeatLastCommand.</a></li>
+<li><a href="#sec-5-1-2">5.1.2. Use ‘C-h f’ (‘describe-function’) and ‘C-h v’ (‘describe-variable’) to understand commands and variables you use. In the help description, click the function or variable name (link) to go directly to the source code that defines it. Try to read the source code. When you want to know what some function you see used does, use ‘C-h f’ on it… Got it?</a></li>
+<li><a href="#sec-5-1-3">5.1.3. Use ‘C-h k’ to see which commands you are executing when you use keys. Then follow the previous bullet: click the name (link) of the command to see its source code…</a></li>
+<li><a href="#sec-5-1-4">5.1.4. Read the Emacs Lisp Introduction: EmacsLispIntro. Use ‘C-h i’, then choose `Emacs Lisp Intro’. You can also read this manual on the Web.</a></li>
+<li><a href="#sec-5-1-5">5.1.5. Read the Emacs Lisp Reference manual: EmacsLispReference. Use ‘C-h i’, then choose ‘Elisp’ (Emacs Lisp is sometimes called “Elisp”). You can also read this manual on the Web.</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-2">5.2. Resources</a></li>
+<li><a href="#sec-5-3">5.3. Basics</a></li>
+<li><a href="#sec-5-4">5.4. Evaluating lisp code</a>
+<ul>
+<li><a href="#sec-5-4-1">5.4.1. ielm</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-5">5.5. C-x C-e evaluates last expression (Position the cursor after the expression)</a></li>
+<li><a href="#sec-5-6">5.6. Debugging</a></li>
+<li><a href="#sec-5-7">5.7. Useful e-lisp basics</a></li>
+<li><a href="#sec-5-8">5.8. using 'package</a></li>
+<li><a href="#sec-5-9">5.9. Keybindings</a></li>
+<li><a href="#sec-5-10">5.10. Colortheme extension</a></li>
+<li><a href="#sec-5-11">5.11. Macros</a></li>
+<li><a href="#sec-5-12">5.12. Parentheses</a>
+<ul>
+<li><a href="#sec-5-12-1">5.12.1. Paredit</a></li>
+<li><a href="#sec-5-12-2">5.12.2. Test</a></li>
+<li><a href="#sec-5-12-3">5.12.3. Jump to matching parentheses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Personal notes</a>
+<ul>
+<li><a href="#sec-6-1">6.1. System/platform specific</a>
+<ul>
+<li><a href="#sec-6-1-1">6.1.1. My current emacs notes for Win8</a></li>
+</ul>
+</li>
+<li><a href="#sec-6-2">6.2. For me to check out</a></li>
+<li><a href="#sec-6-3">6.3. Wouldn't it be great if&#x2026; / Wishlist</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+I use Emacs for editing text under version control. Sometimes I also use it for communication such as IRC and e-mail. This is my archive of notes for the editor. - jmn, December 2014.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Configure</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Emacs provides a system called <code>M-x customize</code> which enables configuration using menus. It can be useful for easily finding which options are available. To get a more sustainable configuration which can be used on multiple systems it is generally better to use other means of configuration. 
+</p>
+
+<p>
+See <a href="jmn.html">jmn.html</a> to see how I use the org-mode format to maintain my Emacs configuration.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Changing variables on the fly</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Hit M-: to run "eval-expression".
+To for example change the tab-width of the buffer, enter:
+                (setq tab-width 8)
+and hit RET.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Appearance</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> My current configuration <span class="timestamp-wrapper"><span class="timestamp">&lt;2014-12-06 lör&gt;</span></span></h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>I currently use a serif font as my default emacs "face". I use Times New Roman. For colors I use the dark "tango-dark" theme. <span class="timestamp-wrapper"><span class="timestamp">&lt;2014-12-06 lör&gt;</span></span>
+</li>
+<li>When I feel like using less colour I use the theme "monochrome".
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Fonts and faces (Typography)</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> The default font</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+It is possible to use M-x customize-face, default
+Personally I like to use the Consolas font on Windows.
+It is possible to set the font in buffer-face-mode using <code>S-Leftclick</code>, "Change buffer font". To find out more about the face, use <code>M-x what-cursors-position</code>, or <code>Cu C-x =</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(custom-set-faces
+ '(default ((t (<span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"Consolas"</span> <span style="color: #ffffff;">:foundry</span> <span style="color: #adc6ee;">"outline"</span> <span style="color: #ffffff;">:slant</span> normal <span style="color: #ffffff;">:weight</span> normal <span style="color: #ffffff;">:height</span> 108 <span style="color: #ffffff;">:width</span> normal))))
+ '(variable-pitch ((t (<span style="color: #ffffff;">:slant</span> normal <span style="color: #ffffff;">:weight</span> light <span style="color: #ffffff;">:foundry</span> <span style="color: #adc6ee;">"outline"</span> <span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"Gotham HTF Light"</span>)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Buffer-face-mode / variable-pitch-mode</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+For reading longer texts in Emacs it might be nice to, temporarily, use a different font, for this use buffer-face-mode.
+<code>M-x buffer-face-mode</code> 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq buffer-face-mode-face '(<span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"DejaVu Sans"</span> <span style="color: #ffffff;">:height</span> 100 <span style="color: #ffffff;">:width</span> semi-condensed))
+(setq buffer-face-mode-face '(<span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"Gotham HTF Light"</span> <span style="color: #ffffff;">:foundry</span> <span style="color: #adc6ee;">"outline"</span> <span style="color: #ffffff;">:slant</span> normal <span style="color: #ffffff;">:weight</span> light <span style="color: #ffffff;">:height</span> 113 <span style="color: #ffffff;">:width</span> normal))
+(set-face-attribute 'variable-pitch nil <span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"Gotham HTF Light"</span> <span style="color: #ffffff;">:foundry</span> <span style="color: #adc6ee;">"outline"</span> <span style="color: #ffffff;">:slant</span> <span style="color: #adc6ee;">"normal"</span> <span style="color: #ffffff;">:weight</span> <span style="color: #adc6ee;">"light"</span> <span style="color: #ffffff;">:height</span> 113 <span style="color: #ffffff;">:width</span> <span style="color: #adc6ee;">"normal"</span>)
+</pre>
+</div>
+
+<p>
+You might want to configure certain modes to automatically start in variable-pitch-mode using a mode-hook, e.g:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'markdown-mode-hook (<span style="color: #fbde2d;">lambda</span> () (variable-pitch-mode t))
+</pre>
+</div>
+</div>
+
+<ol class="org-ol"><li><a id="sec-2-2-2-1"></a>Using variable-pitch in org-mode<br  /><div class="outline-text-5" id="text-2-2-2-1">
+<p>
+You might want tables in org-mode to still use a monospaced font (fixed-pitch):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(set-face-attribute 'org-table nil <span style="color: #ffffff;">:inherit</span> 'fixed-pitch)
+</pre>
+</div>
+
+<p>
+For code-blocks:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(set-face-attribute 'org-code nil <span style="color: #ffffff;">:inherit</span> 'fixed-pitch)
+(set-face-attribute 'org-block nil <span style="color: #ffffff;">:inherit</span> 'fixed-pitch)
+(set-face-attribute 'org-block-background nil <span style="color: #ffffff;">:inherit</span> 'fixed-pitch)
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> Figuring out font names</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+One option is to use the menu bar, Options/set default font, Options/Save options and look at the result in <code>~/.emacs</code>. Another is to use <code>M-x what-cursors-position, or =C-u C-x =</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Fullscreen mode on Windows</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Starting with version (<code>M-x version</code>) 24.4 Emacs supports fullscreen mode on MS Windows, use <code>M-x toggle-frame-fullscreen</code> to toggle fullsceren mode, it's bound to the key <code>F11</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Create your own colour theme</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+I usually start off with a basic theme that I like and then do: M-x
+customize-create-theme to create my own version of the
+theme. Generally I do this to reduce the amount of colours used.  See
+<a href="http://batsov.com/articles/2012/02/19/color-theming-in-emacs-reloaded/">http://batsov.com/articles/2012/02/19/color-theming-in-emacs-reloaded/</a> for more info.
+</p>
+
+<p>
+Preview and find color themes:
+<a href="http://emacsthemes.caisah.info/">http://emacsthemes.caisah.info/</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Operations</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> the help system</h3>
+<div class="outline-text-3" id="text-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-h b</td>
+<td class="left">show all keybindings</td>
+</tr>
+
+<tr>
+<td class="left">C-h m</td>
+<td class="left">Show major mode key bindings</td>
+</tr>
+
+<tr>
+<td class="left">C-h f</td>
+<td class="left">explain a function</td>
+</tr>
+
+<tr>
+<td class="left">C-h i</td>
+<td class="left">open Info</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> finding the name of an elisp function used in a menu</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+C-h c (then use a menu)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Navigating</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> Marking and Jumping</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+`C-c %'
+     Push the current position onto the mark ring, to be able to return
+     easily. Commands following an internal link do this automatically.
+</p>
+
+<p>
+`C-c &amp;'
+     Jump back to a recorded position.  A position is recorded by the
+     commands following internal links, and by `C-c %'.  Using this
+     command several times in direct succession moves through a ring of
+     previously recorded positions.
+M-z &lt;character&gt;, M-x zap-to-char kills text forward up to and including the given character. Useful i.e. in expressions. See <a href="http://superuser.com/questions/124246/emacs-equivalent-to-vim-ci">http://superuser.com/questions/124246/emacs-equivalent-to-vim-ci</a>
+C-M-k kill balanced expression.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2-2" class="outline-4">
+<h4 id="sec-3-2-2"><span class="section-number-4">3.2.2</span> Handling files</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">dired-mode</td>
+<td class="left">C-x d</td>
+<td class="left">File explorer</td>
+</tr>
+
+<tr>
+<td class="left">dired-jump</td>
+<td class="left">C-x C-j</td>
+<td class="left">Open dired with cursor on the file displayed in buffer</td>
+</tr>
+
+<tr>
+<td class="left">find-alternate-file</td>
+<td class="left">C-x C-v</td>
+<td class="left">Displays the filename so you can yank it.</td>
+</tr>
+
+<tr>
+<td class="left">revert-buffer</td>
+<td class="left">&#xa0;</td>
+<td class="left">asd</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2-3" class="outline-4">
+<h4 id="sec-3-2-3"><span class="section-number-4">3.2.3</span> Opening files via HTTP, SSH</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+To open a file via HTTP(S) in Emacs, use <code>M-x browse-url-emacs</code>
+</p>
+
+<p>
+Emacs can edit files over SSH using the package "tramp". 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2-4" class="outline-4">
+<h4 id="sec-3-2-4"><span class="section-number-4">3.2.4</span> Searching</h4>
+<div class="outline-text-4" id="text-3-2-4">
+</div><ol class="org-ol"><li><a id="sec-3-2-4-1"></a>Searching and replacing within files<br  /><div class="outline-text-5" id="text-3-2-4-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">query-replace</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="sec-3-2-4-2"></a>Tricks, Quoted-insert et c.<br  /><div class="outline-text-5" id="text-3-2-4-2">
+<p>
+By pressing C-q C-m RET You can search for "Carriage return" (C-q is "quoted-insert).
+</p>
+
+<p>
+(Carriage return is displayed in Emacs as ^M "<sup>Hello</sup>" and can show up when you
+are switching between various character encodings (dos,unix,utf-8&#x2026;)
+line endings.)
+</p>
+
+<p>
+See more here: <a href="http://ergoemacs.org/emacs/emacs_line_ending_char.html">http://ergoemacs.org/emacs/emacs_line_ending_char.html</a>
+</p>
+</div>
+</li>
+
+<li><a id="sec-3-2-4-3"></a>Searching across files<br  /></li>
+<li><a id="sec-3-2-4-4"></a><span class="todo TODO">TODO</span> file contents (grep) across many files<br  /><div class="outline-text-5" id="text-3-2-4-4">
+<p>
+commands: rgrep, grep-find, grep
+BUG?: Searching in "Lokala inställningar crashes" with:
+local characters no such directory found via cdpath rgrep
+</p>
+
+<p>
+TODO: find code for mouse-appearance-menu to bind keys for "increase
+buffer text size" and "decrease&#x2026;" to C-Plus, C-Minus)
+</p>
+
+<p>
+TODO: find the emacsclient extension in the chrome data
+dir. lokala../appdata et c.
+</p>
+</div>
+</li>
+
+<li><a id="sec-3-2-4-5"></a>replacing across files. Press Q in dired-mode. Enter regex.<br  /></li>
+<li><a id="sec-3-2-4-6"></a>C-x C-q in dired is extremely powerful when combined with macros (imagine changing names of some files in a large directory, but instead of having to code some script, just use the macro magic!).<br  /></li>
+
+<li><a id="sec-3-2-4-7"></a><a href="http://denverdroid.blogspot.se/2011/07/cool-things-to-do-in-emacs-dired-mode.html">More dired-mode stuff</a><br  /></li></ol>
+</div>
+
+<div id="outline-container-sec-3-2-5" class="outline-4">
+<h4 id="sec-3-2-5"><span class="section-number-4">3.2.5</span> Accessibility</h4>
+<div class="outline-text-4" id="text-3-2-5">
+<p>
+goto-adress-mode makes written hyperlinks clickable.
+see <a href="http://stackoverflow.com/questions/3748673/emacs-23-on-os-x-how-to-open-web-links-from-emacs">here</a>.
+</p>
+
+<p>
+Try adding:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'find-file-hook 'goto-address-mode)
+</pre>
+</div>
+<p>
+To your dot-emacs.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-2-6" class="outline-4">
+<h4 id="sec-3-2-6"><span class="section-number-4">3.2.6</span> Bookmarks</h4>
+<div class="outline-text-4" id="text-3-2-6">
+<p>
+<a href="http://emacswiki.org/emacs/BookMarks">Emacs Bookmarks - EmacsWiki</a>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Shortcut key</th>
+<th scope="col" class="left">M-x command</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">C-x r m</td>
+<td class="left">&#xa0;</td>
+<td class="left">set a bookmark at the current location (e.g. in a file)</td>
+</tr>
+
+<tr>
+<td class="left">C-x r b</td>
+<td class="left">&#xa0;</td>
+<td class="left">jump to a bookmark</td>
+</tr>
+
+<tr>
+<td class="left">C-x r l</td>
+<td class="left">&#xa0;</td>
+<td class="left">list your bookmarks</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">bookmark-delete</td>
+<td class="left">delete a bookmark by name</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Undoing, et c</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+C-x u (or just "u" in viper) to undo.
+M-x undo-only to "undo only" (not redo).
+Tip: undo-tree (package) can be very useful.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Inserting special characters</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+This can be done in various ways
+</p>
+<ul class="org-ul">
+<li>Using a compose key
+</li>
+<li>using M-x ucs-insert (C-x 8 RET)
+</li>
+</ul>
+<p>
+C-x 8 can also be used to insert various characters, e.g:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x 8 c</td>
+<td class="left">¢</td>
+</tr>
+
+<tr>
+<td class="left">&#x2026;   m</td>
+<td class="left">µ</td>
+</tr>
+
+<tr>
+<td class="left">&#x2026;   o</td>
+<td class="left">°</td>
+</tr>
+
+<tr>
+<td class="left">&#x2026;   u</td>
+<td class="left">µ</td>
+</tr>
+
+<tr>
+<td class="left">S</td>
+<td class="left">§</td>
+</tr>
+</tbody>
+</table>
+<ul class="org-ul">
+<li>using abbrevs 
+</li>
+<li>using agda
+</li>
+</ul>
+<p>
+<a href="http://wiki.portal.chalmers.se/agda/agda.php?n=Docs.UnicodeInput">http://wiki.portal.chalmers.se/agda/agda.php?n=Docs.UnicodeInput</a>
+</p>
+</div>
+<div id="outline-container-sec-3-4-1" class="outline-4">
+<h4 id="sec-3-4-1"><span class="section-number-4">3.4.1</span> References</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+<a href="http://emacs-fu.blogspot.se/2012/02/special-characters.html">http://emacs-fu.blogspot.se/2012/02/special-characters.html</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Spelling</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+Note: There are various spelling engines. aspell and hunspell are two.
+Hunspell is said to be more advanced, handles utf-8 and complex grammar structures (?) used in i.e. swedish.
+</p>
+
+<p>
+M-x ispell
+M-x ispell-change-dictionary
+</p>
+</div>
+
+<div id="outline-container-sec-3-5-1" class="outline-4">
+<h4 id="sec-3-5-1"><span class="section-number-4">3.5.1</span> Questions</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<p>
+Mixed language content? i.e. Swedish/English.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Troubleshooting, profiling &amp; debugging</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+Use <code>M-x toggle-debug-on-error</code> to enable debugging for errors.
+</p>
+
+<p>
+GNU Emacs 24 and later has got profile.el
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #fbde2d;">require</span> '<span style="color: #7fffd4;">profiler</span>)
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">M-x profiler-start</td>
+</tr>
+
+<tr>
+<td class="left">M-x profiler-report</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> Version control</h3>
+<div class="outline-text-3" id="text-3-7">
+</div><div id="outline-container-sec-3-7-1" class="outline-4">
+<h4 id="sec-3-7-1"><span class="section-number-4">3.7.1</span> Magit</h4>
+<div class="outline-text-4" id="text-3-7-1">
+<p>
+See package magit for a great git/emacs tool.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7-2" class="outline-4">
+<h4 id="sec-3-7-2"><span class="section-number-4">3.7.2</span> Conflict resolution</h4>
+<div class="outline-text-4" id="text-3-7-2">
+<p>
+M-x vc-resolve-conflicts - opens three buffer windows, A (your file),
+                               B (the conflicting file from the
+                               repository) and C (the combined file)
+                               See "?" for commands, but use keys a/b/
+                               to pick either of the versions and then
+                               press space to visit the next merge
+                               conflict.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7-3" class="outline-4">
+<h4 id="sec-3-7-3"><span class="section-number-4">3.7.3</span> File history</h4>
+<div class="outline-text-4" id="text-3-7-3">
+<p>
+M-x vc-annotate - Creates a log of who did what when.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7-4" class="outline-4">
+<h4 id="sec-3-7-4"><span class="section-number-4">3.7.4</span> View Difference at various stages in history.</h4>
+<div class="outline-text-4" id="text-3-7-4">
+<p>
+M-x vc-ediff - Highlight and navigate between difference between the
+file at it's current stage and previous commits (for example).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8"><span class="section-number-3">3.8</span> E-mail using gnus</h3>
+<div class="outline-text-3" id="text-3-8">
+</div><div id="outline-container-sec-3-8-1" class="outline-4">
+<h4 id="sec-3-8-1"><span class="section-number-4">3.8.1</span> On Windows with GMail</h4>
+<div class="outline-text-4" id="text-3-8-1">
+<p>
+See <a href="http://www.emacswiki.org/emacs/AlessandroPiras#toc">http://www.emacswiki.org/emacs/AlessandroPiras#toc</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-9" class="outline-3">
+<h3 id="sec-3-9"><span class="section-number-3">3.9</span> IRC</h3>
+<div class="outline-text-3" id="text-3-9">
+<p>
+See <code>M-x erc</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Extensions and modes</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Shell</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Enter by typing M-x shell
+</p>
+
+<p>
+To clear the shell buffer, you can use M-x erase-buffer
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Org-mode - the organizer</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Org mode good for things like managing todo information, capturing
+notes, keeping a journal, clocking in time and more.
+</p>
+</div>
+
+<div id="outline-container-sec-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> Running the latest version</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<p>
+See <a href="http://orgmode.org/worg/org-faq.html#keeping-current-with-Org-mode-development">http://orgmode.org/worg/org-faq.html#keeping-current-with-Org-mode-development</a>
+</p>
+
+<p>
+Org-mode is under active development, here are instructions to running the latest version from Git.
+Basic steps: clone the repo, make autoloads, load files properly.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-2-1-1"></a>Make autoloads under MS Windows<br  /></li>
+<li><a id="compiling-org-without-make"></a><a id="sec-4-2-1-2"></a>Generating autoloads and Compiling Org without make<br  /><div class="outline-text-5" id="text-compiling-org-without-make">
+<p>
+Compilation is optional, but you <span class="underline">must</span> update the autoloads file
+each time you update org, even when you run org uncompiled!
+</p>
+
+<p>
+Starting with Org 7.9 you'll find functions for creating the
+autoload files and do byte-compilation in <code>mk/org-fixup.el</code>.  When
+you execute the commands below, your current directory must be where
+org has been unpacked into, in other words the file <code>README</code> should
+be found in your current directory and the directories <code>lisp</code> and
+<code>etc</code> should be subdirectories of it.  The command <code>emacs</code> should be
+found in your <code>PATH</code> and start the Emacs version you are using.  To
+make just the autoloads file do:
+</p>
+<pre class="example">
+emacs -batch -Q -L lisp -l ../mk/org-fixup -f org-make-autoloads
+</pre>
+<p>
+To make the autoloads file and byte-compile org:
+</p>
+<pre class="example">
+emacs -batch -Q -L lisp -l ../mk/org-fixup -f org-make-autoloads-compile
+</pre>
+<p>
+To make the autoloads file and byte-compile all of org again:
+</p>
+<pre class="example">
+emacs -batch -Q -L lisp -l ../mk/org-fixup -f org-make-autoloads-compile-force
+</pre>
+<p>
+If you are not using Git, you'll have to make fake version strings
+first if <code>org-version.el</code> is not already available (if it is, you
+could also edit the version strings there).
+</p>
+<pre class="example">
+emacs -batch -Q -L lisp -l ../mk/org-fixup \
+--eval '(let ((org-fake-release "7.9.1")(org-fake-git-version "7.9.1-fake"))\
+(org-make-autoloads))'
+</pre>
+<p>
+The above assumes a
+POSIX shell for its quoting.  Windows <code>CMD.exe</code> has quite different
+quoting rules and this won't work, so your other option is to start
+Emacs like this
+</p>
+<pre class="example">
+emacs -Q -L lisp -l ../mk/org-fixup
+</pre>
+<p>
+then paste the following into the <code>*scratch*</code> buffer
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #fbde2d;">let</span> ((org-fake-release     <span style="color: #adc6ee;">"7.9.1"</span>)
+      (org-fake-git-version <span style="color: #adc6ee;">"7.9.1-fake"</span>))
+  (org-make-autoloads))
+</pre>
+</div>
+<p>
+position the cursor after the closing paren and press <code>C-j</code> or <code>C-x
+  C-e</code> to evaluate the form.  Of course you can replace
+<code>org-make-autoloads</code> with <code>org-make-autoloads-compile</code> or even
+<code>org-make-autoloads-compile-force</code> if you wish with both variants.
+</p>
+</div>
+</li>
+
+<li><a id="sec-4-2-1-3"></a>Reload Org<br  /><div class="outline-text-5" id="text-4-2-1-3">
+<p>
+As of Org version 6.23b (released Sunday Feb 22, 2009) there is a new
+function to reload org files.
+</p>
+
+<p>
+Normally you want to use the compiled files since they are faster.
+If you update your org files you can easily reload them with
+</p>
+
+<pre class="example">
+M-x org-reload
+</pre>
+
+<p>
+If you run into a bug and want to generate a useful backtrace you can
+reload the source files instead of the compiled files with
+</p>
+
+<pre class="example">
+C-u M-x org-reload
+</pre>
+
+<p>
+and turn on the "Enter Debugger On Error" option.  Redo the action
+that generates the error and cut and paste the resulting backtrace.
+To switch back to the compiled version just reload again with
+</p>
+
+<pre class="example">
+M-x org-reload
+</pre>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-4-2-2" class="outline-4">
+<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> Mark-up</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<p>
+<a href="http://orgmode.org/org.html#Emphasis-and-monospace">http://orgmode.org/org.html#Emphasis-and-monospace</a>
+</p>
+
+<p>
+<code>code</code> <del>strikethrough</del> <b>bold</b> <i>italic</i> <span class="underline">underlined</span> <code>verbatim</code>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org-mode">=code= +strikethrough+ *bold* /italic/ _underlined_ ~verbatim~
+</pre>
+</div>
+
+<p>
+Subscript<sub>i</sub> Subscript<sub>i</sub> (equivalent) Superscript~x Superscript~{x} (equivalent)
+</p>
+
+<pre class="example">
+Subscript_i Subscript_{i} (equivalent) Superscript^x Superscript^{x} (equivalent)
+</pre>
+
+<ul class="org-ul">
+<li>More about Subscript and superscript: 
+<a href="http://orgmode.org/manual/Subscripts-and-superscripts.html#Subscripts-and-superscripts">http://orgmode.org/manual/Subscripts-and-superscripts.html#Subscripts-and-superscripts</a>
+</li>
+</ul>
+</div>
+<ol class="org-ol"><li><a id="sec-4-2-2-1"></a>Conundrum<br  /><div class="outline-text-5" id="text-4-2-2-1">
+<p>
+What is up with org-mode created superscripts i.e:
+="<sup>Hello</sup>"= exports to ="&lt;sup&gt;Hello&lt;/sup&gt;"= (Even when contained within equal signs. Bug?)
+</p>
+<pre class="example">
+="^Hello"= exports to ="&lt;sup&gt;Hello&lt;/sup&gt;"= (Even when contained within equal signs. Bug?)
+</pre>
+
+<p>
+Further more, HTML in a SRC code block will not be escaped properly.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #ffffff;">sup</span>&gt;Hello&lt;/<span style="color: #ffffff;">sup</span>&gt;
+=&lt;<span style="color: #ffffff;">sup</span>&gt;Hello&lt;/<span style="color: #ffffff;">sup</span>&gt;=
+="&lt;<span style="color: #ffffff;">sup</span>&gt;Hello&lt;/<span style="color: #ffffff;">sup</span>&gt;"=
+</pre>
+</div>
+
+<p>
+FIXME: BUG?
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-4-2-3" class="outline-4">
+<h4 id="sec-4-2-3"><span class="section-number-4">4.2.3</span> Code in org files</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<p>
+To input code insert "&lt;s" on a line and press tab. See <a href="http://orgmode.org/manual/Easy-Templates.html#Easy-Templates">Easy Templates</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-2-4" class="outline-4">
+<h4 id="sec-4-2-4"><span class="section-number-4">4.2.4</span> Inserting dates and times</h4>
+<div class="outline-text-4" id="text-4-2-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">key</th>
+<th scope="col" class="left">M-x</th>
+<th scope="col" class="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">C-c .</td>
+<td class="left">&#xa0;</td>
+<td class="left">insert timestamp</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-4-2-5" class="outline-4">
+<h4 id="sec-4-2-5"><span class="section-number-4">4.2.5</span> Personal keybindings</h4>
+<div class="outline-text-4" id="text-4-2-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-c c</td>
+<td class="left">capture new item</td>
+</tr>
+
+<tr>
+<td class="left">C-c a</td>
+<td class="left">org-agenda</td>
+</tr>
+
+<tr>
+<td class="left">C-c ,</td>
+<td class="left">set priority</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-4-2-6" class="outline-4">
+<h4 id="sec-4-2-6"><span class="section-number-4">4.2.6</span> Various</h4>
+<div class="outline-text-4" id="text-4-2-6">
+<p>
+Link format \[[http&#x2026;]\[foo]] (without slashes)
+Example: <a href="http://localhost/">localhost</a>
+Use C-c C-l with the cursor above the link to modify it.
+Or, backspace after the description to remove the final bracket and unhide the URL.
+See <a href="http://orgmode.org/manual/Link-format.html#Link-format">Documentation on links</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2-7" class="outline-4">
+<h4 id="sec-4-2-7"><span class="section-number-4">4.2.7</span> Scheduling time</h4>
+<div class="outline-text-4" id="text-4-2-7">
+<p>
+To schedule a task, use C-c C-s.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-c C-x ;</td>
+<td class="left">Start a countdown timer (just ";" in agenda views).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol class="org-ol"><li><a id="sec-4-2-7-1"></a>Repeated tasks (recurring tasks)<br  /><div class="outline-text-5" id="text-4-2-7-1">
+<p>
+To schedule a recurring task (or "repeated task", see info org-mode 8.3.2):
+     DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2005-10-01 Sat +1m&gt;</span></span>
+</p>
+
+<p>
+Note the "+1m", that means to repeat every month.
+</p>
+
+<p>
+You can use yearly, monthly, weekly, daily and hourly repeat cookies
+by using the `y/w/m/d/h' letters.
+</p>
+
+<p>
+If you need both a repeater and a special warning period in a deadline entry,
+the repeater should come first and the warning period last: `DEADLINE:
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2005-10-01 Sat +1m -3d&gt;</span></span>'.
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-4-2-8" class="outline-4">
+<h4 id="sec-4-2-8"><span class="section-number-4">4.2.8</span> Agenda</h4>
+<div class="outline-text-4" id="text-4-2-8">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Schedule on date</td>
+<td class="left">C-c C-s</td>
+</tr>
+
+<tr>
+<td class="left">Change status (started, done, etc)</td>
+<td class="left">C-c C-t</td>
+</tr>
+
+<tr>
+<td class="left">Deadline</td>
+<td class="left">C-c C-d</td>
+</tr>
+
+<tr>
+<td class="left">kill item</td>
+<td class="left">C-k</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2-9" class="outline-4">
+<h4 id="sec-4-2-9"><span class="section-number-4">4.2.9</span> Agenda view</h4>
+<div class="outline-text-4" id="text-4-2-9">
+<p>
+The default key for opening agenda mode (M-x org-agenda) is <code>C-c C-a</code> followed by a
+command key. Pressing "a" will open the agenda for day or week
+(depending on the value of the variable <code>org-agenda-span</code>).
+</p>
+
+<p>
+One simple way of effectively using org agenda is this:
+</p>
+<ul class="org-ul">
+<li>Capture TODO items using org capture
+</li>
+<li>When planning the work ahead of you, open the list of stored TODO
+items.
+</li>
+<li>Use <code>C-c C-s</code> to schedule the item. Just hit RET to schedule it
+for today.
+</li>
+<li>Open org-agenda-goto-today by pressing <code>C-c a a</code>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2-10" class="outline-4">
+<h4 id="sec-4-2-10"><span class="section-number-4">4.2.10</span> Importing ICS icalendar files</h4>
+<div class="outline-text-4" id="text-4-2-10">
+<p>
+Emacs can import icalendar files to the diary using M-x icalendar-&#x2026;
+Org can then be set to read the diary files using:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-agenda-include-diary t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2-11" class="outline-4">
+<h4 id="sec-4-2-11"><span class="section-number-4">4.2.11</span> Capture</h4>
+<div class="outline-text-4" id="text-4-2-11">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-c C-l</td>
+<td class="left">insert link</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-a</td>
+<td class="left">insert attachment</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">open last stored capture</td>
+<td class="left">org-capture-goto-last-stored</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-4-2-12" class="outline-4">
+<h4 id="sec-4-2-12"><span class="section-number-4">4.2.12</span> Archiving</h4>
+<div class="outline-text-4" id="text-4-2-12">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-c C-x C-a</td>
+<td class="left">org-archive-subtree-default</td>
+<td class="left">archives the item</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2-13" class="outline-4">
+<h4 id="sec-4-2-13"><span class="section-number-4">4.2.13</span> Searching and filtering in org</h4>
+<div class="outline-text-4" id="text-4-2-13">
+<p>
+C-c / Use org-sparse-tree to filter out only matching headings.
+i.e: "C-c / m blog" to show only headings containing the tag "blog"
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-2-14" class="outline-4">
+<h4 id="sec-4-2-14"><span class="section-number-4">4.2.14</span> Literate programming using org-babel</h4>
+<div class="outline-text-4" id="text-4-2-14">
+<p>
+Insert code blocks:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-Lisp">(foo)
+</pre>
+</div>
+
+<p>
+Useful org-babel keybindings:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">key</th>
+<th scope="col" class="left">action</th>
+<th scope="col" class="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">C-c C-v t</td>
+<td class="left">org-tangle</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">&#xa0;</td>
+<td class="left">Evalute code block</td>
+</tr>
+
+<tr>
+<td class="left">C-c '</td>
+<td class="left">&#xa0;</td>
+<td class="left">Edit code block in separate buffer</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">org-src-fontify-block</td>
+<td class="left">Applies syntax highlighting (font lock) to code block</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">org-src-fontify-buffer</td>
+<td class="left">(As above) to all code blocks in the buffer.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+To easily create new code blocks, insert "&lt;s" and hit "Tab" and a code
+block will be created.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-2-15" class="outline-4">
+<h4 id="sec-4-2-15"><span class="section-number-4">4.2.15</span> Exporting to HTML and other formats</h4>
+<div class="outline-text-4" id="text-4-2-15">
+<p>
+C-c C-e opens the export menu (or "dispatcher").
+</p>
+
+<p>
+More export configuration options can be found under: M-x customize-group org-export
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-2-15-1"></a>Export with Table of contents configuration<br  /><div class="outline-text-5" id="text-4-2-15-1">
+<p>
+Table of contents can be created with a configured to include all
+levels of heading or just to a specified level.
+</p>
+
+<p>
+M-x customize-variable org-export-with-toc
+</p>
+</div>
+</li>
+
+<li><a id="sec-4-2-15-2"></a>Export with heading numbering<br  /><div class="outline-text-5" id="text-4-2-15-2">
+<p>
+M-x customize-variable org-export-with-section-numbers 
+</p>
+</div>
+</li>
+
+<li><a id="sec-4-2-15-3"></a><span class="todo TODO">TODO</span> Room for improvement<br  /><div class="outline-text-5" id="text-4-2-15-3">
+<p>
+In my opinion, there is room to improve the Org export dispatch menu to
+allow for:
+</p>
+<ul class="org-ul">
+<li>Configration of ToC (Table of contents) (whether it should be created or not, level of detail et c.)
+</li>
+<li>Whether or not headings should be rendered with numbers alongside them.
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-4-2-16" class="outline-4">
+<h4 id="sec-4-2-16"><span class="section-number-4">4.2.16</span> Editing math and special characters</h4>
+<div class="outline-text-4" id="text-4-2-16">
+<p>
+First install packages auctex and cdlatex
+</p>
+
+<p>
+Enable M-x org-cdlatex-mode
+</p>
+
+<ul class="org-ul">
+<li>see here: <a href="http://orgmode.org/manual/CDLaTeX-mode.html">http://orgmode.org/manual/CDLaTeX-mode.html</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2-17" class="outline-4">
+<h4 id="sec-4-2-17"><span class="section-number-4">4.2.17</span> Further study</h4>
+<div class="outline-text-4" id="text-4-2-17">
+<p>
+[[<a href="http://orgmode.org/worg/doc.html%5D%5BAll">http://orgmode.org/worg/doc.html%5D%5BAll</a> hooks, commands and options of Org 8.0]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Miscellaneous (git, magit, org-mode, gnus, diff &#x2026;)</h3>
+<div class="outline-text-3" id="text-4-3">
+</div><div id="outline-container-sec-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> Acceptable visual configurations</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+Dark: color-theme-dark-blue2, fringe-mode,
+Font: Consolas 10, Dejavu Sans Mono 10
+C-x C-+, C-x C&#x2013; - increase, decrease text size
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> Text zoom, default is C-x C-+, C-x C&#x2013; to resize text.</h4>
+</div>
+
+<div id="outline-container-sec-4-3-3" class="outline-4">
+<h4 id="sec-4-3-3"><span class="section-number-4">4.3.3</span> Magit for git version control</h4>
+<div class="outline-text-4" id="text-4-3-3">
+<p>
+<a href="http://philjackson.github.com/magit/magit.html">Magit manual</a>
+</p>
+
+<p>
+magit-status will show the state of the repository
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-3-3-1"></a>Useful magit-status keys and commands:<br  /><div class="outline-text-5" id="text-4-3-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">S-Tab</td>
+<td class="left">toggle showing diff in place</td>
+</tr>
+
+<tr>
+<td class="left">d</td>
+<td class="left">Show a diff</td>
+</tr>
+
+<tr>
+<td class="left">e</td>
+<td class="left">show ediff</td>
+</tr>
+
+<tr>
+<td class="left">c</td>
+<td class="left">commit</td>
+</tr>
+
+<tr>
+<td class="left">s</td>
+<td class="left">stage (and add files)</td>
+</tr>
+
+<tr>
+<td class="left">v</td>
+<td class="left">discard change</td>
+</tr>
+
+<tr>
+<td class="left">g</td>
+<td class="left">refresh</td>
+</tr>
+
+<tr>
+<td class="left">C-u s</td>
+<td class="left">stage all untracked files</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">commit (from change message buffer)</td>
+</tr>
+
+<tr>
+<td class="left">l</td>
+<td class="left">show history</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><a id="sec-4-3-3-2"></a>the log<br  /><div class="outline-text-5" id="text-4-3-3-2">
+<p>
+pressing l opens the log
+. - mark
+= - compare the marked commit and the current (under cursor )commit
+C-w - copy sha1 of commit into the kill ring
+</p>
+</div>
+</li>
+
+<li><a id="sec-4-3-3-3"></a>C-u commands:<br  /><div class="outline-text-5" id="text-4-3-3-3">
+<p>
+C-u i, ask for filename to ignore (useful for directories)
+</p>
+</div>
+</li>
+
+<li><a id="sec-4-3-3-4"></a>mx-commands:<br  /><div class="outline-text-5" id="text-4-3-3-4">
+<p>
+magit-ediff
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-4-3-4" class="outline-4">
+<h4 id="sec-4-3-4"><span class="section-number-4">4.3.4</span> Reading feeds with gnus</h4>
+<div class="outline-text-4" id="text-4-3-4">
+<p>
+press G R to add a new feed.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3-5" class="outline-4">
+<h4 id="sec-4-3-5"><span class="section-number-4">4.3.5</span> Comparing files with diff, merging them with ediff</h4>
+<div class="outline-text-4" id="text-4-3-5">
+<p>
+<a href="https://www.gnu.org/software/emacs/manual/html_node/ediff/">Ediff manual</a>
+</p>
+
+<p>
+Ediff opens up three frames, frame A and B and a small frame that controls the diffing using hotkeys
+key ? shows help, "n" or space jumps to next diff, keys a/b copies region to A (upper frame)/B (lower)
+key r followed by b restores the buffer in B
+Q: How to undo the last action?
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-3-6" class="outline-4">
+<h4 id="sec-4-3-6"><span class="section-number-4">4.3.6</span> Visibility</h4>
+<div class="outline-text-4" id="text-4-3-6">
+<p>
+Tab cycles visibility
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-c C-x b</td>
+<td class="left">org-tree-to-indirect-buffer</td>
+<td class="left">Shows the current subtree in a new buffer ("indirect buffer")</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Extending Emacs (Emacs Lisp)</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Learn Emacs lisp</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+<a href="http://www.emacswiki.orpg/emacs/LearnEmacsLisp">http://www.emacswiki.orpg/emacs/LearnEmacsLisp</a>
+</p>
+</div>
+
+<div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> Use ‘C-x ESC ESC’ to repeat commands you execute, and look at the Emacs-Lisp code that executes them, before hitting ‘RET’ (Return) – see RepeatLastCommand.</h4>
+</div>
+
+
+<div id="outline-container-sec-5-1-2" class="outline-4">
+<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> Use ‘C-h f’ (‘describe-function’) and ‘C-h v’ (‘describe-variable’) to understand commands and variables you use. In the help description, click the function or variable name (link) to go directly to the source code that defines it. Try to read the source code. When you want to know what some function you see used does, use ‘C-h f’ on it… Got it?</h4>
+</div>
+
+
+<div id="outline-container-sec-5-1-3" class="outline-4">
+<h4 id="sec-5-1-3"><span class="section-number-4">5.1.3</span> Use ‘C-h k’ to see which commands you are executing when you use keys. Then follow the previous bullet: click the name (link) of the command to see its source code…</h4>
+</div>
+
+
+<div id="outline-container-sec-5-1-4" class="outline-4">
+<h4 id="sec-5-1-4"><span class="section-number-4">5.1.4</span> Read the Emacs Lisp Introduction: EmacsLispIntro. Use ‘C-h i’, then choose `Emacs Lisp Intro’. You can also read this manual on the Web.</h4>
+</div>
+
+
+<div id="outline-container-sec-5-1-5" class="outline-4">
+<h4 id="sec-5-1-5"><span class="section-number-4">5.1.5</span> Read the Emacs Lisp Reference manual: EmacsLispReference. Use ‘C-h i’, then choose ‘Elisp’ (Emacs Lisp is sometimes called “Elisp”). You can also read this manual on the Web.</h4>
+<div class="outline-text-4" id="text-5-1-5">
+<p>
+SteveYegge’s intro to the language. (FIXME: Link)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Resources</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+<a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">E-lisp manual</a>, 
+<a href="http://www.gnu.org/software/emacs/emacs-lisp-intro/">Introduction to Emacs Lisp</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Basics</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Comparisons: note the difference between "eq" and "equal". While "eq" tests if x and y are the same object, "equal" tests if they have equal contents.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Evaluating lisp code</h3>
+<div class="outline-text-3" id="text-5-4">
+</div><div id="outline-container-sec-5-4-1" class="outline-4">
+<h4 id="sec-5-4-1"><span class="section-number-4">5.4.1</span> ielm</h4>
+<div class="outline-text-4" id="text-5-4-1">
+<p>
+M-x ielm will run a REPL, similar to a Python "interpreter" but for Elisp.
+(For other REPLs see SLIME, nrepl)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> C-x C-e evaluates last expression (Position the cursor after the expression)</h3>
+</div>
+<div id="outline-container-sec-5-6" class="outline-3">
+<h3 id="sec-5-6"><span class="section-number-3">5.6</span> Debugging</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+(bisect) &#x2013; If "emacs &#x2013;debug-init"
+           doesn't help, comment out half of ~/.emacs and try to
+           reproduce the issue. Recurse as necessary. See also
+           &lt;-q&gt; and &lt;ielm&gt;.
+</p>
+
+<p>
+Another type of "bisect" method is putting (message "DEBUG ONE"), (message "DEBUG TWO") in various locations in the code to find where it fails.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-7" class="outline-3">
+<h3 id="sec-5-7"><span class="section-number-3">5.7</span> Useful e-lisp basics</h3>
+<div class="outline-text-3" id="text-5-7">
+<p>
+(message "hi") outputs a message to the <b>Message</b> buffer, this can be useful for debugging.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-8" class="outline-3">
+<h3 id="sec-5-8"><span class="section-number-3">5.8</span> using 'package</h3>
+<div class="outline-text-3" id="text-5-8">
+<p>
+There's a repository called <a href="http://marmalde-repo.org/">"marmalade"</a> that contains an assortment of extensions
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-9" class="outline-3">
+<h3 id="sec-5-9"><span class="section-number-3">5.9</span> Keybindings</h3>
+<div class="outline-text-3" id="text-5-9">
+<p>
+<a href="http://www.masteringemacs.org/articles/2011/02/08/mastering-key-bindings-emacs/">Mastering keybindings in Emacs</a>
+</p>
+
+<p>
+M-x describe-bindings or C-h b displays all keybindings
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-10" class="outline-3">
+<h3 id="sec-5-10"><span class="section-number-3">5.10</span> Colortheme extension</h3>
+<div class="outline-text-3" id="text-5-10">
+<p>
+use M-x color-theme-print to save your own colortheme
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-11" class="outline-3">
+<h3 id="sec-5-11"><span class="section-number-3">5.11</span> Macros</h3>
+<div class="outline-text-3" id="text-5-11">
+<p>
+F3, F4 (or C-x (, C-x ) ) to begin and end recording of a macro.
+M-x name-last-kbd-macro
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-12" class="outline-3">
+<h3 id="sec-5-12"><span class="section-number-3">5.12</span> Parentheses</h3>
+<div class="outline-text-3" id="text-5-12">
+</div><div id="outline-container-sec-5-12-1" class="outline-4">
+<h4 id="sec-5-12-1"><span class="section-number-4">5.12.1</span> Paredit</h4>
+<div class="outline-text-4" id="text-5-12-1">
+<p>
+<code>paredit-mode</code> 
+C-q, force insert of parentheses.
+M-(  Wrap parens around something
+M-s Remove parens from something
+M-S-s Split sexpr into two
+M-S-j join sexprs
+C-u DEL force delete paren or bracket.
+</p>
+
+
+<p>
+Further info:
+<a href="http://p.hagelb.org/paredit-screencast.html">http://p.hagelb.org/paredit-screencast.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-12-2" class="outline-4">
+<h4 id="sec-5-12-2"><span class="section-number-4">5.12.2</span> Test</h4>
+<div class="outline-text-4" id="text-5-12-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #fbde2d;">defun</span> <span style="color: #ffffff;">foo</span> ()
+<span style="color: #adc6ee;">"foo is cool"</span>
+)
+(message <span style="color: #adc6ee;">"hi"</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-12-3" class="outline-4">
+<h4 id="sec-5-12-3"><span class="section-number-4">5.12.3</span> Jump to matching parentheses</h4>
+<div class="outline-text-4" id="text-5-12-3">
+<p>
+<a href="http://emacs-fu.blogspot.se/2009/01/balancing-your-parentheses.html">Balancing your parentheses - emacs fu</a>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #fbde2d;">defun</span> <span style="color: #ffffff;">paren-match</span> ()
+<span style="color: #adc6ee;">"Tries to jump to the matching parenthesis to the one currently</span>
+<span style="color: #adc6ee;">under the point. Useful if the matching paren is out of sight. "</span>
+(interactive)
+(<span style="color: #fbde2d;">cond</span> ((looking-at <span style="color: #adc6ee;">"[{\[\(]"</span>) (forward-sexp 1) (backward-char))
+((looking-at <span style="color: #adc6ee;">"[]})]"</span>) (forward-char) (backward-sexp 1))
+(t (message <span style="color: #adc6ee;">"Point not at a parenthesis."</span>))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Personal notes</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> System/platform specific</h3>
+<div class="outline-text-3" id="text-6-1">
+</div><div id="outline-container-sec-6-1-1" class="outline-4">
+<h4 id="sec-6-1-1"><span class="section-number-4">6.1.1</span> My current emacs notes for Win8</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<p>
+~/.emacs is in
+</p>
+<ul class="org-ul">
+<li>c:/Users/jmn/Appdata/Roaming/.emacs
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> For me to check out</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li><p>
+Sauron (by djcb)
+<a href="https://github.com/djcb/sauron">https://github.com/djcb/sauron</a> 
+</p>
+
+<p>
+Sauron is an emacs mode for keeping track of events happening
+in the (emacs) world around you. Events are things like ‘appointment
+in 5 minutes’, ‘bob pinged you on IRC’, ‘torrent download is
+complete’ etc. Sauron shows those events like a list – basically
+like a log. You can ‘activate’ an event by either pressing RET when
+point is on it, or clicking it with the middle mouse button
+(&lt;mouse-2&gt;).
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> Wouldn't it be great if&#x2026; / Wishlist</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+Better bookmarks: If the bookmarks could show the title of each document. 
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jmn</p>
+<p class="date">Created: 2015-02-08 sön 12:13</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.0.50.1 (<a href="http://orgmode.org">Org</a> mode 7.9.1)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
