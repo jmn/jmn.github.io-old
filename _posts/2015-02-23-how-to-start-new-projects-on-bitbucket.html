@@ -1,0 +1,22 @@
+---
+title: How to start new projects on Bitbucket
+layout: post
+CATEGORY: notes
+ON: 2015-02-23 04:25
+---
+
+<p>
+This is how to add a git project which you have created locally to Bitbucket.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">curl -k -X POST --user my_username <span style="color: #adc6ee;">"https://api.bitbucket.org/1.0/repositories"</span> -d <span style="color: #adc6ee;">"name=project_name"</span> -d <span style="color: #fbde2d;">is_private</span>=<span style="color: #adc6ee;">'true'</span>
+git remote add origin git@bitbucket.org:my_username/project_name.git
+git push -u origin --all
+git push -u origin --tags
+</pre>
+</div>
+<p>
+(<a href="http://stackoverflow.com/a/25752479">source</a>)
+</p>
