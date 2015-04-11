@@ -1,4 +1,4 @@
-# Created 2015-04-11 lör 21:02
+# Created 2015-04-11 lör 22:42
 #+OPTIONS: toc:nil
 #+TITLE: Emacs notes, @jmn 2013-2014
 #+AUTHOR: jmn
@@ -561,6 +561,8 @@ M-x ielm will run a REPL, similar to a Python "interpreter" but for Elisp.
 
 ** C-x C-e evaluates last expression (Position the cursor after the expression)
 ** Debugging
+First try M-x toggle-debug-on-error RET before running your code.
+
 (bisect) -- If "emacs --debug-init"
            doesn't help, comment out half of ~/.emacs and try to
            reproduce the issue. Recurse as necessary. See also
