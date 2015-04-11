@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Emacs notes, @jmn 2013-2014</title>
-<!-- 2015-02-08 sön 12:13 -->
+<!-- 2015-04-11 lör 18:46 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="jmn" />
@@ -88,7 +88,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" href="/css/base.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="http://www.jmnorlund.net/css/base.css" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -139,6 +139,12 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">Emacs notes, @jmn 2013-2014</h1>
+<div class="ABSTRACT">
+<p>
+I use Emacs for editing text under version control. Sometimes I also use it for communication such as IRC and e-mail. This is my archive of notes for the editor. - <i>jmn, December 2014.</i>
+</p>
+
+</div>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -164,47 +170,48 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#sec-3">3. Operations</a>
 <ul>
-<li><a href="#sec-3-1">3.1. the help system</a>
+<li><a href="#sec-3-1">3.1. Operations on words (transformations)</a></li>
+<li><a href="#sec-3-2">3.2. the help system</a>
 <ul>
-<li><a href="#sec-3-1-1">3.1.1. finding the name of an elisp function used in a menu</a></li>
+<li><a href="#sec-3-2-1">3.2.1. finding the name of an elisp function used in a menu</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-2">3.2. Navigating</a>
+<li><a href="#sec-3-3">3.3. Navigating</a>
 <ul>
-<li><a href="#sec-3-2-1">3.2.1. Marking and Jumping</a></li>
-<li><a href="#sec-3-2-2">3.2.2. Handling files</a></li>
-<li><a href="#sec-3-2-3">3.2.3. Opening files via HTTP, SSH</a></li>
-<li><a href="#sec-3-2-4">3.2.4. Searching</a></li>
-<li><a href="#sec-3-2-5">3.2.5. Accessibility</a></li>
-<li><a href="#sec-3-2-6">3.2.6. Bookmarks</a></li>
+<li><a href="#sec-3-3-1">3.3.1. Marking and Jumping</a></li>
+<li><a href="#sec-3-3-2">3.3.2. Handling files</a></li>
+<li><a href="#sec-3-3-3">3.3.3. Opening files via HTTP, SSH</a></li>
+<li><a href="#sec-3-3-4">3.3.4. Searching</a></li>
+<li><a href="#sec-3-3-5">3.3.5. Accessibility</a></li>
+<li><a href="#sec-3-3-6">3.3.6. Bookmarks</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-3">3.3. Undoing, et c</a></li>
-<li><a href="#sec-3-4">3.4. Inserting special characters</a>
+<li><a href="#sec-3-4">3.4. Undoing, et c</a></li>
+<li><a href="#sec-3-5">3.5. Inserting special characters</a>
 <ul>
-<li><a href="#sec-3-4-1">3.4.1. References</a></li>
+<li><a href="#sec-3-5-1">3.5.1. References</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-5">3.5. Spelling</a>
+<li><a href="#sec-3-6">3.6. Spelling</a>
 <ul>
-<li><a href="#sec-3-5-1">3.5.1. Questions</a></li>
+<li><a href="#sec-3-6-1">3.6.1. Questions</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-6">3.6. Troubleshooting, profiling &amp; debugging</a></li>
-<li><a href="#sec-3-7">3.7. Version control</a>
+<li><a href="#sec-3-7">3.7. Troubleshooting, profiling &amp; debugging</a></li>
+<li><a href="#sec-3-8">3.8. Version control</a>
 <ul>
-<li><a href="#sec-3-7-1">3.7.1. Magit</a></li>
-<li><a href="#sec-3-7-2">3.7.2. Conflict resolution</a></li>
-<li><a href="#sec-3-7-3">3.7.3. File history</a></li>
-<li><a href="#sec-3-7-4">3.7.4. View Difference at various stages in history.</a></li>
+<li><a href="#sec-3-8-1">3.8.1. Magit</a></li>
+<li><a href="#sec-3-8-2">3.8.2. Conflict resolution</a></li>
+<li><a href="#sec-3-8-3">3.8.3. File history</a></li>
+<li><a href="#sec-3-8-4">3.8.4. View Difference at various stages in history.</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-8">3.8. E-mail using gnus</a>
+<li><a href="#sec-3-9">3.9. E-mail using gnus</a>
 <ul>
-<li><a href="#sec-3-8-1">3.8.1. On Windows with GMail</a></li>
+<li><a href="#sec-3-9-1">3.9.1. On Windows with GMail</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-9">3.9. IRC</a></li>
+<li><a href="#sec-3-10">3.10. IRC</a></li>
 </ul>
 </li>
 <li><a href="#sec-4">4. Extensions and modes</a>
@@ -291,9 +298,6 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<p>
-I use Emacs for editing text under version control. Sometimes I also use it for communication such as IRC and e-mail. This is my archive of notes for the editor. - jmn, December 2014.
-</p>
 
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> Configure</h2>
@@ -348,8 +352,8 @@ It is possible to set the font in buffer-face-mode using <code>S-Leftclick</code
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(custom-set-faces
- '(default ((t (<span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"Consolas"</span> <span style="color: #ffffff;">:foundry</span> <span style="color: #adc6ee;">"outline"</span> <span style="color: #ffffff;">:slant</span> normal <span style="color: #ffffff;">:weight</span> normal <span style="color: #ffffff;">:height</span> 108 <span style="color: #ffffff;">:width</span> normal))))
- '(variable-pitch ((t (<span style="color: #ffffff;">:slant</span> normal <span style="color: #ffffff;">:weight</span> light <span style="color: #ffffff;">:foundry</span> <span style="color: #adc6ee;">"outline"</span> <span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"Gotham HTF Light"</span>)))))
+ '(default ((t (<span style="color: #e090d7;">:family</span> <span style="color: #e9b96e;">"Consolas"</span> <span style="color: #e090d7;">:foundry</span> <span style="color: #e9b96e;">"outline"</span> <span style="color: #e090d7;">:slant</span> normal <span style="color: #e090d7;">:weight</span> normal <span style="color: #e090d7;">:height</span> 108 <span style="color: #e090d7;">:width</span> normal))))
+ '(variable-pitch ((t (<span style="color: #e090d7;">:slant</span> normal <span style="color: #e090d7;">:weight</span> light <span style="color: #e090d7;">:foundry</span> <span style="color: #e9b96e;">"outline"</span> <span style="color: #e090d7;">:family</span> <span style="color: #e9b96e;">"Gotham HTF Light"</span>)))))
 </pre>
 </div>
 </div>
@@ -363,9 +367,9 @@ For reading longer texts in Emacs it might be nice to, temporarily, use a differ
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(setq buffer-face-mode-face '(<span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"DejaVu Sans"</span> <span style="color: #ffffff;">:height</span> 100 <span style="color: #ffffff;">:width</span> semi-condensed))
-(setq buffer-face-mode-face '(<span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"Gotham HTF Light"</span> <span style="color: #ffffff;">:foundry</span> <span style="color: #adc6ee;">"outline"</span> <span style="color: #ffffff;">:slant</span> normal <span style="color: #ffffff;">:weight</span> light <span style="color: #ffffff;">:height</span> 113 <span style="color: #ffffff;">:width</span> normal))
-(set-face-attribute 'variable-pitch nil <span style="color: #ffffff;">:family</span> <span style="color: #adc6ee;">"Gotham HTF Light"</span> <span style="color: #ffffff;">:foundry</span> <span style="color: #adc6ee;">"outline"</span> <span style="color: #ffffff;">:slant</span> <span style="color: #adc6ee;">"normal"</span> <span style="color: #ffffff;">:weight</span> <span style="color: #adc6ee;">"light"</span> <span style="color: #ffffff;">:height</span> 113 <span style="color: #ffffff;">:width</span> <span style="color: #adc6ee;">"normal"</span>)
+<pre class="src src-emacs-lisp">(setq buffer-face-mode-face '(<span style="color: #e090d7;">:family</span> <span style="color: #e9b96e;">"DejaVu Sans"</span> <span style="color: #e090d7;">:height</span> 100 <span style="color: #e090d7;">:width</span> semi-condensed))
+(setq buffer-face-mode-face '(<span style="color: #e090d7;">:family</span> <span style="color: #e9b96e;">"Gotham HTF Light"</span> <span style="color: #e090d7;">:foundry</span> <span style="color: #e9b96e;">"outline"</span> <span style="color: #e090d7;">:slant</span> normal <span style="color: #e090d7;">:weight</span> light <span style="color: #e090d7;">:height</span> 113 <span style="color: #e090d7;">:width</span> normal))
+(set-face-attribute 'variable-pitch nil <span style="color: #e090d7;">:family</span> <span style="color: #e9b96e;">"Gotham HTF Light"</span> <span style="color: #e090d7;">:foundry</span> <span style="color: #e9b96e;">"outline"</span> <span style="color: #e090d7;">:slant</span> <span style="color: #e9b96e;">"normal"</span> <span style="color: #e090d7;">:weight</span> <span style="color: #e9b96e;">"light"</span> <span style="color: #e090d7;">:height</span> 113 <span style="color: #e090d7;">:width</span> <span style="color: #e9b96e;">"normal"</span>)
 </pre>
 </div>
 
@@ -374,7 +378,7 @@ You might want to configure certain modes to automatically start in variable-pit
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(add-hook 'markdown-mode-hook (<span style="color: #fbde2d;">lambda</span> () (variable-pitch-mode t))
+<pre class="src src-emacs-lisp">(add-hook 'markdown-mode-hook (<span style="color: #b4fa70;">lambda</span> () (variable-pitch-mode t))
 </pre>
 </div>
 </div>
@@ -385,7 +389,7 @@ You might want tables in org-mode to still use a monospaced font (fixed-pitch):
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(set-face-attribute 'org-table nil <span style="color: #ffffff;">:inherit</span> 'fixed-pitch)
+<pre class="src src-emacs-lisp">(set-face-attribute 'org-table nil <span style="color: #e090d7;">:inherit</span> 'fixed-pitch)
 </pre>
 </div>
 
@@ -394,9 +398,9 @@ For code-blocks:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(set-face-attribute 'org-code nil <span style="color: #ffffff;">:inherit</span> 'fixed-pitch)
-(set-face-attribute 'org-block nil <span style="color: #ffffff;">:inherit</span> 'fixed-pitch)
-(set-face-attribute 'org-block-background nil <span style="color: #ffffff;">:inherit</span> 'fixed-pitch)
+<pre class="src src-emacs-lisp">(set-face-attribute 'org-code nil <span style="color: #e090d7;">:inherit</span> 'fixed-pitch)
+(set-face-attribute 'org-block nil <span style="color: #e090d7;">:inherit</span> 'fixed-pitch)
+(set-face-attribute 'org-block-background nil <span style="color: #e090d7;">:inherit</span> 'fixed-pitch)
 </pre>
 </div>
 </div>
@@ -442,8 +446,17 @@ Preview and find color themes:
 <h2 id="sec-3"><span class="section-number-2">3</span> Operations</h2>
 <div class="outline-text-2" id="text-3">
 </div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> the help system</h3>
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Operations on words (transformations)</h3>
 <div class="outline-text-3" id="text-3-1">
+<p>
+Uppercase word: M-c
+Lowercase word: M-l
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> the help system</h3>
+<div class="outline-text-3" id="text-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -475,21 +488,21 @@ Preview and find color themes:
 </tbody>
 </table>
 </div>
-<div id="outline-container-sec-3-1-1" class="outline-4">
-<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> finding the name of an elisp function used in a menu</h4>
-<div class="outline-text-4" id="text-3-1-1">
+<div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> finding the name of an elisp function used in a menu</h4>
+<div class="outline-text-4" id="text-3-2-1">
 <p>
 C-h c (then use a menu)
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Navigating</h3>
-<div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-sec-3-2-1" class="outline-4">
-<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> Marking and Jumping</h4>
-<div class="outline-text-4" id="text-3-2-1">
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Navigating</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> Marking and Jumping</h4>
+<div class="outline-text-4" id="text-3-3-1">
 <p>
 `C-c %'
      Push the current position onto the mark ring, to be able to return
@@ -508,9 +521,9 @@ C-M-k kill balanced expression.
 </div>
 </div>
 
-<div id="outline-container-sec-3-2-2" class="outline-4">
-<h4 id="sec-3-2-2"><span class="section-number-4">3.2.2</span> Handling files</h4>
-<div class="outline-text-4" id="text-3-2-2">
+<div id="outline-container-sec-3-3-2" class="outline-4">
+<h4 id="sec-3-3-2"><span class="section-number-4">3.3.2</span> Handling files</h4>
+<div class="outline-text-4" id="text-3-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -550,9 +563,9 @@ C-M-k kill balanced expression.
 </div>
 </div>
 
-<div id="outline-container-sec-3-2-3" class="outline-4">
-<h4 id="sec-3-2-3"><span class="section-number-4">3.2.3</span> Opening files via HTTP, SSH</h4>
-<div class="outline-text-4" id="text-3-2-3">
+<div id="outline-container-sec-3-3-3" class="outline-4">
+<h4 id="sec-3-3-3"><span class="section-number-4">3.3.3</span> Opening files via HTTP, SSH</h4>
+<div class="outline-text-4" id="text-3-3-3">
 <p>
 To open a file via HTTP(S) in Emacs, use <code>M-x browse-url-emacs</code>
 </p>
@@ -563,10 +576,10 @@ Emacs can edit files over SSH using the package "tramp".
 </div>
 </div>
 
-<div id="outline-container-sec-3-2-4" class="outline-4">
-<h4 id="sec-3-2-4"><span class="section-number-4">3.2.4</span> Searching</h4>
-<div class="outline-text-4" id="text-3-2-4">
-</div><ol class="org-ol"><li><a id="sec-3-2-4-1"></a>Searching and replacing within files<br  /><div class="outline-text-5" id="text-3-2-4-1">
+<div id="outline-container-sec-3-3-4" class="outline-4">
+<h4 id="sec-3-3-4"><span class="section-number-4">3.3.4</span> Searching</h4>
+<div class="outline-text-4" id="text-3-3-4">
+</div><ol class="org-ol"><li><a id="sec-3-3-4-1"></a>Searching and replacing within files<br  /><div class="outline-text-5" id="text-3-3-4-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -582,7 +595,7 @@ Emacs can edit files over SSH using the package "tramp".
 </div>
 </li>
 
-<li><a id="sec-3-2-4-2"></a>Tricks, Quoted-insert et c.<br  /><div class="outline-text-5" id="text-3-2-4-2">
+<li><a id="sec-3-3-4-2"></a>Tricks, Quoted-insert et c.<br  /><div class="outline-text-5" id="text-3-3-4-2">
 <p>
 By pressing C-q C-m RET You can search for "Carriage return" (C-q is "quoted-insert).
 </p>
@@ -599,8 +612,8 @@ See more here: <a href="http://ergoemacs.org/emacs/emacs_line_ending_char.html">
 </div>
 </li>
 
-<li><a id="sec-3-2-4-3"></a>Searching across files<br  /></li>
-<li><a id="sec-3-2-4-4"></a><span class="todo TODO">TODO</span> file contents (grep) across many files<br  /><div class="outline-text-5" id="text-3-2-4-4">
+<li><a id="sec-3-3-4-3"></a>Searching across files<br  /></li>
+<li><a id="sec-3-3-4-4"></a><span class="todo TODO">TODO</span> file contents (grep) across many files<br  /><div class="outline-text-5" id="text-3-3-4-4">
 <p>
 commands: rgrep, grep-find, grep
 BUG?: Searching in "Lokala inställningar crashes" with:
@@ -619,15 +632,15 @@ dir. lokala../appdata et c.
 </div>
 </li>
 
-<li><a id="sec-3-2-4-5"></a>replacing across files. Press Q in dired-mode. Enter regex.<br  /></li>
-<li><a id="sec-3-2-4-6"></a>C-x C-q in dired is extremely powerful when combined with macros (imagine changing names of some files in a large directory, but instead of having to code some script, just use the macro magic!).<br  /></li>
+<li><a id="sec-3-3-4-5"></a>replacing across files. Press Q in dired-mode. Enter regex.<br  /></li>
+<li><a id="sec-3-3-4-6"></a>C-x C-q in dired is extremely powerful when combined with macros (imagine changing names of some files in a large directory, but instead of having to code some script, just use the macro magic!).<br  /></li>
 
-<li><a id="sec-3-2-4-7"></a><a href="http://denverdroid.blogspot.se/2011/07/cool-things-to-do-in-emacs-dired-mode.html">More dired-mode stuff</a><br  /></li></ol>
+<li><a id="sec-3-3-4-7"></a><a href="http://denverdroid.blogspot.se/2011/07/cool-things-to-do-in-emacs-dired-mode.html">More dired-mode stuff</a><br  /></li></ol>
 </div>
 
-<div id="outline-container-sec-3-2-5" class="outline-4">
-<h4 id="sec-3-2-5"><span class="section-number-4">3.2.5</span> Accessibility</h4>
-<div class="outline-text-4" id="text-3-2-5">
+<div id="outline-container-sec-3-3-5" class="outline-4">
+<h4 id="sec-3-3-5"><span class="section-number-4">3.3.5</span> Accessibility</h4>
+<div class="outline-text-4" id="text-3-3-5">
 <p>
 goto-adress-mode makes written hyperlinks clickable.
 see <a href="http://stackoverflow.com/questions/3748673/emacs-23-on-os-x-how-to-open-web-links-from-emacs">here</a>.
@@ -646,9 +659,9 @@ To your dot-emacs.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3-2-6" class="outline-4">
-<h4 id="sec-3-2-6"><span class="section-number-4">3.2.6</span> Bookmarks</h4>
-<div class="outline-text-4" id="text-3-2-6">
+<div id="outline-container-sec-3-3-6" class="outline-4">
+<h4 id="sec-3-3-6"><span class="section-number-4">3.3.6</span> Bookmarks</h4>
+<div class="outline-text-4" id="text-3-3-6">
 <p>
 <a href="http://emacswiki.org/emacs/BookMarks">Emacs Bookmarks - EmacsWiki</a>
 </p>
@@ -699,9 +712,9 @@ To your dot-emacs.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Undoing, et c</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Undoing, et c</h3>
+<div class="outline-text-3" id="text-3-4">
 <p>
 C-x u (or just "u" in viper) to undo.
 M-x undo-only to "undo only" (not redo).
@@ -710,9 +723,9 @@ Tip: undo-tree (package) can be very useful.
 </div>
 </div>
 
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Inserting special characters</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Inserting special characters</h3>
+<div class="outline-text-3" id="text-3-5">
 <p>
 This can be done in various ways
 </p>
@@ -770,18 +783,18 @@ C-x 8 can also be used to insert various characters, e.g:
 <a href="http://wiki.portal.chalmers.se/agda/agda.php?n=Docs.UnicodeInput">http://wiki.portal.chalmers.se/agda/agda.php?n=Docs.UnicodeInput</a>
 </p>
 </div>
-<div id="outline-container-sec-3-4-1" class="outline-4">
-<h4 id="sec-3-4-1"><span class="section-number-4">3.4.1</span> References</h4>
-<div class="outline-text-4" id="text-3-4-1">
+<div id="outline-container-sec-3-5-1" class="outline-4">
+<h4 id="sec-3-5-1"><span class="section-number-4">3.5.1</span> References</h4>
+<div class="outline-text-4" id="text-3-5-1">
 <p>
 <a href="http://emacs-fu.blogspot.se/2012/02/special-characters.html">http://emacs-fu.blogspot.se/2012/02/special-characters.html</a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-5" class="outline-3">
-<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Spelling</h3>
-<div class="outline-text-3" id="text-3-5">
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Spelling</h3>
+<div class="outline-text-3" id="text-3-6">
 <p>
 Note: There are various spelling engines. aspell and hunspell are two.
 Hunspell is said to be more advanced, handles utf-8 and complex grammar structures (?) used in i.e. swedish.
@@ -793,18 +806,18 @@ M-x ispell-change-dictionary
 </p>
 </div>
 
-<div id="outline-container-sec-3-5-1" class="outline-4">
-<h4 id="sec-3-5-1"><span class="section-number-4">3.5.1</span> Questions</h4>
-<div class="outline-text-4" id="text-3-5-1">
+<div id="outline-container-sec-3-6-1" class="outline-4">
+<h4 id="sec-3-6-1"><span class="section-number-4">3.6.1</span> Questions</h4>
+<div class="outline-text-4" id="text-3-6-1">
 <p>
 Mixed language content? i.e. Swedish/English.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-6" class="outline-3">
-<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Troubleshooting, profiling &amp; debugging</h3>
-<div class="outline-text-3" id="text-3-6">
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> Troubleshooting, profiling &amp; debugging</h3>
+<div class="outline-text-3" id="text-3-7">
 <p>
 Use <code>M-x toggle-debug-on-error</code> to enable debugging for errors.
 </p>
@@ -814,7 +827,7 @@ GNU Emacs 24 and later has got profile.el
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span style="color: #fbde2d;">require</span> '<span style="color: #7fffd4;">profiler</span>)
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">profiler</span>)
 </pre>
 </div>
 
@@ -836,21 +849,21 @@ GNU Emacs 24 and later has got profile.el
 </table>
 </div>
 </div>
-<div id="outline-container-sec-3-7" class="outline-3">
-<h3 id="sec-3-7"><span class="section-number-3">3.7</span> Version control</h3>
-<div class="outline-text-3" id="text-3-7">
-</div><div id="outline-container-sec-3-7-1" class="outline-4">
-<h4 id="sec-3-7-1"><span class="section-number-4">3.7.1</span> Magit</h4>
-<div class="outline-text-4" id="text-3-7-1">
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8"><span class="section-number-3">3.8</span> Version control</h3>
+<div class="outline-text-3" id="text-3-8">
+</div><div id="outline-container-sec-3-8-1" class="outline-4">
+<h4 id="sec-3-8-1"><span class="section-number-4">3.8.1</span> Magit</h4>
+<div class="outline-text-4" id="text-3-8-1">
 <p>
 See package magit for a great git/emacs tool.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-7-2" class="outline-4">
-<h4 id="sec-3-7-2"><span class="section-number-4">3.7.2</span> Conflict resolution</h4>
-<div class="outline-text-4" id="text-3-7-2">
+<div id="outline-container-sec-3-8-2" class="outline-4">
+<h4 id="sec-3-8-2"><span class="section-number-4">3.8.2</span> Conflict resolution</h4>
+<div class="outline-text-4" id="text-3-8-2">
 <p>
 M-x vc-resolve-conflicts - opens three buffer windows, A (your file),
                                B (the conflicting file from the
@@ -863,18 +876,18 @@ M-x vc-resolve-conflicts - opens three buffer windows, A (your file),
 </div>
 </div>
 
-<div id="outline-container-sec-3-7-3" class="outline-4">
-<h4 id="sec-3-7-3"><span class="section-number-4">3.7.3</span> File history</h4>
-<div class="outline-text-4" id="text-3-7-3">
+<div id="outline-container-sec-3-8-3" class="outline-4">
+<h4 id="sec-3-8-3"><span class="section-number-4">3.8.3</span> File history</h4>
+<div class="outline-text-4" id="text-3-8-3">
 <p>
 M-x vc-annotate - Creates a log of who did what when.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-7-4" class="outline-4">
-<h4 id="sec-3-7-4"><span class="section-number-4">3.7.4</span> View Difference at various stages in history.</h4>
-<div class="outline-text-4" id="text-3-7-4">
+<div id="outline-container-sec-3-8-4" class="outline-4">
+<h4 id="sec-3-8-4"><span class="section-number-4">3.8.4</span> View Difference at various stages in history.</h4>
+<div class="outline-text-4" id="text-3-8-4">
 <p>
 M-x vc-ediff - Highlight and navigate between difference between the
 file at it's current stage and previous commits (for example).
@@ -882,21 +895,21 @@ file at it's current stage and previous commits (for example).
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-8" class="outline-3">
-<h3 id="sec-3-8"><span class="section-number-3">3.8</span> E-mail using gnus</h3>
-<div class="outline-text-3" id="text-3-8">
-</div><div id="outline-container-sec-3-8-1" class="outline-4">
-<h4 id="sec-3-8-1"><span class="section-number-4">3.8.1</span> On Windows with GMail</h4>
-<div class="outline-text-4" id="text-3-8-1">
+<div id="outline-container-sec-3-9" class="outline-3">
+<h3 id="sec-3-9"><span class="section-number-3">3.9</span> E-mail using gnus</h3>
+<div class="outline-text-3" id="text-3-9">
+</div><div id="outline-container-sec-3-9-1" class="outline-4">
+<h4 id="sec-3-9-1"><span class="section-number-4">3.9.1</span> On Windows with GMail</h4>
+<div class="outline-text-4" id="text-3-9-1">
 <p>
 See <a href="http://www.emacswiki.org/emacs/AlessandroPiras#toc">http://www.emacswiki.org/emacs/AlessandroPiras#toc</a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-9" class="outline-3">
-<h3 id="sec-3-9"><span class="section-number-3">3.9</span> IRC</h3>
-<div class="outline-text-3" id="text-3-9">
+<div id="outline-container-sec-3-10" class="outline-3">
+<h3 id="sec-3-10"><span class="section-number-3">3.10</span> IRC</h3>
+<div class="outline-text-3" id="text-3-10">
 <p>
 See <code>M-x erc</code>
 </p>
@@ -997,8 +1010,8 @@ then paste the following into the <code>*scratch*</code> buffer
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span style="color: #fbde2d;">let</span> ((org-fake-release     <span style="color: #adc6ee;">"7.9.1"</span>)
-      (org-fake-git-version <span style="color: #adc6ee;">"7.9.1-fake"</span>))
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">let</span> ((org-fake-release     <span style="color: #e9b96e;">"7.9.1"</span>)
+      (org-fake-git-version <span style="color: #e9b96e;">"7.9.1-fake"</span>))
   (org-make-autoloads))
 </pre>
 </div>
@@ -1094,9 +1107,9 @@ Further more, HTML in a SRC code block will not be escaped properly.
 
 <div class="org-src-container">
 
-<pre class="src src-html">&lt;<span style="color: #ffffff;">sup</span>&gt;Hello&lt;/<span style="color: #ffffff;">sup</span>&gt;
-=&lt;<span style="color: #ffffff;">sup</span>&gt;Hello&lt;/<span style="color: #ffffff;">sup</span>&gt;=
-="&lt;<span style="color: #ffffff;">sup</span>&gt;Hello&lt;/<span style="color: #ffffff;">sup</span>&gt;"=
+<pre class="src src-html">&lt;<span style="color: #fce94f;">sup</span>&gt;Hello&lt;/<span style="color: #fce94f;">sup</span>&gt;
+=&lt;<span style="color: #fce94f;">sup</span>&gt;Hello&lt;/<span style="color: #fce94f;">sup</span>&gt;=
+="&lt;<span style="color: #fce94f;">sup</span>&gt;Hello&lt;/<span style="color: #fce94f;">sup</span>&gt;"=
 </pre>
 </div>
 
@@ -1857,10 +1870,10 @@ Further info:
 <div class="outline-text-4" id="text-5-12-2">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span style="color: #fbde2d;">defun</span> <span style="color: #ffffff;">foo</span> ()
-<span style="color: #adc6ee;">"foo is cool"</span>
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">foo</span> ()
+<span style="color: #e9b96e;">"foo is cool"</span>
 )
-(message <span style="color: #adc6ee;">"hi"</span>)
+(message <span style="color: #e9b96e;">"hi"</span>)
 </pre>
 </div>
 </div>
@@ -1874,13 +1887,13 @@ Further info:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span style="color: #fbde2d;">defun</span> <span style="color: #ffffff;">paren-match</span> ()
-<span style="color: #adc6ee;">"Tries to jump to the matching parenthesis to the one currently</span>
-<span style="color: #adc6ee;">under the point. Useful if the matching paren is out of sight. "</span>
+<pre class="src src-emacs-lisp">(<span style="color: #b4fa70;">defun</span> <span style="color: #fce94f;">paren-match</span> ()
+<span style="color: #e9b96e;">"Tries to jump to the matching parenthesis to the one currently</span>
+<span style="color: #e9b96e;">under the point. Useful if the matching paren is out of sight. "</span>
 (interactive)
-(<span style="color: #fbde2d;">cond</span> ((looking-at <span style="color: #adc6ee;">"[{\[\(]"</span>) (forward-sexp 1) (backward-char))
-((looking-at <span style="color: #adc6ee;">"[]})]"</span>) (forward-char) (backward-sexp 1))
-(t (message <span style="color: #adc6ee;">"Point not at a parenthesis."</span>))))
+(<span style="color: #b4fa70;">cond</span> ((looking-at <span style="color: #e9b96e;">"[{\[\(]"</span>) (forward-sexp 1) (backward-char))
+((looking-at <span style="color: #e9b96e;">"[]})]"</span>) (forward-char) (backward-sexp 1))
+(t (message <span style="color: #e9b96e;">"Point not at a parenthesis."</span>))))
 </pre>
 </div>
 </div>
@@ -1940,7 +1953,7 @@ Better bookmarks: If the bookmarks could show the title of each document.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jmn</p>
-<p class="date">Created: 2015-02-08 sön 12:13</p>
+<p class="date">Created: 2015-04-11 lör 18:46</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.0.50.1 (<a href="http://orgmode.org">Org</a> mode 7.9.1)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
