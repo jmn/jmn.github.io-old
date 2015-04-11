@@ -1,4 +1,4 @@
-# Created 2015-04-11 lör 20:41
+# Created 2015-04-11 lör 21:02
 #+OPTIONS: toc:nil
 #+TITLE: Emacs notes, @jmn 2013-2014
 #+AUTHOR: jmn
@@ -6,7 +6,7 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.jmnorlund.net/css/base.css" />
 
 #+BEGIN_ABSTRACT
-I use Emacs for editing text under version control. Sometimes I also use it for communication such as IRC and e-mail. This is my archive of notes for the editor. This is a complement to [[/jmn][my literate Emacs configuration]].  
+I use Emacs for editing text under version control. Sometimes I also use it for communication such as IRC and e-mail. This is my archive of notes for the editor. This is a complement to [[http://www.jmnorlund.net/jmn][my literate Emacs configuration]].  
 
 For information about how I maintain and publish this file, see section [[About this file]] .- /jmn, December 2014./
 #+END_ABSTRACT
@@ -636,22 +636,35 @@ Further info:
 Better bookmarks: If the bookmarks could show the title of each document. 
 * Meta
 ** About this file
-This file is written using Emacs org-mode, exported to HTML and published onto Github pages using git (magit). View [[/static/emacs.org][the org source file]] here.
+This file is written using Emacs org-mode, exported to HTML and published onto Github pages using git (magit). View [[http://www.jmnorlund.net/org/emacs.org][the org source file]] here.
 
 I keep this file in a directory  =~/git/notes/emacs.org= and apply the following configuration to my Emacs for publishing:
 #+BEGIN_SRC emacs-lisp
         (setq org-publish-project-alist
               (list
                `("emacs-notes"
-                   :base-directory "~/git/notes/"
-                   :base-extension "org"
-                   :publishing-directory "~/git/jmn.github.io"
-                   :recursive nil
-                   :publishing-function org-html-publish-to-html
-                   ))
+                 :base-directory "~/git/notes/"
+                 :base-extension "org"
+                 :publishing-directory "~/git/jmn.github.io"
+                 :recursive nil
+                 :publishing-function org-html-publish-to-html
+                 :include ("emacs.org")
+                 :exclude "\\.org$"
+                 )
+               `("emacs-notes-org"
+                 :base-directory "~/git/notes/"
+                 :base-extension "org"
+                 :publishing-directory "~/git/jmn.github.io/org"
+                 :recursive nil
+                 :publishing-function org-org-publish-to-org
+                 :include ("emacs.org")
+                 :exclude "\\.org$"
+                 ))
               )
 #+END_SRC
 
 To publish the file, I then use =M-x org-export-dispatch= (binding =C-c C-e)= and select publish this file. I then use =M-x magit-status= (=C-u C-c m=)  to stage (=s=), commit (=c=) and push (=P=) the exported HTML file onto Github pages.
+** TODO Export both org and HTML
+Choosing "publish this file" in the org export dispatcher currently only exports one of the projects. How can I have this export to both org-mode (from org-mode) and to HTML?
 
 # Emacs 25.0.50.1 (Org mode 7.9.1)
