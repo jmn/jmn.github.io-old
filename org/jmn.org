@@ -1,8 +1,9 @@
-# Created 2015-04-11 lör 22:42
+# Created 2015-04-12 sön 16:58
 #+OPTIONS: toc:4 h:4
 #+TITLE: jmn's Emacs configuration
 #+AUTHOR: jmn
 #+STARTUP: align indent fold nodlcheck hidestars oddeven lognotestate overview
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.jmnorlund.net/css/base.css" />
 * Configuration
 ** About this file
 This is my configuration file for GNU Emacs. 

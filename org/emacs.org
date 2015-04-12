@@ -1,4 +1,4 @@
-# Created 2015-04-11 lör 22:42
+# Created 2015-04-12 sön 16:58
 #+OPTIONS: toc:nil
 #+TITLE: Emacs notes, @jmn 2013-2014
 #+AUTHOR: jmn
