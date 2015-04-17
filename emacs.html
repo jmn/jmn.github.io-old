@@ -137,11 +137,18 @@ for the JavaScript code in this tag.
 </script>
 <script src="https://carnivalapp.io/sites/20/init.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", Carnival.init);
+  document.addEventListener("DOMContentLoaded", function() {
+  Carnival.init({
+    enabled: true,
+    article_author: "",
+    article_selector: "div",
+    block_selector: ":scope > p, :scope > pre",
+    onNewComment: function(comment) { };
+  });
+});
 </script>
 </head>
 <body>
-  <article>
 <div id="content">
 <h1 class="title">Emacs notes, @jmn 2013-2014</h1>
 <div class="ABSTRACT">
@@ -2029,6 +2036,5 @@ Choosing "publish this file" in the org export dispatcher currently only exports
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.0.50.1 (<a href="http://orgmode.org">Org</a> mode 7.9.1)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
-</article>
 </body>
 </html>
