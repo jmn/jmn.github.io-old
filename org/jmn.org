@@ -1,9 +1,11 @@
-# Created 2015-04-12 sön 16:58
+# Created 2015-04-17 fre 22:10
 #+OPTIONS: toc:4 h:4
 #+TITLE: jmn's Emacs configuration
-#+AUTHOR: jmn
+#+AUTHOR: Jussi Norlund
 #+STARTUP: align indent fold nodlcheck hidestars oddeven lognotestate overview
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.jmnorlund.net/css/base.css" />
+#+HTML_HEAD_EXTRA: <script src="https://carnivalapp.io/sites/20/init.js"></script>
+#+HTML_HEAD_EXTRA: <script>document.addEventListener("DOMContentLoaded", function() { Carnival.init({enabled: true, article_author: "jmn", article_selector: "div#content", block_selector: ":scope p, :scope pre",});});</script>
 * Configuration
 ** About this file
 This is my configuration file for GNU Emacs. 
@@ -745,5 +747,53 @@ Hide Join/part/quit messages from IRC "lurkers" (people who aren't active).
         (setq jabber-invalid-certificate-servers '("jit.si"))
         )
 #+END_SRC
+*** Mail (gnus and Gmail)
+For more info [[http://www.emacswiki.org/emacs/GnusGmail][See here]].
+
+**** .authinfo
+
+This is how the .authinfo should look. Note: make sure to make it readable to your user only (=chmod 0600=) i.e. using =M-x set-file-modes=.
+
+#+BEGIN_SRC tangle: no
+    machine gmail login myuser@gmail.com password mypassword
+    machine imap.gmail.com login myuser@gmail.com password mypassword port 993
+    machine smtp.gmail.com login myuser@gmail.com password mypassword port 587
+    machine wordpress login myuser password mypassword
+#+END_SRC
+
+**** .gnus
+Create a file =~/.gnus= and put in it this:
+
+***** TODO Sending mail from windows
+This is the config. I use on my Windows machine, i use the msmtp.exe program:
+
+#+BEGIN_SRC emacs-lisp :tangle no
+
+#+END_SRC
+
+***** Gmail configuration
+
+#+BEGIN_SRC emacs-lisp tangle: no
+        (setq gnus-select-method
+              '(nnimap "gmail"
+                       (nnimap-address "imap.gmail.com")
+                       (nnimap-server-port 993)
+                       (nnimap-authinfo-file "~/.authinfo")
+                       (nnimap-stream ssl)))
+#+END_SRC
+
+***** Sending mail from other systems (GNU/Linux...)
+([[https://eschulte.github.io/emacs24-starter-kit/starter-kit-gnus.html][source]])
+Add this to your =~/.gnus= to enable encrypted SMTP mail sending through GMail.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+    (setq message-send-mail-function 'smtpmail-send-it
+          smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+          smtpmail-auth-credentials '(("smtp.gmail.com" 587 "your-name@gmail.com" nil))
+          smtpmail-default-smtp-server "smtp.gmail.com"
+          smtpmail-smtp-server "smtp.gmail.com"
+          smtpmail-smtp-service 587)
+#+END_SRC
+Send mail using C-x m.
 
 # Emacs 25.0.50.1 (Org mode 7.9.1)

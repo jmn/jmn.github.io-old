@@ -1,9 +1,11 @@
-# Created 2015-04-12 sön 16:58
+# Created 2015-04-17 fre 22:10
 #+OPTIONS: toc:nil
 #+TITLE: Emacs notes, @jmn 2013-2014
-#+AUTHOR: jmn
+#+AUTHOR: Jussi Norlund
 #+STARTUP: indent
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.jmnorlund.net/css/base.css" />
+#+HTML_HEAD_EXTRA: <script src="https://carnivalapp.io/sites/20/init.js"></script>
+#+HTML_HEAD_EXTRA: <script>document.addEventListener("DOMContentLoaded", function() { Carnival.init({enabled: true, article_author: "jmn", article_selector: "div#content", block_selector: ":scope p, :scope pre",});});</script>
 
 #+BEGIN_ABSTRACT
 I use Emacs for editing text under version control. Sometimes I also use it for communication such as IRC and e-mail. This is my archive of notes for the editor. This is a complement to [[http://www.jmnorlund.net/jmn][my literate Emacs configuration]].  
