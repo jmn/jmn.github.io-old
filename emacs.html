@@ -135,6 +135,19 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script src="https://carnivalapp.io/sites/20/init.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  Carnival.init({
+    enabled: true,
+    article_author: "",
+    article_selector: "div#content",
+    block_selector: ":scope > p, :scope > pre",
+    onNewComment: function(comment) { };
+  });
+});
+</script>
+
 </head>
 <body>
 <div id="content">
