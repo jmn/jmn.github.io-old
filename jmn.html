@@ -4,10 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>jmn's Emacs configuration</title>
-<!-- 2015-04-11 lör 22:44 -->
+<!-- 2015-04-17 fre 22:06 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="jmn" />
+<meta  name="author" content="Jussi Norlund" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center; }
@@ -89,6 +89,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="http://www.jmnorlund.net/css/base.css" />
+<script>document.addEventListener("DOMContentLoaded", function() { Carnival.init({enabled: true, article_author: "jmn", article_selector: "div#content", block_selector: ":scope p, :scope pre",});});</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -253,6 +254,12 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#sec-1-7-6">1.7.6. IRC</a></li>
 <li><a href="#sec-1-7-7">1.7.7. Jabber (XMPP)</a></li>
+<li><a href="#sec-1-7-8">1.7.8. Mail (gnus and Gmail)</a>
+<ul>
+<li><a href="#sec-1-7-8-1">1.7.8.1. .authinfo</a></li>
+<li><a href="#sec-1-7-8-2">1.7.8.2. .gnus</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1549,12 +1556,95 @@ Hide Join/part/quit messages from IRC "lurkers" (people who aren't active).
 </div>
 </div>
 </div>
+<div id="outline-container-sec-1-7-8" class="outline-4">
+<h4 id="sec-1-7-8"><span class="section-number-4">1.7.8</span> Mail (gnus and Gmail)</h4>
+<div class="outline-text-4" id="text-1-7-8">
+<p>
+For more info <a href="http://www.emacswiki.org/emacs/GnusGmail">See here</a>.
+</p>
+</div>
+
+<div id="outline-container-sec-1-7-8-1" class="outline-5">
+<h5 id="sec-1-7-8-1"><span class="section-number-5">1.7.8.1</span> .authinfo</h5>
+<div class="outline-text-5" id="text-1-7-8-1">
+<p>
+This is how the .authinfo should look. Note: make sure to make it readable to your user only (<code>chmod 0600</code>) i.e. using <code>M-x set-file-modes</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-tangle:">machine gmail login myuser@gmail.com password mypassword
+machine imap.gmail.com login myuser@gmail.com password mypassword port 993
+machine smtp.gmail.com login myuser@gmail.com password mypassword port 587
+machine wordpress login myuser password mypassword
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-8-2" class="outline-5">
+<h5 id="sec-1-7-8-2"><span class="section-number-5">1.7.8.2</span> .gnus</h5>
+<div class="outline-text-5" id="text-1-7-8-2">
+<p>
+Create a file <code>~/.gnus</code> and put in it this:
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-1-7-8-2-1"></a><span class="todo TODO">TODO</span> Sending mail from windows<br  /><div class="outline-text-6" id="text-1-7-8-2-1">
+<p>
+This is the config. I use on my Windows machine, i use the msmtp.exe program:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"></pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-1-7-8-2-2"></a>Gmail configuration<br  /><div class="outline-text-6" id="text-1-7-8-2-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq gnus-select-method
+      '(nnimap <span style="color: #e9b96e;">"gmail"</span>
+               (nnimap-address <span style="color: #e9b96e;">"imap.gmail.com"</span>)
+               (nnimap-server-port 993)
+               (nnimap-authinfo-file <span style="color: #e9b96e;">"~/.authinfo"</span>)
+               (nnimap-stream ssl)))
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-1-7-8-2-3"></a>Sending mail from other systems (GNU/Linux&#x2026;)<br  /><div class="outline-text-6" id="text-1-7-8-2-3">
+<p>
+(<a href="https://eschulte.github.io/emacs24-starter-kit/starter-kit-gnus.html">source</a>)
+Add this to your <code>~/.gnus</code> to enable encrypted SMTP mail sending through GMail.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-starttls-credentials '((<span style="color: #e9b96e;">"smtp.gmail.com"</span> 587 nil nil))
+      smtpmail-auth-credentials '((<span style="color: #e9b96e;">"smtp.gmail.com"</span> 587 <span style="color: #e9b96e;">"your-name@gmail.com"</span> nil))
+      smtpmail-default-smtp-server <span style="color: #e9b96e;">"smtp.gmail.com"</span>
+      smtpmail-smtp-server <span style="color: #e9b96e;">"smtp.gmail.com"</span>
+      smtpmail-smtp-service 587)
+</pre>
+</div>
+<p>
+Send mail using C-x m.
+</p>
+</div>
+</li></ol>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: jmn</p>
-<p class="date">Created: 2015-04-11 lör 22:44</p>
+<p class="author">Author: Jussi Norlund</p>
+<p class="date">Created: 2015-04-17 fre 22:06</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.0.50.1 (<a href="http://orgmode.org">Org</a> mode 7.9.1)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
