@@ -1,11 +1,11 @@
-# Created 2015-04-17 fre 22:10
+# Created 2015-04-18 lör 03:48
 #+OPTIONS: toc:4 h:4
 #+TITLE: jmn's Emacs configuration
-#+AUTHOR: Jussi Norlund
+#+AUTHOR: jmn
 #+STARTUP: align indent fold nodlcheck hidestars oddeven lognotestate overview
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.jmnorlund.net/css/base.css" />
 #+HTML_HEAD_EXTRA: <script src="https://carnivalapp.io/sites/20/init.js"></script>
-#+HTML_HEAD_EXTRA: <script>document.addEventListener("DOMContentLoaded", function() { Carnival.init({enabled: true, article_author: "jmn", article_selector: "div#content", block_selector: ":scope p, :scope pre",});});</script>
+#+HTML_HEAD_EXTRA: <script>document.addEventListener("DOMContentLoaded", function() { Carnival.init({enabled: true, article_author: "jmn", article_selector: "div#content", block_selector: ":scope p, :scope pre, :scope ul",});});</script>
 * Configuration
 ** About this file
 This is my configuration file for GNU Emacs. 
