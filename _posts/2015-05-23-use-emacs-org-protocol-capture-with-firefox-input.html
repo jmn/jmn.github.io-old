@@ -1,0 +1,61 @@
+---
+title: Use Emacs org-protocol capture with Firefox input
+layout: post
+CATEGORY: ???
+ON: 2015-05-23 23:04
+---
+
+<p>
+Org-protocol can be used to send data from a browser to Emacs. For example, you can use a bookmarklet to send the current URL, title and selection from the browser into Emacs org-mode capture. 
+</p>
+
+<p>
+On a Windows system I found that this works fine with Emacs UTF-8 settings when using Chrome and IE, but the data sent from Firefox was not UTF-8 (or utf-16-le) encoded. To handle this I used a special capture template for Firefox:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #c080d0; font-weight: bold;">setq</span> org-capture-templates
+ '(
+   (<span style="color: #ffcd8b; background-color: #404040;">"f"</span> <span style="color: #ffcd8b; background-color: #404040;">"Capture bookmark from firefox"</span> entry (file+datetree <span style="color: #ffcd8b; background-color: #404040;">"~/org/notes.org"</span>) 
+    <span style="color: #ffcd8b; background-color: #404040;">"* %?\n:PROPERTIES:\n:CODING: cp1252\n:END:\n%i\n  %a"</span> <span style="color: #c080d0;">:empty-lines</span> 1)
+   )
+ )
+</pre>
+</div>
+
+<p>
+Then I made a function which runs after content is captured and checks for the "CODING" property, if it is there it recodes the buffer and removes the property:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #cd8b00;">;; </span><span style="color: #cd8b00;">If the org property value of CODING is not nil, mark the (capture) buffer it and use recode-region to recode it to UTF-8.</span>
+
+(<span style="color: #c080d0; font-weight: bold;">defalias</span> '<span style="color: #87cefa;">jmn/recode-buffer-from-cp1252-to-utf-8</span>
+  #'(lambda nil <span style="color: #cd8b00;">"Recodes a buffer from cp1252 to utf-8 encoding"</span>
+      (message <span style="color: #ffcd8b; background-color: #404040;">"recoding buffer!"</span>)
+      (<span style="color: #c080d0; font-weight: bold;">interactive</span>)
+      (mark-whole-buffer)
+      (recode-region (region-beginning) (region-end) 'cp1252 'utf-8)))
+
+(add-hook 'org-capture-prepare-finalize-hook
+          '(lambda nil
+             (<span style="color: #c080d0; font-weight: bold;">if</span>(cdr(assoc <span style="color: #ffcd8b; background-color: #404040;">"CODING"</span>(org-entry-properties nil 'standard)))
+                 (<span style="color: #c080d0; font-weight: bold;">progn</span>
+                   (org-delete-property <span style="color: #ffcd8b; background-color: #404040;">"CODING"</span>)
+                   (jmn/recode-buffer-from-cp1252-to-utf-8)))))
+</pre>
+</div>
+
+<p>
+Now text can be selected in the browser and sent to emacs org-mode capture using this bookmarklet code: 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-javascript">javascript:location.href=<span style="color: #ffcd8b; background-color: #404040;">'org-protocol://capture://f/'</span>+encodeURIComponent(location.href)+<span style="color: #ffcd8b; background-color: #404040;">'/'</span>+encodeURIComponent(document.title)+<span style="color: #ffcd8b; background-color: #404040;">'/'</span>+encodeURIComponent(window.getSelection())
+</pre>
+</div>
+
+<p>
+When the capture is finalized, the data will be recoded to utf-8.</p>
