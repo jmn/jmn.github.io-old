@@ -1,0 +1,70 @@
+---
+title: No more Firefox bookmarklets: A workaround
+layout: post
+CATEGORY: notes
+ON: 2015-05-24 02:48
+---
+
+<p>
+There is a bug[<a href="#866522_bookmarklets_affected_csp">1</a>] preventing bookmarklets from working correctly in Firefox. To work around this bug, it is possible to use extensions, which can execute all (including potentially unsafe) browser code. One option is to use the "Custom buttons" extension[<a href="#custom_buttons_addons_firefox">2</a>] and create custom buttons which execute your Javascript code.
+</p>
+
+<p>
+My example case:
+In my .keysnailrc I have this function:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-javascript">ext.add(<span style="color: #ffcd8b; background-color: #404040;">"bookmark-with-org"</span>,
+        <span style="color: #c080d0; font-weight: bold;">function</span> (aEvent, aArg) {
+          <span style="color: #c080d0; font-weight: bold;">var</span> od = window.content.document;
+          window.loadURI(<span style="color: #ffcd8b; background-color: #404040;">'org-protocol://capture://f/'</span>+encodeURIComponent(od.location.href)+<span style="color: #ffcd8b; background-color: #404040;">'/'</span>+encodeURIComponent(od.title)+<span style="color: #ffcd8b; background-color: #404040;">'/'</span>+encodeURIComponent(window.content.getSelection()));
+}, M({en: <span style="color: #ffcd8b; background-color: #404040;">"Save bookmark in Emacs org-mode using org-protocol"</span>}));
+</pre>
+</div>
+
+<p>
+Running the function sends a bookmark to Emacs org-mode capture.
+</p>
+
+<p>
+To call the function from a custom button, I use this code:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-javascript">window.KeySnail.modules.ext.exec(<span style="color: #ffcd8b; background-color: #404040;">"bookmark-with-org"</span>,<span style="color: 808bed;">null</span>);
+</pre>
+</div>
+
+<div id="bibliography">
+<h2>References</h2>
+
+</div>
+<table>
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="866522_bookmarklets_affected_csp">1</a>]
+</td>
+<td class="bibtexitem">
+866522 – bookmarklets affected by CSP.
+[&nbsp;<a href="notes_bib.html#866522_bookmarklets_affected_csp">bib</a>&nbsp;| 
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866522">http</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="custom_buttons_addons_firefox">2</a>]
+</td>
+<td class="bibtexitem">
+Custom buttons :: Add-ons for firefox.
+[&nbsp;<a href="notes_bib.html#custom_buttons_addons_firefox">bib</a>&nbsp;| 
+<a href="https://addons.mozilla.org/en-US/firefox/addon/custom-buttons/">http</a>&nbsp;]
+
+</td>
+</tr>
+</table>
