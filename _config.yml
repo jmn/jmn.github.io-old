@@ -2,15 +2,15 @@
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 #permalink:           pretty
-permalink: log/:year/:month/:title 
+permalink: 'log/:year/:month/:title'
 relative_permalinks: true
 
 # Setup
 title:               "jmn: log"
 tagline:             ''
 description:         ''
-url:                 http://lanyon.getpoole.com
-baseurl:             'http://www.jmnorlund.net'
+url:                 'http://www.jmnorlund.net'
+baseurl:             ''
 paginate:            5
 
 # About/contact
