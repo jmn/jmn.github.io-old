@@ -10,6 +10,7 @@ title:               "jmn: log"
 tagline:             ''
 description:         ''
 url:                 http://lanyon.getpoole.com
+baseurl:             'http://www.jmnorlund.net'
 paginate:            5
 
 # About/contact
