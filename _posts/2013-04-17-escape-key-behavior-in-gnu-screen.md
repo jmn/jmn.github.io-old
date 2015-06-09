@@ -6,7 +6,6 @@ category: shell
 tags: [emacs, vim, screen, escape]
 excerpt: "Make it stop behaving badly."
 ---
-{% include JB/setup %}
 Part of the reason I decided to start publishing things here, is that I sometimes run into what seems to be a small annoying tech problem. Look for a solution, which sometimes can take time, solve it. Only to years later have the very same problem pop up again. One such problem has been coming up when I've been using Vim and GNU Emacs under GNU screen. 
 
 One solution, for vim was to add the following lines to .vimrc:

@@ -6,7 +6,6 @@ category: meta
 tags: [meta, github]
 excerpt: "An introduction."
 ---
-{% include JB/setup %}
 
 I am trying to find a nice balance between trying to keep most of my notes in Emacs org-mode while still having the option
 to compose posts from a web interface. Github Pages with Jekyll does satisfy these criteria, and I don't have to worry about 
