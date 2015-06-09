@@ -1,8 +1,8 @@
 ---
-title: Use Emacs org-protocol capture with Firefox input
-layout: post
-CATEGORY: ???
-ON: 2015-05-23 23:04
+title: "Use Emacs org-protocol capture with Firefox input"
+layout: "post"
+CATEGORY: "???"
+ON: "2015-05-23 23:04"
 ---
 
 <p>
@@ -15,13 +15,16 @@ On a Windows system I found that this works fine with Emacs UTF-8 settings when 
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span style="color: #c080d0; font-weight: bold;">setq</span> org-capture-templates
+
+{% highlight common-lisp %}
+(setq org-capture-templates
  '(
-   (<span style="color: #ffcd8b; background-color: #404040;">"f"</span> <span style="color: #ffcd8b; background-color: #404040;">"Capture bookmark from firefox"</span> entry (file+datetree <span style="color: #ffcd8b; background-color: #404040;">"~/org/notes.org"</span>) 
-    <span style="color: #ffcd8b; background-color: #404040;">"* %?\n:PROPERTIES:\n:CODING: cp1252\n:END:\n%i\n  %a"</span> <span style="color: #c080d0;">:empty-lines</span> 1)
+   ("f" "Capture bookmark from firefox" entry (file+datetree "~/org/notes.org") 
+    "* %?\n:PROPERTIES:\n:CODING: cp1252\n:END:\n%i\n  %a" :empty-lines 1)
    )
  )
-</pre>
+
+{% endhighlight %}
 </div>
 
 <p>
@@ -30,22 +33,25 @@ A function which runs after content is captured checks for the "CODING" property
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #cd8b00;">;; </span><span style="color: #cd8b00;">If the org property value of CODING is not nil, mark the (capture) buffer it and use recode-region to recode it to UTF-8.</span>
 
-(<span style="color: #c080d0; font-weight: bold;">defalias</span> '<span style="color: #87cefa;">jmn/recode-buffer-from-cp1252-to-utf-8</span>
-  #'(lambda nil <span style="color: #cd8b00;">"Recodes a buffer from cp1252 to utf-8 encoding"</span>
-      (message <span style="color: #ffcd8b; background-color: #404040;">"recoding buffer!"</span>)
-      (<span style="color: #c080d0; font-weight: bold;">interactive</span>)
+{% highlight common-lisp %}
+;; If the org property value of CODING is not nil, mark the (capture) buffer it and use recode-region to recode it to UTF-8.
+
+(defalias 'jmn/recode-buffer-from-cp1252-to-utf-8
+  #'(lambda nil "Recodes a buffer from cp1252 to utf-8 encoding"
+      (message "recoding buffer!")
+      (interactive)
       (mark-whole-buffer)
       (recode-region (region-beginning) (region-end) 'cp1252 'utf-8)))
 
 (add-hook 'org-capture-prepare-finalize-hook
           '(lambda nil
-             (<span style="color: #c080d0; font-weight: bold;">if</span>(cdr(assoc <span style="color: #ffcd8b; background-color: #404040;">"CODING"</span>(org-entry-properties nil 'standard)))
-                 (<span style="color: #c080d0; font-weight: bold;">progn</span>
-                   (org-delete-property <span style="color: #ffcd8b; background-color: #404040;">"CODING"</span>)
+             (if(cdr(assoc "CODING"(org-entry-properties nil 'standard)))
+                 (progn
+                   (org-delete-property "CODING")
                    (jmn/recode-buffer-from-cp1252-to-utf-8)))))
-</pre>
+
+{% endhighlight %}
 </div>
 
 <p>
@@ -53,9 +59,13 @@ Now text can be selected in the browser and sent to emacs org-mode capture using
 </p>
 <div class="org-src-container">
 
-<pre class="src src-javascript">javascript:location.href=<span style="color: #ffcd8b; background-color: #404040;">'org-protocol://capture://f/'</span>+encodeURIComponent(location.href)+<span style="color: #ffcd8b; background-color: #404040;">'/'</span>+encodeURIComponent(document.title)+<span style="color: #ffcd8b; background-color: #404040;">'/'</span>+encodeURIComponent(window.getSelection())
-</pre>
+
+{% highlight javascript %}
+javascript:location.href='org-protocol://capture://f/'+encodeURIComponent(location.href)+'/'+encodeURIComponent(document.title)+'/'+encodeURIComponent(window.getSelection())
+
+{% endhighlight %}
 </div>
 
 <p>
-When the capture is finalized, the data will be recoded to utf-8.</p>
+When the capture is finalized, the data will be recoded to utf-8.
+</p>
