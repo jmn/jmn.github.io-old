@@ -1,7 +1,7 @@
 ---
 title: "No more Firefox bookmarklets: A workaround"
 layout: "post"
-CATEGORY: "notes"
+CATEGORY: "???"
 ON: "2015-05-24 02:48"
 ---
 
@@ -16,12 +16,15 @@ In my .keysnailrc I have this function:
 
 <div class="org-src-container">
 
-<pre class="src src-javascript">ext.add(<span class="org-string">"bookmark-with-org"</span>,
-        <span class="org-keyword">function</span> (<span class="org-variable-name">aEvent</span>, <span class="org-variable-name">aArg</span>) {
-          <span class="org-keyword">var</span> <span class="org-variable-name">od</span> = window.content.document;
-          window.loadURI(<span class="org-string">'org-protocol://capture://f/'</span>+encodeURIComponent(od.location.href)+<span class="org-string">'/'</span>+encodeURIComponent(od.title)+<span class="org-string">'/'</span>+encodeURIComponent(window.content.getSelection()));
-}, M({en: <span class="org-string">"Save bookmark in Emacs org-mode using org-protocol"</span>}));
-</pre>
+
+{% syntax javascript %}
+ext.add("bookmark-with-org",
+        function (aEvent, aArg) {
+          var od = window.content.document;
+          window.loadURI('org-protocol://capture://f/'+encodeURIComponent(od.location.href)+'/'+encodeURIComponent(od.title)+'/'+encodeURIComponent(window.content.getSelection()));
+}, M({en: "Save bookmark in Emacs org-mode using org-protocol"}));
+
+{% endsyntax %}
 </div>
 
 <p>
@@ -33,8 +36,11 @@ To call the function from a custom button, I use this code:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-javascript">window.KeySnail.modules.ext.exec(<span class="org-string">"bookmark-with-org"</span>,<span class="org-constant">null</span>);
-</pre>
+
+{% syntax javascript %}
+window.KeySnail.modules.ext.exec("bookmark-with-org",null);
+
+{% endsyntax %}
 </div>
 
 <div id="bibliography">
