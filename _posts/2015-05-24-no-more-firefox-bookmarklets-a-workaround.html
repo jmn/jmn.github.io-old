@@ -17,14 +17,14 @@ In my .keysnailrc I have this function:
 <div class="org-src-container">
 
 
-{% syntax javascript %}
+{% highlight javascript %}
 ext.add("bookmark-with-org",
         function (aEvent, aArg) {
           var od = window.content.document;
           window.loadURI('org-protocol://capture://f/'+encodeURIComponent(od.location.href)+'/'+encodeURIComponent(od.title)+'/'+encodeURIComponent(window.content.getSelection()));
 }, M({en: "Save bookmark in Emacs org-mode using org-protocol"}));
 
-{% endsyntax %}
+{% endhighlight %}
 </div>
 
 <p>
@@ -37,10 +37,10 @@ To call the function from a custom button, I use this code:
 <div class="org-src-container">
 
 
-{% syntax javascript %}
+{% highlight javascript %}
 window.KeySnail.modules.ext.exec("bookmark-with-org",null);
 
-{% endsyntax %}
+{% endhighlight %}
 </div>
 
 <div id="bibliography">
