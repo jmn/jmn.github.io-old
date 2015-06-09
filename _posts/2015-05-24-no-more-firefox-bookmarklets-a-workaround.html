@@ -16,11 +16,11 @@ In my .keysnailrc I have this function:
 
 <div class="org-src-container">
 
-<pre class="src src-javascript">ext.add(<span style="color: #ffcd8b; background-color: #404040;">"bookmark-with-org"</span>,
-        <span style="color: #c080d0; font-weight: bold;">function</span> (aEvent, aArg) {
-          <span style="color: #c080d0; font-weight: bold;">var</span> od = window.content.document;
-          window.loadURI(<span style="color: #ffcd8b; background-color: #404040;">'org-protocol://capture://f/'</span>+encodeURIComponent(od.location.href)+<span style="color: #ffcd8b; background-color: #404040;">'/'</span>+encodeURIComponent(od.title)+<span style="color: #ffcd8b; background-color: #404040;">'/'</span>+encodeURIComponent(window.content.getSelection()));
-}, M({en: <span style="color: #ffcd8b; background-color: #404040;">"Save bookmark in Emacs org-mode using org-protocol"</span>}));
+<pre class="src src-javascript">ext.add(<span class="org-string">"bookmark-with-org"</span>,
+        <span class="org-keyword">function</span> (<span class="org-variable-name">aEvent</span>, <span class="org-variable-name">aArg</span>) {
+          <span class="org-keyword">var</span> <span class="org-variable-name">od</span> = window.content.document;
+          window.loadURI(<span class="org-string">'org-protocol://capture://f/'</span>+encodeURIComponent(od.location.href)+<span class="org-string">'/'</span>+encodeURIComponent(od.title)+<span class="org-string">'/'</span>+encodeURIComponent(window.content.getSelection()));
+}, M({en: <span class="org-string">"Save bookmark in Emacs org-mode using org-protocol"</span>}));
 </pre>
 </div>
 
@@ -33,7 +33,7 @@ To call the function from a custom button, I use this code:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-javascript">window.KeySnail.modules.ext.exec(<span style="color: #ffcd8b; background-color: #404040;">"bookmark-with-org"</span>,<span style="color: 808bed;">null</span>);
+<pre class="src src-javascript">window.KeySnail.modules.ext.exec(<span class="org-string">"bookmark-with-org"</span>,<span class="org-constant">null</span>);
 </pre>
 </div>
 
