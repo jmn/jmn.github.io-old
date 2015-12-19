@@ -1,0 +1,50 @@
+---
+title: using fold-dwim-org with vimish-fold
+layout: post
+on: 2015-12-19 17:14
+CATEGORY: notes
+---
+
+<p>
+A lazy way to fold code with tab.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp
+">     (defun fold-dwim-org/toggle (&amp;optional key lst-point)
+       "Hide or show a block."
+       (interactive)
+         (let* ((last-point (or lst-point (point)))
+		(fold-dwim-org/minor-mode nil)
+		(command (if key (key-binding key) nil))
+		(other-keys fold-dwim-org/trigger-keys-block))
+           (unless command
+             (setq command 'indent-for-tab-command))
+           (while (and (null command)
+                       (not (null other-keys)))
+             (setq command (key-binding (car other-keys)))
+             (setq other-keys (cdr other-keys)))
+           (unless lst-point
+             (if (commandp command)
+                 (call-interactively command)))
+           (let ((ref-point
+                  ;; Workaround for cases when the point is at the beginning of the line
+                  (save-excursion
+                    (when fold-dwim-org-strict
+			(progn
+                          (back-to-indentation)
+                          (and (not (looking-at "$"))
+                               (forward-char 1))))
+                    (point))))
+             (when (fold-dwim-org/should-fold-p last-point ref-point (point))
+               (save-excursion
+                 (goto-char ref-point)
+                 (fold-dwim-toggle)))
+             (vimish-fold-toggle)))) ;; ADDED THIS LINE
+</pre>
+</div>
+
+<p>
+<a href="file://c:/users/jmn/.emacs.d/elpa/fold-dwim-org-20131203.551/fold-dwim-org.el">file://c:/users/jmn/.emacs.d/elpa/fold-dwim-org-20131203.551/fold-dwim-org.el</a>
+</p>
