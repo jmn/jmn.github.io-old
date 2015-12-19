@@ -1,0 +1,24 @@
+---
+title: Change Caps Lock to Control key on Windows 10
+layout: post
+on: 2015-12-19 01:06
+CATEGORY: notes
+---
+
+<p>
+Nothing has changed. Install/Run/Execute/Apply/Random Verb <code>ChangeCapsToControl.reg</code> from here:
+<a href="http://www.howtogeek.com/howto/windows-vista/disable-caps-lock-key-in-windows-vista/">http://www.howtogeek.com/howto/windows-vista/disable-caps-lock-key-in-windows-vista/</a>
+</p>
+
+<p>
+The .reg-file looks like so:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-
+Windows">Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00
+</pre>
+</div>
