@@ -9,8 +9,10 @@ layout: default
 </div>
 
 {% if post.tags.size > 0 %}
+  <ul>
     {% capture tags_content %} with <span class="icon-price-tag{% if post.tags.size > 1 %}s{% endif %}"></span>: {% endcapture %}
     {% for post_tag in post.tags %}
+      <li>{{ post.tag.name }}</li>
       {% assign tag = site.my_tags | where: "slug", post_tag %}
       {% if tag %}
         {% assign tag = tag[0] %}
@@ -18,6 +20,7 @@ layout: default
         {% assign tags_content = tags_content_temp %}
       {% endif %}
     {% endfor %}
+  </ul>
 {% endif %}
 
 <div class="related">
