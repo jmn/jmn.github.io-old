@@ -14,12 +14,14 @@ layout: default
   {% assign tags_list = page.tags %}
 
   {% for tag in tags_list %}
+  {% if tag != null %}
   <li>
     <a href="{{ BASE_PATH }}/tags#{{ tag }}-ref">
       {{ tag }} <span>({{ site.tags[tag].size }})</span>
       {% unless forloop.last %},{% endunless %}
     </a>
   </li>
+  {% endif %}
   {% endfor %}
 
   {% assign tags_list = nil %}
