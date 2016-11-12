@@ -8,13 +8,12 @@ layout: default
   {{ content }}
 </div>
 
-{% if page.tags %} |
+{% if page.tags %}
   <ul id="tags">
   {% for tag in page.tags %}
     <li><a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}">{{ tag }}</a></li>
   {% endfor %}
   </ul>
-
 {% endif %}
 
 <div class="related">
