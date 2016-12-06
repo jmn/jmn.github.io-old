@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2016-12-06 Tue 13:19 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning Haskell in 2017</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jmn">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<style>#table-of-contents h2 {display: none;}</style>
+<script type="text/javascript" src="http://orgmode.org/org-keys.js"></script>
+<script src="https://carnivalapp.io/sites/20/init.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function() { Carnival.init({enabled: true, article_author: "jmn", article_selector: "div#content", block_selector: ":scope p, :scope pre, :scope ul",});});</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Learning Haskell in 2017</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9b575c2">1. Tooling</a>
+<ul>
+<li><a href="#orgf41efe8">1.1. Stack</a></li>
+<li><a href="#org7ab6634">1.2. GHC</a></li>
+<li><a href="#org3fca4c2">1.3. Cabal</a></li>
+<li><a href="#orgeeb2ee0">1.4. Other tools</a>
+<ul>
+<li><a href="#orgc7384b2">1.4.1. Editor integration - Emacs</a></li>
+<li><a href="#org15dce69">1.4.2. Git</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org93f4460">2. Random Notes</a>
+<ul>
+<li><a href="#org6d2bbce">2.1. Points of confusion</a>
+<ul>
+<li><a href="#org6cc304c">2.1.1. Exception handling</a></li>
+<li><a href="#orgd1497d3">2.1.2. The many types of text. (tk)</a></li>
+</ul>
+</li>
+<li><a href="#org2f23932">2.2. Packaging</a>
+<ul>
+<li><a href="#org199aef9">2.2.1. Version information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org56a4529">3. Resources</a>
+<ul>
+<li><a href="#org1f576d5">3.1. Comprehensive articles - reference material</a></li>
+<li><a href="#org3279014">3.2. Online course</a></li>
+</ul>
+</li>
+<li><a href="#org5c295c5">4. Books</a></li>
+<li><a href="#org0eacf49">5. Video introductions</a>
+<ul>
+<li><a href="#org285ebaf">5.1. Jekor</a></li>
+<li><a href="#org8d213a3">5.2. Amuse-Bouce</a></li>
+</ul>
+</li>
+<li><a href="#org43892f8">6. Package troubleshooting</a></li>
+<li><a href="#org51431e3">7. Errors</a></li>
+<li><a href="#org0238412">8. Meta - About this document</a>
+<ul>
+<li><a href="#org71fe3f5">8.1. Exporting this file - source</a>
+<ul>
+<li><a href="#orgbd26452">8.1.1. org-mode settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9b575c2" class="outline-2">
+<h2 id="org9b575c2"><span class="section-number-2">1</span> Tooling</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The main three tools for most general Haskell development, are GHC, Stack and Cabal.
+</p>
+</div>
+<div id="outline-container-orgf41efe8" class="outline-3">
+<h3 id="orgf41efe8"><span class="section-number-3">1.1</span> Stack</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Project <code>stack.yaml</code> is the 
+Here's a typical scenario:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">     stack new foo
+     <span class="org-builtin">cd</span> foo 
+     <span class="org-comment-delimiter"># </span><span class="org-comment">... edit files ..</span>
+     <span class="org-comment-delimiter"># </span><span class="org-comment">.. edit foo.cabal to add dependencies</span>
+     stack ghci     <span class="org-comment-delimiter"># </span><span class="org-comment">do REPL interaction </span>
+     stack build   <span class="org-comment-delimiter"># </span><span class="org-comment">build project</span>
+     stack test      <span class="org-comment-delimiter"># </span><span class="org-comment">run your unit tests</span>
+     stack install <span class="org-comment-delimiter"># </span><span class="org-comment">install your binary</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ab6634" class="outline-3">
+<h3 id="org7ab6634"><span class="section-number-3">1.2</span> GHC</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+foo
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3fca4c2" class="outline-3">
+<h3 id="org3fca4c2"><span class="section-number-3">1.3</span> Cabal</h3>
+</div>
+<div id="outline-container-orgeeb2ee0" class="outline-3">
+<h3 id="orgeeb2ee0"><span class="section-number-3">1.4</span> Other tools</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-orgc7384b2" class="outline-4">
+<h4 id="orgc7384b2"><span class="section-number-4">1.4.1</span> Editor integration - Emacs</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<ul class="org-ul">
+<li>Intero-mode</li>
+</ul>
+<p>
+<a href="https://commercialhaskell.github.io/intero/">Intero for Emacs</a>
+</p>
+<ul class="org-ul">
+<li>works with company-mode autocompletion</li>
+<li>has on-the-fly type-checking (flycheck)</li>
+</ul>
+<ul class="org-ul">
+<li>Haskell-mode &#x2013; installing this mode enables haskell mode for haskell files.</li>
+</ul>
+<p>
+It contains multiple modes though, see C-h f haskell-mode for more info.
+        flycheck, hlint
+</p>
+<ul class="org-ul">
+<li>hindent-mode</li>
+
+<li><code>interactive-haskell-mode</code>, <code>haskell-doc-mode</code> (the later depends on
+the former being active).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org15dce69" class="outline-4">
+<h4 id="org15dce69"><span class="section-number-4">1.4.2</span> Git</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+Git is a commonly used version control system. Specificially for developing Haskell in git repositories, you might want to consider adding some files to .gitignore
+<code>echo '.stack-work/' &gt;&gt; .gitignore</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org93f4460" class="outline-2">
+<h2 id="org93f4460"><span class="section-number-2">2</span> Random Notes</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org6d2bbce" class="outline-3">
+<h3 id="org6d2bbce"><span class="section-number-3">2.1</span> Points of confusion</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-org6cc304c" class="outline-4">
+<h4 id="org6cc304c"><span class="section-number-4">2.1.1</span> Exception handling</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+There is seemingly no idiomatic and clearcut way of handling exceptions such as exist in other languages. There are options, some more dated than others. Some more complex than others. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span class="org-haskell-keyword">import</span> <span class="org-haskell-constructor">Control.Exception</span> <span class="org-rainbow-delimiters-depth-1">(</span>try, bracket, catch,catches<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd1497d3" class="outline-4">
+<h4 id="orgd1497d3"><span class="section-number-4">2.1.2</span> The many types of text. (tk)</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+There is String, which is [Char],Data.Text.Internal.Text, Lazy and Strict, Char8, Word8, ByteString
+decode, unpack, pack.
+</p>
+
+
+<p>
+Tools
+text-show (printT) — <a href="http://hackage.haskell.org/package/text-show">http://hackage.haskell.org/package/text-show</a>
+text-format — <a href="https://hackage.haskell.org/package/text-format">https://hackage.haskell.org/package/text-format</a>
+OverloadedStrings pragma
+Data.Text.Lens 
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2f23932" class="outline-3">
+<h3 id="org2f23932"><span class="section-number-3">2.2</span> Packaging</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-org199aef9" class="outline-4">
+<h4 id="org199aef9"><span class="section-number-4">2.2.1</span> Version information</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+<code>import Paths_pkgname (version)</code>
+Add <code>Paths_yourpackagename</code> to yourpackagename.cabal other-modules.
+</p>
+<ul class="org-ul">
+<li><a href="https://www.haskell.org/cabal/users-guide/developing-packages.html#accessing-data-files-from-package-code">https://www.haskell.org/cabal/users-guide/developing-packages.html#accessing-data-files-from-package-code</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org56a4529" class="outline-2">
+<h2 id="org56a4529"><span class="section-number-2">3</span> Resources</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org1f576d5" class="outline-3">
+<h3 id="org1f576d5"><span class="section-number-3">3.1</span> Comprehensive articles - reference material</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><a href="http://dev.stephendiehl.com/hask/">WHAT I WISH I KNEW WHEN LEARNING HASKELL</a>, Stephen Diehl (@smdiehl ), updated (as of writing) March 2016.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3279014" class="outline-3">
+<h3 id="org3279014"><span class="section-number-3">3.2</span> Online course</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>CIS194 Spring 2014, Brent Yorgey is a praised Haskell course. Yorgey has much experience developing freely available Haskell code (see e.g. the diagrams library and typeclassopedia).</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org5c295c5" class="outline-2">
+<h2 id="org5c295c5"><span class="section-number-2">4</span> Books</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The most commonly mentioned, and freely available <a href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good</a> by Miran Lipovača is a popular choice among beginners. A somewhat dated but much respected book for intermediate Haskell programmers is Real World Haskell by Bryan O'Sullivan, Don Stewart, and John Goerzen.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0eacf49" class="outline-2">
+<h2 id="org0eacf49"><span class="section-number-2">5</span> Video introductions</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-org285ebaf" class="outline-3">
+<h3 id="org285ebaf"><span class="section-number-3">5.1</span> Jekor</h3>
+</div>
+<div id="outline-container-org8d213a3" class="outline-3">
+<h3 id="org8d213a3"><span class="section-number-3">5.2</span> Amuse-Bouce</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Haskell Amuse-Bouche, Gogole Tech tach: <a href="https://www.youtube.com/watch?v=b9FagOVqxmI">https://www.youtube.com/watch?v=b9FagOVqxmI</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org43892f8" class="outline-2">
+<h2 id="org43892f8"><span class="section-number-2">6</span> Package troubleshooting</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+A dependency package broke during compilation, to fix (with cabal) use "cabal get", fix the error and <code>cabal install</code>.
+</p>
+
+<ul class="org-ul">
+<li><a href="http://stackoverflow.com/questions/26326128/haskell-cabal-locally-fix-a-broken-package-dled-from-hackage">http://stackoverflow.com/questions/26326128/haskell-cabal-locally-fix-a-broken-package-dled-from-hackage</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org51431e3" class="outline-2">
+<h2 id="org51431e3"><span class="section-number-2">7</span> Errors</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li><code>Control.Exception</code> (exceptions),</li>
+<li><code>Control.Exception.Safe</code></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span class="org-haskell-definition">foo</span> bar
+baz
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell">      <span class="org-haskell-operator">&lt;</span>jmnoz<span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">Can</span> anyone recommend me a <span class="org-string">"good enough"</span> way to <span class="org-rainbow-delimiters-depth-1">(</span>as a beginner<span class="org-rainbow-delimiters-depth-1">)</span>
+                <span class="org-haskell-keyword">do</span> error handling <span class="org-haskell-operator">/</span> exceptions for my command line tool which
+                does a bunch <span class="org-haskell-keyword">of</span> <span class="org-haskell-constructor">IO</span><span class="org-haskell-operator">?</span>                                     <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>53<span class="org-rainbow-delimiters-depth-1">]</span>
+    <span class="org-haskell-operator">&lt;</span>monochrom<span class="org-haskell-operator">&gt;</span> yes, we can recommend three ways
+   <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">Tuplanolla</span><span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">By</span> <span class="org-string">"we"</span> he means monochrom<span class="org-haskell-operator">.</span>                             <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>54<span class="org-rainbow-delimiters-depth-1">]</span>
+        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> polychrom
+        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> press <span class="org-haskell-constructor">B</span> to stop evolution
+    <span class="org-haskell-operator">&lt;</span>monochrom<span class="org-haskell-operator">&gt;</span> yes, we are <span class="org-haskell-constructor">King</span> <span class="org-haskell-constructor">Monochrom</span>
+         <span class="org-haskell-operator">&lt;</span>niez<span class="org-haskell-operator">&gt;</span> hi, <span class="org-haskell-constructor">I</span> have problems with latest groundhog and groundhog<span class="org-haskell-operator">-</span>utils
+                <span class="org-rainbow-delimiters-depth-1">(</span>both from latest git commit<span class="org-rainbow-delimiters-depth-1">)</span>, <span class="org-haskell-constructor">I</span> get<span class="org-haskell-constructor">:</span> '<span class="org-haskell-constructor">Not</span> <span class="org-haskell-keyword">in</span> scope<span class="org-haskell-constructor">:</span> <span class="org-haskell-keyword">type</span>
+                constructor or <span class="org-haskell-keyword">class</span> &#8216;<span class="org-haskell-type">PhantomDb</span>&#8217;' when building groundhog<span class="org-haskell-operator">-</span>utils
+                <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">I'm</span> building with stack using lts<span class="org-haskell-operator">-</span>7.10 resolver <span class="org-haskell-operator">-</span> which
+                includes ghc<span class="org-haskell-operator">-</span>8.0<span class="org-haskell-operator">.</span>1<span class="org-rainbow-delimiters-depth-1">)</span>, anyone can help<span class="org-haskell-operator">?</span>
+        <span class="org-haskell-operator">&lt;</span>lyxia<span class="org-haskell-operator">&gt;</span> jmnoz<span class="org-haskell-constructor">:</span> just return <span class="org-haskell-constructor">Either</span> <span class="org-haskell-constructor">String</span> values                 <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>55<span class="org-rainbow-delimiters-depth-1">]</span>
+        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> you can use <span class="org-haskell-constructor">IO</span> exceptions                               <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>56<span class="org-rainbow-delimiters-depth-1">]</span>
+        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">:</span>t throwIO
+    <span class="org-haskell-operator">&lt;</span>lambdabot<span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">Exception</span> e <span class="org-haskell-operator">=&gt;</span> e <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">IO</span> a
+          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">:</span>t bracket
+    <span class="org-haskell-operator">&lt;</span>lambdabot<span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">IO</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span>a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">IO</span> b<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span>a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">IO</span> c<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">IO</span> c
+          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> bracket action handler finalizer                                <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>57<span class="org-rainbow-delimiters-depth-1">]</span>
+          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> or something like that
+        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> setup handler body teardown                             <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>58<span class="org-rainbow-delimiters-depth-1">]</span>
+        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> oh theres only 3 args
+          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> setup handler body, i suppose
+        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> no finalizer
+        <span class="org-haskell-operator">&lt;</span>jmnoz<span class="org-haskell-operator">&gt;</span> thanks folks<span class="org-haskell-operator">.</span> <span class="org-haskell-constructor">I</span> got confused reading about eitherT, exceptT and
+                so forth
+          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> jmnoz<span class="org-haskell-constructor">:</span> you may find yourself writing repetitive exception
+                handling code, and <span class="org-haskell-keyword">then</span> those types will make all the sense <span class="org-haskell-keyword">in</span>
+                the world                                               <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>59<span class="org-rainbow-delimiters-depth-1">]</span>
+        <span class="org-haskell-operator">&lt;</span>jmnoz<span class="org-haskell-operator">&gt;</span> hpc<span class="org-haskell-constructor">:</span> <span class="org-haskell-keyword">do</span> you have any public code which you can recommend
+                inspecting<span class="org-haskell-operator">?</span>                                             <span class="org-rainbow-delimiters-depth-1">[</span>21<span class="org-haskell-constructor">:</span>00<span class="org-rainbow-delimiters-depth-1">]</span>
+          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> but yeah, it takes perspective or just staring at stuff that
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0238412" class="outline-2">
+<h2 id="org0238412"><span class="section-number-2">8</span> Meta - About this document</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-org71fe3f5" class="outline-3">
+<h3 id="org71fe3f5"><span class="section-number-3">8.1</span> Exporting this file - source</h3>
+<div class="outline-text-3" id="text-8-1">
+</div><div id="outline-container-orgbd26452" class="outline-4">
+<h4 id="orgbd26452"><span class="section-number-4">8.1.1</span> org-mode settings</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<p>
+org-html-doctype: html5
+</p>
+
+<p>
+Uses org-ref, hask.bib
+[<a href="#wiki:xxx">wiki:xxx</a>]
+</p>
+</div>
+</div>
+</div>
+</div>
+<p>
+bibliography:hask.bib
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jmn</p>
+<p class="date">Created: 2016-12-06 Tue 13:19</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
