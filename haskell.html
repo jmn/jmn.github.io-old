@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2016-12-06 Tue 13:19 -->
+<!-- 2016-12-07 Wed 04:16 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Learning Haskell in 2017</title>
@@ -333,14 +333,14 @@ Project <code>stack.yaml</code> is the
 Here's a typical scenario:
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">     stack new foo
-     <span class="org-builtin">cd</span> foo 
-     <span class="org-comment-delimiter"># </span><span class="org-comment">... edit files ..</span>
-     <span class="org-comment-delimiter"># </span><span class="org-comment">.. edit foo.cabal to add dependencies</span>
-     stack ghci     <span class="org-comment-delimiter"># </span><span class="org-comment">do REPL interaction </span>
-     stack build   <span class="org-comment-delimiter"># </span><span class="org-comment">build project</span>
-     stack test      <span class="org-comment-delimiter"># </span><span class="org-comment">run your unit tests</span>
-     stack install <span class="org-comment-delimiter"># </span><span class="org-comment">install your binary</span>
+<pre class="src src-sh">stack new foo
+<span class="org-builtin">cd</span> foo 
+<span class="org-comment-delimiter"># </span><span class="org-comment">... edit files ..</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">.. edit foo.cabal to add dependencies</span>
+stack ghci     <span class="org-comment-delimiter"># </span><span class="org-comment">do REPL interaction </span>
+stack build   <span class="org-comment-delimiter"># </span><span class="org-comment">build project</span>
+stack test      <span class="org-comment-delimiter"># </span><span class="org-comment">run your unit tests</span>
+stack install <span class="org-comment-delimiter"># </span><span class="org-comment">install your binary</span>
 </pre>
 </div>
 </div>
@@ -415,7 +415,7 @@ There is seemingly no idiomatic and clearcut way of handling exceptions such as 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell"><span class="org-haskell-keyword">import</span> <span class="org-haskell-constructor">Control.Exception</span> <span class="org-rainbow-delimiters-depth-1">(</span>try, bracket, catch,catches<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-haskell">import Control.Exception (try, bracket, catch,catches)
 </pre>
 </div>
 </div>
@@ -523,46 +523,46 @@ A dependency package broke during compilation, to fix (with cabal) use "cabal ge
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-haskell"><span class="org-haskell-definition">foo</span> bar
+<pre class="src src-haskell">foo bar
 baz
 </pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-haskell">      <span class="org-haskell-operator">&lt;</span>jmnoz<span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">Can</span> anyone recommend me a <span class="org-string">"good enough"</span> way to <span class="org-rainbow-delimiters-depth-1">(</span>as a beginner<span class="org-rainbow-delimiters-depth-1">)</span>
-                <span class="org-haskell-keyword">do</span> error handling <span class="org-haskell-operator">/</span> exceptions for my command line tool which
-                does a bunch <span class="org-haskell-keyword">of</span> <span class="org-haskell-constructor">IO</span><span class="org-haskell-operator">?</span>                                     <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>53<span class="org-rainbow-delimiters-depth-1">]</span>
-    <span class="org-haskell-operator">&lt;</span>monochrom<span class="org-haskell-operator">&gt;</span> yes, we can recommend three ways
-   <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">Tuplanolla</span><span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">By</span> <span class="org-string">"we"</span> he means monochrom<span class="org-haskell-operator">.</span>                             <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>54<span class="org-rainbow-delimiters-depth-1">]</span>
-        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> polychrom
-        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> press <span class="org-haskell-constructor">B</span> to stop evolution
-    <span class="org-haskell-operator">&lt;</span>monochrom<span class="org-haskell-operator">&gt;</span> yes, we are <span class="org-haskell-constructor">King</span> <span class="org-haskell-constructor">Monochrom</span>
-         <span class="org-haskell-operator">&lt;</span>niez<span class="org-haskell-operator">&gt;</span> hi, <span class="org-haskell-constructor">I</span> have problems with latest groundhog and groundhog<span class="org-haskell-operator">-</span>utils
-                <span class="org-rainbow-delimiters-depth-1">(</span>both from latest git commit<span class="org-rainbow-delimiters-depth-1">)</span>, <span class="org-haskell-constructor">I</span> get<span class="org-haskell-constructor">:</span> '<span class="org-haskell-constructor">Not</span> <span class="org-haskell-keyword">in</span> scope<span class="org-haskell-constructor">:</span> <span class="org-haskell-keyword">type</span>
-                constructor or <span class="org-haskell-keyword">class</span> &#8216;<span class="org-haskell-type">PhantomDb</span>&#8217;' when building groundhog<span class="org-haskell-operator">-</span>utils
-                <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-constructor">I'm</span> building with stack using lts<span class="org-haskell-operator">-</span>7.10 resolver <span class="org-haskell-operator">-</span> which
-                includes ghc<span class="org-haskell-operator">-</span>8.0<span class="org-haskell-operator">.</span>1<span class="org-rainbow-delimiters-depth-1">)</span>, anyone can help<span class="org-haskell-operator">?</span>
-        <span class="org-haskell-operator">&lt;</span>lyxia<span class="org-haskell-operator">&gt;</span> jmnoz<span class="org-haskell-constructor">:</span> just return <span class="org-haskell-constructor">Either</span> <span class="org-haskell-constructor">String</span> values                 <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>55<span class="org-rainbow-delimiters-depth-1">]</span>
-        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> you can use <span class="org-haskell-constructor">IO</span> exceptions                               <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>56<span class="org-rainbow-delimiters-depth-1">]</span>
-        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">:</span>t throwIO
-    <span class="org-haskell-operator">&lt;</span>lambdabot<span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">Exception</span> e <span class="org-haskell-operator">=&gt;</span> e <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">IO</span> a
-          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">:</span>t bracket
-    <span class="org-haskell-operator">&lt;</span>lambdabot<span class="org-haskell-operator">&gt;</span> <span class="org-haskell-constructor">IO</span> a <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span>a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">IO</span> b<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-rainbow-delimiters-depth-1">(</span>a <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">IO</span> c<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">IO</span> c
-          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> bracket action handler finalizer                                <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>57<span class="org-rainbow-delimiters-depth-1">]</span>
-          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> or something like that
-        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> setup handler body teardown                             <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>58<span class="org-rainbow-delimiters-depth-1">]</span>
-        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> oh theres only 3 args
-          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> setup handler body, i suppose
-        <span class="org-haskell-operator">&lt;</span><span class="org-haskell-constructor">EvanR</span><span class="org-haskell-operator">&gt;</span> no finalizer
-        <span class="org-haskell-operator">&lt;</span>jmnoz<span class="org-haskell-operator">&gt;</span> thanks folks<span class="org-haskell-operator">.</span> <span class="org-haskell-constructor">I</span> got confused reading about eitherT, exceptT and
-                so forth
-          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> jmnoz<span class="org-haskell-constructor">:</span> you may find yourself writing repetitive exception
-                handling code, and <span class="org-haskell-keyword">then</span> those types will make all the sense <span class="org-haskell-keyword">in</span>
-                the world                                               <span class="org-rainbow-delimiters-depth-1">[</span>20<span class="org-haskell-constructor">:</span>59<span class="org-rainbow-delimiters-depth-1">]</span>
-        <span class="org-haskell-operator">&lt;</span>jmnoz<span class="org-haskell-operator">&gt;</span> hpc<span class="org-haskell-constructor">:</span> <span class="org-haskell-keyword">do</span> you have any public code which you can recommend
-                inspecting<span class="org-haskell-operator">?</span>                                             <span class="org-rainbow-delimiters-depth-1">[</span>21<span class="org-haskell-constructor">:</span>00<span class="org-rainbow-delimiters-depth-1">]</span>
-          <span class="org-haskell-operator">&lt;</span>hpc<span class="org-haskell-operator">&gt;</span> but yeah, it takes perspective or just staring at stuff that
+<pre class="src src-haskell">   &lt;jmnoz&gt; Can anyone recommend me a "good enough" way to (as a beginner)
+	     do error handling / exceptions for my command line tool which
+	     does a bunch of IO?				        [20:53]
+ &lt;monochrom&gt; yes, we can recommend three ways
+&lt;Tuplanolla&gt; By "we" he means monochrom.			        [20:54]
+     &lt;EvanR&gt; polychrom
+     &lt;EvanR&gt; press B to stop evolution
+ &lt;monochrom&gt; yes, we are King Monochrom
+      &lt;niez&gt; hi, I have problems with latest groundhog and groundhog-utils
+	     (both from latest git commit), I get: 'Not in scope: type
+	     constructor or class ‘PhantomDb’' when building groundhog-utils
+	     (I'm building with stack using lts-7.10 resolver - which
+	     includes ghc-8.0.1), anyone can help?
+     &lt;lyxia&gt; jmnoz: just return Either String values		        [20:55]
+     &lt;EvanR&gt; you can use IO exceptions			        [20:56]
+     &lt;EvanR&gt; :t throwIO
+ &lt;lambdabot&gt; Exception e =&gt; e -&gt; IO a
+       &lt;hpc&gt; :t bracket
+ &lt;lambdabot&gt; IO a -&gt; (a -&gt; IO b) -&gt; (a -&gt; IO c) -&gt; IO c
+       &lt;hpc&gt; bracket action handler finalizer			        [20:57]
+       &lt;hpc&gt; or something like that
+     &lt;EvanR&gt; setup handler body teardown			        [20:58]
+     &lt;EvanR&gt; oh theres only 3 args
+       &lt;hpc&gt; setup handler body, i suppose
+     &lt;EvanR&gt; no finalizer
+     &lt;jmnoz&gt; thanks folks. I got confused reading about eitherT, exceptT and
+	     so forth
+       &lt;hpc&gt; jmnoz: you may find yourself writing repetitive exception
+	     handling code, and then those types will make all the sense in
+	     the world					        [20:59]
+     &lt;jmnoz&gt; hpc: do you have any public code which you can recommend
+	     inspecting?					        [21:00]
+       &lt;hpc&gt; but yeah, it takes perspective or just staring at stuff that
 </pre>
 </div>
 </div>
@@ -582,19 +582,20 @@ org-html-doctype: html5
 
 <p>
 Uses org-ref, hask.bib
-[<a href="#wiki:xxx">wiki:xxx</a>]
-</p>
+[<a href="#wiki:xxx">wiki:xxx</a>]</p>
 </div>
 </div>
 </div>
 </div>
 <p>
-bibliography:hask.bib
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="wiki:xxx">[wiki:xxx] "Wikipedia"</a>, LaTeX -- Wikipedia, The Free Encyclopedia, <a href="https://en.wikipedia.org/w/index.php?title=LaTeX&oldid=413720397">https://en.wikipedia.org/w/index.php?title=LaTeX&oldid=413720397</a>, [Online; accessed 13-February-2011]</a></li>
+</ul>
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jmn</p>
-<p class="date">Created: 2016-12-06 Tue 13:19</p>
+<p class="date">Created: 2016-12-07 Wed 04:16</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
