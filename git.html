@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- 2016-12-07 Wed 04:24 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title></title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="jmn" />
+<!-- 2016-12-07 Wed 04:50 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My git notes</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jmn">
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -179,6 +177,10 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
+<link href="/style/org/mini.css" rel="stylesheet" type="text/css" />
+<script src="https://carnivalapp.io/sites/20/init.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function() { Carnival.init({enabled: true, article_author: "jmn", article_selector: "div#content", block_selector: ":scope p, :scope pre, :scope ul",});});</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -228,43 +230,66 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgb96a4ea">Git.org - jmn's notes</a>
-<ul>
-<li><a href="#org6e7e182">Rolling around with a detached HEAD</a></li>
-<li><a href="#org516c544">Using ediff as git mergetool</a></li>
-</ul>
-</li>
-</ul>
+<h1 class="title">My git notes</h1>
+<div id="outline-container-orgd0dfac5" class="outline-2">
+<h2 id="orgd0dfac5">rollback</h2>
+<div class="outline-text-2" id="text-orgd0dfac5">
+<div class="org-src-container">
+<pre class="src src-sh">git revert HEAD~1..HEAD <span class="org-comment-delimiter"># </span><span class="org-comment">Roll back the last commit.</span>
+</pre>
 </div>
 </div>
-<div id="outline-container-orgb96a4ea" class="outline-2">
-<h2 id="orgb96a4ea">Git.org - jmn's notes</h2>
-<div class="outline-text-2" id="text-orgb96a4ea">
-</div><div id="outline-container-org6e7e182" class="outline-3">
-<h3 id="org6e7e182">Rolling around with a detached HEAD</h3>
-<div class="outline-text-3" id="text-org6e7e182">
-<ul class="org-ul">
-<li><a href="http://stackoverflow.com/a/5772882/41829">http://stackoverflow.com/a/5772882/41829</a></li>
-</ul>
+</div>
+<div id="outline-container-org443ddfb" class="outline-2">
+<h2 id="org443ddfb">combining multiple commits into one with git rebase</h2>
+<div class="outline-text-2" id="text-org443ddfb">
+<p>
+Say you want to do make one commit out of the last two commits:
+git rebase &#x2013;interactive HEAD~2
+You can then press "s" on the last commit to "squash" it into the previous commit.
+</p>
+</div>
+<div id="outline-container-orgc860074" class="outline-3">
+<h3 id="orgc860074">I made a mistake when rebasing. What do I do?</h3>
+<div class="outline-text-3" id="text-orgc860074">
+<p>
+See here: <a href="http://stackoverflow.com/questions/134882/undoing-a-git-rebase">http://stackoverflow.com/questions/134882/undoing-a-git-rebase</a>
+You can reset the state of the working repository by using:
+<code>git reflog</code>
+find the place you want to go back to and,
+<code>git reset --hard HEAD@{5}</code> (replace the "5")
+or simply:
+<code>git reset --hard ORIG_HEAD</code> (because rebase saves the point before rebase to ORIG<sub>HEAD</sub>)
+You may also want to do a:
+<code>git rebase -i --abort</code>
+</p>
 </div>
 </div>
-<div id="outline-container-org516c544" class="outline-3">
-<h3 id="org516c544">Using ediff as git mergetool</h3>
-<div class="outline-text-3" id="text-org516c544">
-<ul class="org-ul">
-<li><a href="http://stackoverflow.com/questions/1817370/using-ediff-as-git-mergetool">http://stackoverflow.com/questions/1817370/using-ediff-as-git-mergetool</a></li>
-</ul>
+
+<div id="outline-container-orgbdec9a3" class="outline-3">
+<h3 id="orgbdec9a3">But what if both commits were pushed</h3>
+<div class="outline-text-3" id="text-orgbdec9a3">
+<p>
+It is best to try and avoid this and only squash commits that have not themselves been published.
+But:
+   You will get an error message like
+" error: failed to push some refs [&#x2026;]"
+"[&#x2026;] hint: Updates were rejected because the tip of your current branch is behind [&#x2026;]"
+</p>
+
+<p>
+So what do you do?
+Read this: <a href="http://stackoverflow.com/a/559971">http://stackoverflow.com/a/559971</a>
+If no one else has interacted with the repository, you might use git push &#x2013;force, but be careful. See also git push &#x2013;mirror. 
+Also note: Be careful not to rebase branches unless they are themselves rebased on the current origin/master.
+</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jmn</p>
-<p class="date">Created: 2016-12-07 Wed 04:24</p>
+<p class="date">Created: 2016-12-07 Wed 04:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
