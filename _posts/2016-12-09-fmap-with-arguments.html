@@ -1,0 +1,37 @@
+---
+title: "(f)map with arguments"
+layout: "post"
+CATEGORY: "notes"
+ON: "2016-12-09 00:29"
+TAGS: "haskell"
+---
+
+<p>
+To map over <code>(\x y -&gt; do print x; putStrLn y)</code>:
+</p>
+<div class="org-src-container">
+
+{% highlight haskell %}
+map (\x -> foo x "my string argument")
+map (flip foo "my string argument")
+
+--< jle`> if you can re-write foo to take the string arugment first, it's even simpler
+map (foo "my string argument") [1..10]
+
+-- < MarcelineVQ> if that's inconvenient you can also section it:  
+map (`foo`"my string argument") [1..10]
+
+{% endhighlight %}
+</div>
+
+<p class="verse">
+<br  />
+<br  />
+23:21 &lt; jmnoz&gt; so it's a good idea to keep possible mapping in mind when setting the argument order (designing the function) then?<br  />
+23:23 &lt; jle`&gt; jmnoz: actually, yes :)<br  />
+23:23 &lt; jle`&gt; a lot of people choose argument orders based on what they expect to partially apply<br  />
+<br  />
+23:23 &lt; jmnoz&gt; hmm also do you use map/fmap interchangeably?<br  />
+23:23 &lt; jle`&gt; i usually use map for lists, it tends to be slightly more readable<br  />
+23:23 &lt; jle`&gt; and it can help with error messages sometimes<br  />
+</p>
