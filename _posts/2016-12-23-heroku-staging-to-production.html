@@ -1,0 +1,52 @@
+---
+title: "Heroku staging to production"
+layout: "post"
+CATEGORY: "???"
+ON: "2016-12-23 06:44"
+tags: "git, heroku, system"
+---
+
+<ol class="org-ol">
+<li><p>
+<a href="https://devcenter.heroku.com/articles/fork-app">Fork</a> your app
+</p>
+
+<p>
+<code>heroku fork --from myapp --to staging-myapp</code>
+</p></li>
+
+<li>Create a heroku pipeline for your app
+<code>heroku pipelines:create -a myapp</code></li>
+
+<li>Add the staging app to that pipeline
+<code>heroku pipelines:add -a myapp-staging myapp</code></li>
+
+<li>Change the heroku remote to be that of your staging app
+<code>heroku git:remote -a fedry-staging</code></li>
+
+<li><p>
+From now on we'll be pushing code to staging so your workflow (may be) is:
+<code>git push heroku master</code>
+</p>
+
+<p>
+.. verify app behavior (<code>heroku open</code>)
+</p>
+
+<p>
+<code>heroku pipelines:promote</code> 
+to send staging -&gt; production without the need for recompile.
+</p></li>
+</ol>
+
+<p>
+More <a href="https://devcenter.heroku.com/articles/pipelines">here</a>, and <a href="https://devcenter.heroku.com/articles/multiple-environments">here</a>.
+</p>
+
+<p>
+You will now be much less likely to put your "production" app in a broken state.
+</p>
+
+<p>
+Note that from now on, your <code>myapp-staging</code> is the target for most of your heroku commands, so if you want to view your production logs - for example - you'll want <code>heroku logs -a myapp</code>.
+</p>
