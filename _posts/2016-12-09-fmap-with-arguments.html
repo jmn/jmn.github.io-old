@@ -3,7 +3,7 @@ title: "(f)map with arguments"
 layout: "post"
 CATEGORY: "notes"
 ON: "2016-12-09 00:29"
-TAGS: "haskell"
+tags: "haskell"
 ---
 
 <p>
@@ -15,7 +15,7 @@ To map over <code>(\x y -&gt; do print x; putStrLn y)</code>:
 map (\x -> foo x "my string argument")
 map (flip foo "my string argument")
 
---< jle`> if you can re-write foo to take the string arugment first, it's even simpler
+-- < jle`> if you can re-write foo to take the string arugment first, it's even simpler
 map (foo "my string argument") [1..10]
 
 -- < MarcelineVQ> if that's inconvenient you can also section it:  
