@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/jmno
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.jmnorlund.net
+  * I am jmno (https://keybase.io/jmno) on keybase.
+  * I have a public key ASBkHeSx0NPezTFpglAtN8QjTt4yX6CUu9s-OiKqvoHDrwo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101caa0a7d74bfe558e7a7dfe2c235ce8f8a5287a1df2ab58d8e562e61844b755380a",
+            "host": "keybase.io",
+            "kid": "0120641de4b1d0d3decd316982502d37c4234ede325fa094bbdb3e3a22aabe81c3af0a",
+            "uid": "977124367ad251ca0e2f26db1739c119",
+            "username": "jmno"
+        },
+        "service": {
+            "hostname": "www.jmnorlund.net",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.18"
+    },
+    "ctime": 1489281936,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1489281515,
+        "hash": "3c8146f7f2019028d4efe485e6722178fd85151297b65d2b76ee74769ec7e44286bb6881251e580c13f02bfc1ae119716db7c1fe23277a87907417419db0cd49",
+        "seqno": 953511
+    },
+    "prev": "b61137bf260168423f3d4d81c44319d1e7e46a99cd5957be01eab4444e462b72",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgZB3ksdDT3s0xaYJQLTfEI07eMl+glLvbPjoiqr6Bw68Kp3BheWxvYWTFAvV7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxY2FhMGE3ZDc0YmZlNTU4ZTdhN2RmZTJjMjM1Y2U4ZjhhNTI4N2ExZGYyYWI1OGQ4ZTU2MmU2MTg0NGI3NTUzODBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwNjQxZGU0YjFkMGQzZGVjZDMxNjk4MjUwMmQzN2M0MjM0ZWRlMzI1ZmEwOTRiYmRiM2UzYTIyYWFiZTgxYzNhZjBhIiwidWlkIjoiOTc3MTI0MzY3YWQyNTFjYTBlMmYyNmRiMTczOWMxMTkiLCJ1c2VybmFtZSI6Imptbm8ifSwic2VydmljZSI6eyJob3N0bmFtZSI6Ind3dy5qbW5vcmx1bmQubmV0IiwicHJvdG9jb2wiOiJodHRwczoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMTgifSwiY3RpbWUiOjE0ODkyODE5MzYsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTQ4OTI4MTUxNSwiaGFzaCI6IjNjODE0NmY3ZjIwMTkwMjhkNGVmZTQ4NWU2NzIyMTc4ZmQ4NTE1MTI5N2I2NWQyYjc2ZWU3NDc2OWVjN2U0NDI4NmJiNjg4MTI1MWU1ODBjMTNmMDJiZmMxYWUxMTk3MTZkYjdjMWZlMjMyNzdhODc5MDc0MTc0MTlkYjBjZDQ5Iiwic2Vxbm8iOjk1MzUxMX0sInByZXYiOiJiNjExMzdiZjI2MDE2ODQyM2YzZDRkODFjNDQzMTlkMWU3ZTQ2YTk5Y2Q1OTU3YmUwMWVhYjQ0NDRlNDYyYjcyIiwic2Vxbm8iOjYsInRhZyI6InNpZ25hdHVyZSJ9o3NpZ8RAHKI0K/2UZBsmC+8mLdRO0pIICkkUbhQ8fzGZz96opk00w6H8J5T+Bt9IIYhCecZ6Q0WlMQhRS6WpaQSmhiWWDahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIJdRRzbmJjvZaQjME9WdDdb35qwRMW8FWXtsVz7mtd2Zo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jmno
+
+==================================================================
