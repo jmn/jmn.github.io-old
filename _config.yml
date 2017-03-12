@@ -6,7 +6,7 @@ permalink: 'log/:year/:month/:title'
 relative_permalinks: false
 
 # Setup
-title:               "jmn: log"
+title:               "jmn: log - norlund (at) gmail"
 tagline:             ''
 description:         ''
 url:                 'http://www.jmnorlund.net'
