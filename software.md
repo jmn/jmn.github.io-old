@@ -4,4 +4,5 @@ title: My software
 permalink: software.html
 ---
 
-  Goodreads command line client
+  [Goodreads command line client](https://github.com/jmn/goodreads
+  [https://github.com/jmn/goodreads]
