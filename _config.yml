@@ -12,7 +12,7 @@ description:         ''
 url:                 'http://www.jmnorlund.net'
 baseurl:             ''
 paginate:            5
-theme:               the-plain
+theme:               architect
 
 # About/contact
 author:
