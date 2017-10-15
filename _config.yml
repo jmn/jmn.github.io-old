@@ -15,10 +15,7 @@ paginate:            5
 #theme:               jekyll-theme-minimal
 
 # About/contact
-author:
-  name:              jmn
-  url:               https://jmn.github.io
-  email:             ''
-
+author: jmn
+# 
 # Custom vars
 version:             1.0.0
