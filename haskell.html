@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2016-12-07 Wed 04:43 -->
+<!-- 2017-12-08 Fri 04:24 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Learning Haskell in 2017</title>
 <meta name="generator" content="Org mode">
-<meta name="author" content="jmn">
+<meta name="author" content="Jussi Norlund">
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -179,10 +179,6 @@
 </style>
 <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
 <style>#table-of-contents h2 {display: none;}</style>
 <script type="text/javascript" src="http://orgmode.org/org-keys.js"></script>
 <script src="https://carnivalapp.io/sites/20/init.js"></script>
@@ -233,28 +229,6 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -263,107 +237,105 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9b575c2">1. Tooling</a>
+<li><a href="#org8061289">1. Learning Haskell in 2017</a>
 <ul>
-<li><a href="#orgf41efe8">1.1. Stack</a></li>
-<li><a href="#org7ab6634">1.2. GHC</a></li>
-<li><a href="#org3fca4c2">1.3. Cabal</a></li>
-<li><a href="#orgeeb2ee0">1.4. Other tools</a>
+<li><a href="#org474561a">1.1. Preface</a></li>
+<li><a href="#orgd26c79f">1.2. Tooling</a>
 <ul>
-<li><a href="#orgc7384b2">1.4.1. Editor integration - Emacs</a></li>
-<li><a href="#org15dce69">1.4.2. Git</a></li>
+<li><a href="#org0fd22ed">1.2.1. Stack</a></li>
+<li><a href="#org403ef44">1.2.2. GHC</a></li>
+<li><a href="#org37dc111">1.2.3. Cabal</a></li>
+<li><a href="#org024061c">1.2.4. Other tools</a></li>
+</ul>
+</li>
+<li><a href="#org31fa0fe">1.3. Random Notes</a>
+<ul>
+<li><a href="#org3d268c4">1.3.1. Points of confusion</a></li>
+<li><a href="#org0fc3710">1.3.2. Packaging</a></li>
+</ul>
+</li>
+<li><a href="#orgdf053f3">1.4. Resources</a>
+<ul>
+<li><a href="#orge1281b0">1.4.1. Comprehensive articles - reference material</a></li>
+<li><a href="#orgaeb73a5">1.4.2. Online course</a></li>
+</ul>
+</li>
+<li><a href="#orgb72ee2a">1.5. Books</a></li>
+<li><a href="#orgf1c7a4e">1.6. Video introductions</a>
+<ul>
+<li><a href="#org453783f">1.6.1. Jekor</a></li>
+<li><a href="#org18319b7">1.6.2. Amuse-Bouce</a></li>
+</ul>
+</li>
+<li><a href="#org3c66cea">1.7. Package troubleshooting</a></li>
+<li><a href="#orgd870da6">1.8. Errors</a></li>
+<li><a href="#org9fa7697">1.9. Meta - About this document</a>
+<ul>
+<li><a href="#org248ae18">1.9.1. Exporting this file - source</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org93f4460">2. Random Notes</a>
-<ul>
-<li><a href="#org6d2bbce">2.1. Points of confusion</a>
-<ul>
-<li><a href="#org6cc304c">2.1.1. Exception handling</a></li>
-<li><a href="#orgd1497d3">2.1.2. The many types of text. (tk)</a></li>
-</ul>
-</li>
-<li><a href="#org2f23932">2.2. Packaging</a>
-<ul>
-<li><a href="#org199aef9">2.2.1. Version information</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org56a4529">3. Resources</a>
-<ul>
-<li><a href="#org1f576d5">3.1. Comprehensive articles - reference material</a></li>
-<li><a href="#org3279014">3.2. Online course</a></li>
-</ul>
-</li>
-<li><a href="#org5c295c5">4. Books</a></li>
-<li><a href="#org0eacf49">5. Video introductions</a>
-<ul>
-<li><a href="#org285ebaf">5.1. Jekor</a></li>
-<li><a href="#org8d213a3">5.2. Amuse-Bouce</a></li>
-</ul>
-</li>
-<li><a href="#org43892f8">6. Package troubleshooting</a></li>
-<li><a href="#org51431e3">7. Errors</a></li>
-<li><a href="#org0238412">8. Meta - About this document</a>
-<ul>
-<li><a href="#org71fe3f5">8.1. Exporting this file - source</a>
-<ul>
-<li><a href="#orgbd26452">8.1.1. org-mode settings</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#org9e7e19f">2. Bibliography</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9b575c2" class="outline-2">
-<h2 id="org9b575c2"><span class="section-number-2">1</span> Tooling</h2>
+<div id="outline-container-org8061289" class="outline-2">
+<h2 id="org8061289"><span class="section-number-2">1</span> Learning Haskell in 2017</h2>
 <div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org474561a" class="outline-3">
+<h3 id="org474561a"><span class="section-number-3">1.1</span> Preface</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+This is some notes from when I was learning Haskell in 2017.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd26c79f" class="outline-3">
+<h3 id="orgd26c79f"><span class="section-number-3">1.2</span> Tooling</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
 The main three tools for most general Haskell development, are GHC, Stack and Cabal.
 </p>
 </div>
-<div id="outline-container-orgf41efe8" class="outline-3">
-<h3 id="orgf41efe8"><span class="section-number-3">1.1</span> Stack</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org0fd22ed" class="outline-4">
+<h4 id="org0fd22ed"><span class="section-number-4">1.2.1</span> Stack</h4>
+<div class="outline-text-4" id="text-1-2-1">
 <p>
 Project <code>stack.yaml</code> is the 
 Here's a typical scenario:
 </p>
 <div class="org-src-container">
 <pre class="src src-sh">stack new foo
-<span class="org-builtin">cd</span> foo 
-<span class="org-comment-delimiter"># </span><span class="org-comment">... edit files ..</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">.. edit foo.cabal to add dependencies</span>
-stack ghci     <span class="org-comment-delimiter"># </span><span class="org-comment">do REPL interaction </span>
-stack build   <span class="org-comment-delimiter"># </span><span class="org-comment">build project</span>
-stack test      <span class="org-comment-delimiter"># </span><span class="org-comment">run your unit tests</span>
-stack install <span class="org-comment-delimiter"># </span><span class="org-comment">install your binary</span>
+<span style="color: #4CB5F5;">cd</span> foo 
+<span style="color: #3a3f4b;"># </span><span style="color: #8593AE;">... edit files ..</span>
+<span style="color: #3a3f4b;"># </span><span style="color: #8593AE;">.. edit foo.cabal to add dependencies</span>
+stack ghci     <span style="color: #3a3f4b;"># </span><span style="color: #8593AE;">do REPL interaction </span>
+stack build   <span style="color: #3a3f4b;"># </span><span style="color: #8593AE;">build project</span>
+stack test      <span style="color: #3a3f4b;"># </span><span style="color: #8593AE;">run your unit tests</span>
+stack install <span style="color: #3a3f4b;"># </span><span style="color: #8593AE;">install your binary</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7ab6634" class="outline-3">
-<h3 id="org7ab6634"><span class="section-number-3">1.2</span> GHC</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org403ef44" class="outline-4">
+<h4 id="org403ef44"><span class="section-number-4">1.2.2</span> GHC</h4>
+<div class="outline-text-4" id="text-1-2-2">
 <p>
 foo
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3fca4c2" class="outline-3">
-<h3 id="org3fca4c2"><span class="section-number-3">1.3</span> Cabal</h3>
+<div id="outline-container-org37dc111" class="outline-4">
+<h4 id="org37dc111"><span class="section-number-4">1.2.3</span> Cabal</h4>
 </div>
-<div id="outline-container-orgeeb2ee0" class="outline-3">
-<h3 id="orgeeb2ee0"><span class="section-number-3">1.4</span> Other tools</h3>
-<div class="outline-text-3" id="text-1-4">
-</div><div id="outline-container-orgc7384b2" class="outline-4">
-<h4 id="orgc7384b2"><span class="section-number-4">1.4.1</span> Editor integration - Emacs</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-org024061c" class="outline-4">
+<h4 id="org024061c"><span class="section-number-4">1.2.4</span> Other tools</h4>
+<div class="outline-text-4" id="text-1-2-4">
+</div><ul class="org-ul"><li><a id="orgc02affb"></a>Editor integration - Emacs<br ><div class="outline-text-5" id="text-orgc02affb">
 <ul class="org-ul">
 <li>Intero-mode</li>
 </ul>
@@ -387,42 +359,33 @@ It contains multiple modes though, see C-h f haskell-mode for more info.
 <li><code>interactive-haskell-mode</code>, <code>haskell-doc-mode</code> (the later depends on
 the former being active).</li>
 </ul>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-org15dce69" class="outline-4">
-<h4 id="org15dce69"><span class="section-number-4">1.4.2</span> Git</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<li><a id="org30d493a"></a>Git<br ><div class="outline-text-5" id="text-org30d493a">
 <p>
 Git is a commonly used version control system. Specificially for developing Haskell in git repositories, you might want to consider adding some files to .gitignore
 <code>echo '.stack-work/' &gt;&gt; .gitignore</code>.
 </p>
+</div></li></ul>
 </div>
 </div>
-</div>
-</div>
-<div id="outline-container-org93f4460" class="outline-2">
-<h2 id="org93f4460"><span class="section-number-2">2</span> Random Notes</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org6d2bbce" class="outline-3">
-<h3 id="org6d2bbce"><span class="section-number-3">2.1</span> Points of confusion</h3>
-<div class="outline-text-3" id="text-2-1">
-</div><div id="outline-container-org6cc304c" class="outline-4">
-<h4 id="org6cc304c"><span class="section-number-4">2.1.1</span> Exception handling</h4>
-<div class="outline-text-4" id="text-2-1-1">
+<div id="outline-container-org31fa0fe" class="outline-3">
+<h3 id="org31fa0fe"><span class="section-number-3">1.3</span> Random Notes</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-org3d268c4" class="outline-4">
+<h4 id="org3d268c4"><span class="section-number-4">1.3.1</span> Points of confusion</h4>
+<div class="outline-text-4" id="text-1-3-1">
+</div><ul class="org-ul"><li><a id="orgf865d0c"></a>Exception handling<br ><div class="outline-text-5" id="text-orgf865d0c">
 <p>
 There is seemingly no idiomatic and clearcut way of handling exceptions such as exist in other languages. There are options, some more dated than others. Some more complex than others. 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-haskell">import Control.Exception (try, bracket, catch,catches)
+<pre class="src src-haskell"><span style="color: #D0E1F9; font-weight: bold;">import</span> <span style="color: #FF9009; font-weight: bold;">Control.Exception</span> (try, bracket, catch,catches)
 </pre>
 </div>
-</div>
-</div>
-<div id="outline-container-orgd1497d3" class="outline-4">
-<h4 id="orgd1497d3"><span class="section-number-4">2.1.2</span> The many types of text. (tk)</h4>
-<div class="outline-text-4" id="text-2-1-2">
+</div></li>
+<li><a id="org514cdca"></a>The many types of text. (tk)<br ><div class="outline-text-5" id="text-org514cdca">
 <p>
 There is String, which is [Char],Data.Text.Internal.Text, Lazy and Strict, Char8, Word8, ByteString
 decode, unpack, pack.
@@ -436,16 +399,13 @@ text-format — <a href="https://hackage.haskell.org/package/text-format">ht
 OverloadedStrings pragma
 Data.Text.Lens 
 </p>
-</div>
-</div>
+</div></li></ul>
 </div>
 
-<div id="outline-container-org2f23932" class="outline-3">
-<h3 id="org2f23932"><span class="section-number-3">2.2</span> Packaging</h3>
-<div class="outline-text-3" id="text-2-2">
-</div><div id="outline-container-org199aef9" class="outline-4">
-<h4 id="org199aef9"><span class="section-number-4">2.2.1</span> Version information</h4>
-<div class="outline-text-4" id="text-2-2-1">
+<div id="outline-container-org0fc3710" class="outline-4">
+<h4 id="org0fc3710"><span class="section-number-4">1.3.2</span> Packaging</h4>
+<div class="outline-text-4" id="text-1-3-2">
+</div><ul class="org-ul"><li><a id="orge561647"></a>Version information<br ><div class="outline-text-5" id="text-orge561647">
 <p>
 <code>import Paths_pkgname (version)</code>
 Add <code>Paths_yourpackagename</code> to yourpackagename.cabal other-modules.
@@ -453,58 +413,57 @@ Add <code>Paths_yourpackagename</code> to yourpackagename.cabal other-modules.
 <ul class="org-ul">
 <li><a href="https://www.haskell.org/cabal/users-guide/developing-packages.html#accessing-data-files-from-package-code">https://www.haskell.org/cabal/users-guide/developing-packages.html#accessing-data-files-from-package-code</a></li>
 </ul>
-</div>
-</div>
+</div></li></ul>
 </div>
 </div>
 
-<div id="outline-container-org56a4529" class="outline-2">
-<h2 id="org56a4529"><span class="section-number-2">3</span> Resources</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org1f576d5" class="outline-3">
-<h3 id="org1f576d5"><span class="section-number-3">3.1</span> Comprehensive articles - reference material</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgdf053f3" class="outline-3">
+<h3 id="orgdf053f3"><span class="section-number-3">1.4</span> Resources</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-orge1281b0" class="outline-4">
+<h4 id="orge1281b0"><span class="section-number-4">1.4.1</span> Comprehensive articles - reference material</h4>
+<div class="outline-text-4" id="text-1-4-1">
 <ul class="org-ul">
 <li><a href="http://dev.stephendiehl.com/hask/">WHAT I WISH I KNEW WHEN LEARNING HASKELL</a>, Stephen Diehl (@smdiehl ), updated (as of writing) March 2016.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3279014" class="outline-3">
-<h3 id="org3279014"><span class="section-number-3">3.2</span> Online course</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-orgaeb73a5" class="outline-4">
+<h4 id="orgaeb73a5"><span class="section-number-4">1.4.2</span> Online course</h4>
+<div class="outline-text-4" id="text-1-4-2">
 <ul class="org-ul">
 <li>CIS194 Spring 2014, Brent Yorgey is a praised Haskell course. Yorgey has much experience developing freely available Haskell code (see e.g. the diagrams library and typeclassopedia).</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org5c295c5" class="outline-2">
-<h2 id="org5c295c5"><span class="section-number-2">4</span> Books</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgb72ee2a" class="outline-3">
+<h3 id="orgb72ee2a"><span class="section-number-3">1.5</span> Books</h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
 The most commonly mentioned, and freely available <a href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good</a> by Miran Lipovača is a popular choice among beginners. A somewhat dated but much respected book for intermediate Haskell programmers is Real World Haskell by Bryan O'Sullivan, Don Stewart, and John Goerzen.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0eacf49" class="outline-2">
-<h2 id="org0eacf49"><span class="section-number-2">5</span> Video introductions</h2>
-<div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org285ebaf" class="outline-3">
-<h3 id="org285ebaf"><span class="section-number-3">5.1</span> Jekor</h3>
+<div id="outline-container-orgf1c7a4e" class="outline-3">
+<h3 id="orgf1c7a4e"><span class="section-number-3">1.6</span> Video introductions</h3>
+<div class="outline-text-3" id="text-1-6">
+</div><div id="outline-container-org453783f" class="outline-4">
+<h4 id="org453783f"><span class="section-number-4">1.6.1</span> Jekor</h4>
 </div>
-<div id="outline-container-org8d213a3" class="outline-3">
-<h3 id="org8d213a3"><span class="section-number-3">5.2</span> Amuse-Bouce</h3>
-<div class="outline-text-3" id="text-5-2">
+<div id="outline-container-org18319b7" class="outline-4">
+<h4 id="org18319b7"><span class="section-number-4">1.6.2</span> Amuse-Bouce</h4>
+<div class="outline-text-4" id="text-1-6-2">
 <ul class="org-ul">
 <li>Haskell Amuse-Bouche, Gogole Tech tach: <a href="https://www.youtube.com/watch?v=b9FagOVqxmI">https://www.youtube.com/watch?v=b9FagOVqxmI</a></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org43892f8" class="outline-2">
-<h2 id="org43892f8"><span class="section-number-2">6</span> Package troubleshooting</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org3c66cea" class="outline-3">
+<h3 id="org3c66cea"><span class="section-number-3">1.7</span> Package troubleshooting</h3>
+<div class="outline-text-3" id="text-1-7">
 <p>
 A dependency package broke during compilation, to fix (with cabal) use "cabal get", fix the error and <code>cabal install</code>.
 </p>
@@ -514,88 +473,91 @@ A dependency package broke during compilation, to fix (with cabal) use "cabal ge
 </ul>
 </div>
 </div>
-<div id="outline-container-org51431e3" class="outline-2">
-<h2 id="org51431e3"><span class="section-number-2">7</span> Errors</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgd870da6" class="outline-3">
+<h3 id="orgd870da6"><span class="section-number-3">1.8</span> Errors</h3>
+<div class="outline-text-3" id="text-1-8">
 <ul class="org-ul">
 <li><code>Control.Exception</code> (exceptions),</li>
 <li><code>Control.Exception.Safe</code></li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-haskell">foo bar
+<pre class="src src-haskell"><span style="color: #F9BA32;">foo</span> bar
 baz
 </pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-haskell">   &lt;jmnoz&gt; Can anyone recommend me a "good enough" way to (as a beginner)
-	     do error handling / exceptions for my command line tool which
-	     does a bunch of IO?				        [20:53]
- &lt;monochrom&gt; yes, we can recommend three ways
-&lt;Tuplanolla&gt; By "we" he means monochrom.			        [20:54]
-     &lt;EvanR&gt; polychrom
-     &lt;EvanR&gt; press B to stop evolution
- &lt;monochrom&gt; yes, we are King Monochrom
-      &lt;niez&gt; hi, I have problems with latest groundhog and groundhog-utils
-	     (both from latest git commit), I get: 'Not in scope: type
-	     constructor or class ‘PhantomDb’' when building groundhog-utils
-	     (I'm building with stack using lts-7.10 resolver - which
-	     includes ghc-8.0.1), anyone can help?
-     &lt;lyxia&gt; jmnoz: just return Either String values		        [20:55]
-     &lt;EvanR&gt; you can use IO exceptions			        [20:56]
-     &lt;EvanR&gt; :t throwIO
- &lt;lambdabot&gt; Exception e =&gt; e -&gt; IO a
-       &lt;hpc&gt; :t bracket
- &lt;lambdabot&gt; IO a -&gt; (a -&gt; IO b) -&gt; (a -&gt; IO c) -&gt; IO c
-       &lt;hpc&gt; bracket action handler finalizer			        [20:57]
-       &lt;hpc&gt; or something like that
-     &lt;EvanR&gt; setup handler body teardown			        [20:58]
-     &lt;EvanR&gt; oh theres only 3 args
-       &lt;hpc&gt; setup handler body, i suppose
-     &lt;EvanR&gt; no finalizer
-     &lt;jmnoz&gt; thanks folks. I got confused reading about eitherT, exceptT and
-	     so forth
-       &lt;hpc&gt; jmnoz: you may find yourself writing repetitive exception
-	     handling code, and then those types will make all the sense in
-	     the world					        [20:59]
-     &lt;jmnoz&gt; hpc: do you have any public code which you can recommend
-	     inspecting?					        [21:00]
-       &lt;hpc&gt; but yeah, it takes perspective or just staring at stuff that
+<pre class="src src-haskell">   <span style="color: #ffffff;">&lt;</span>jmnoz<span style="color: #ffffff;">&gt;</span> <span style="color: #FF9009; font-weight: bold;">Can</span> anyone recommend me a <span style="color: #B3DE81;">"good enough"</span> way to (as a beginner)
+             <span style="color: #D0E1F9; font-weight: bold;">do</span> error handling <span style="color: #ffffff;">/</span> exceptions for my command line tool which
+             does a bunch <span style="color: #D0E1F9; font-weight: bold;">of</span> <span style="color: #FF9009; font-weight: bold;">IO</span><span style="color: #ffffff;">?</span>                                        [20<span style="color: #FF9009; font-weight: bold;">:</span>53]
+ <span style="color: #ffffff;">&lt;</span>monochrom<span style="color: #ffffff;">&gt;</span> yes, we can recommend three ways
+<span style="color: #ffffff;">&lt;</span><span style="color: #FF9009; font-weight: bold;">Tuplanolla</span><span style="color: #ffffff;">&gt;</span> <span style="color: #FF9009; font-weight: bold;">By</span> <span style="color: #B3DE81;">"we"</span> he means monochrom<span style="color: #ffffff;">.</span>                                [20<span style="color: #FF9009; font-weight: bold;">:</span>54]
+     <span style="color: #ffffff;">&lt;</span><span style="color: #FF9009; font-weight: bold;">EvanR</span><span style="color: #ffffff;">&gt;</span> polychrom
+     <span style="color: #ffffff;">&lt;</span><span style="color: #FF9009; font-weight: bold;">EvanR</span><span style="color: #ffffff;">&gt;</span> press <span style="color: #FF9009; font-weight: bold;">B</span> to stop evolution
+ <span style="color: #ffffff;">&lt;</span>monochrom<span style="color: #ffffff;">&gt;</span> yes, we are <span style="color: #FF9009; font-weight: bold;">King</span> <span style="color: #FF9009; font-weight: bold;">Monochrom</span>
+      <span style="color: #ffffff;">&lt;</span>niez<span style="color: #ffffff;">&gt;</span> hi, <span style="color: #FF9009; font-weight: bold;">I</span> have problems with latest groundhog and groundhog<span style="color: #ffffff;">-</span>utils
+             (both from latest git commit), <span style="color: #FF9009; font-weight: bold;">I</span> get<span style="color: #FF9009; font-weight: bold;">:</span> '<span style="color: #FF9009; font-weight: bold;">Not</span> <span style="color: #D0E1F9; font-weight: bold;">in</span> scope<span style="color: #FF9009; font-weight: bold;">:</span> <span style="color: #D0E1F9; font-weight: bold;">type</span>
+             constructor or <span style="color: #D0E1F9; font-weight: bold;">class</span> &#8216;<span style="color: #FF9009; font-weight: bold;">PhantomDb</span>&#8217;' when building groundhog<span style="color: #ffffff;">-</span>utils
+             (<span style="color: #FF9009; font-weight: bold;">I'm</span> building with stack using lts<span style="color: #ffffff;">-</span>7.10 resolver <span style="color: #ffffff;">-</span> which
+             includes ghc<span style="color: #ffffff;">-</span>8.0<span style="color: #ffffff;">.</span>1), anyone can help<span style="color: #ffffff;">?</span>
+     <span style="color: #ffffff;">&lt;</span>lyxia<span style="color: #ffffff;">&gt;</span> jmnoz<span style="color: #FF9009; font-weight: bold;">:</span> just return <span style="color: #FF9009; font-weight: bold;">Either</span> <span style="color: #FF9009; font-weight: bold;">String</span> values                    [20<span style="color: #FF9009; font-weight: bold;">:</span>55]
+     <span style="color: #ffffff;">&lt;</span><span style="color: #FF9009; font-weight: bold;">EvanR</span><span style="color: #ffffff;">&gt;</span> you can use <span style="color: #FF9009; font-weight: bold;">IO</span> exceptions                          [20<span style="color: #FF9009; font-weight: bold;">:</span>56]
+     <span style="color: #ffffff;">&lt;</span><span style="color: #FF9009; font-weight: bold;">EvanR</span><span style="color: #ffffff;">&gt;</span> <span style="color: #FF9009; font-weight: bold;">:</span>t throwIO
+ <span style="color: #ffffff;">&lt;</span>lambdabot<span style="color: #ffffff;">&gt;</span> <span style="color: #FF9009; font-weight: bold;">Exception</span> e <span style="color: #ffffff;">=&gt;</span> e <span style="color: #ffffff;">-&gt;</span> <span style="color: #FF9009; font-weight: bold;">IO</span> a
+       <span style="color: #ffffff;">&lt;</span>hpc<span style="color: #ffffff;">&gt;</span> <span style="color: #FF9009; font-weight: bold;">:</span>t bracket
+ <span style="color: #ffffff;">&lt;</span>lambdabot<span style="color: #ffffff;">&gt;</span> <span style="color: #FF9009; font-weight: bold;">IO</span> a <span style="color: #ffffff;">-&gt;</span> (a <span style="color: #ffffff;">-&gt;</span> <span style="color: #FF9009; font-weight: bold;">IO</span> b) <span style="color: #ffffff;">-&gt;</span> (a <span style="color: #ffffff;">-&gt;</span> <span style="color: #FF9009; font-weight: bold;">IO</span> c) <span style="color: #ffffff;">-&gt;</span> <span style="color: #FF9009; font-weight: bold;">IO</span> c
+       <span style="color: #ffffff;">&lt;</span>hpc<span style="color: #ffffff;">&gt;</span> bracket action handler finalizer                           [20<span style="color: #FF9009; font-weight: bold;">:</span>57]
+       <span style="color: #ffffff;">&lt;</span>hpc<span style="color: #ffffff;">&gt;</span> or something like that
+     <span style="color: #ffffff;">&lt;</span><span style="color: #FF9009; font-weight: bold;">EvanR</span><span style="color: #ffffff;">&gt;</span> setup handler body teardown                                [20<span style="color: #FF9009; font-weight: bold;">:</span>58]
+     <span style="color: #ffffff;">&lt;</span><span style="color: #FF9009; font-weight: bold;">EvanR</span><span style="color: #ffffff;">&gt;</span> oh theres only 3 args
+       <span style="color: #ffffff;">&lt;</span>hpc<span style="color: #ffffff;">&gt;</span> setup handler body, i suppose
+     <span style="color: #ffffff;">&lt;</span><span style="color: #FF9009; font-weight: bold;">EvanR</span><span style="color: #ffffff;">&gt;</span> no finalizer
+     <span style="color: #ffffff;">&lt;</span>jmnoz<span style="color: #ffffff;">&gt;</span> thanks folks<span style="color: #ffffff;">.</span> <span style="color: #FF9009; font-weight: bold;">I</span> got confused reading about eitherT, exceptT and
+             so forth
+       <span style="color: #ffffff;">&lt;</span>hpc<span style="color: #ffffff;">&gt;</span> jmnoz<span style="color: #FF9009; font-weight: bold;">:</span> you may find yourself writing repetitive exception
+             handling code, and <span style="color: #D0E1F9; font-weight: bold;">then</span> those types will make all the sense <span style="color: #D0E1F9; font-weight: bold;">in</span>
+             the world                                          [20<span style="color: #FF9009; font-weight: bold;">:</span>59]
+     <span style="color: #ffffff;">&lt;</span>jmnoz<span style="color: #ffffff;">&gt;</span> hpc<span style="color: #FF9009; font-weight: bold;">:</span> <span style="color: #D0E1F9; font-weight: bold;">do</span> you have any public code which you can recommend
+             inspecting<span style="color: #ffffff;">?</span>                                                [21<span style="color: #FF9009; font-weight: bold;">:</span>00]
+       <span style="color: #ffffff;">&lt;</span>hpc<span style="color: #ffffff;">&gt;</span> but yeah, it takes perspective or just staring at stuff that
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0238412" class="outline-2">
-<h2 id="org0238412"><span class="section-number-2">8</span> Meta - About this document</h2>
-<div class="outline-text-2" id="text-8">
-</div><div id="outline-container-org71fe3f5" class="outline-3">
-<h3 id="org71fe3f5"><span class="section-number-3">8.1</span> Exporting this file - source</h3>
-<div class="outline-text-3" id="text-8-1">
-</div><div id="outline-container-orgbd26452" class="outline-4">
-<h4 id="orgbd26452"><span class="section-number-4">8.1.1</span> org-mode settings</h4>
-<div class="outline-text-4" id="text-8-1-1">
+<div id="outline-container-org9fa7697" class="outline-3">
+<h3 id="org9fa7697"><span class="section-number-3">1.9</span> Meta - About this document</h3>
+<div class="outline-text-3" id="text-1-9">
+</div><div id="outline-container-org248ae18" class="outline-4">
+<h4 id="org248ae18"><span class="section-number-4">1.9.1</span> Exporting this file - source</h4>
+<div class="outline-text-4" id="text-1-9-1">
+</div><ul class="org-ul"><li><a id="org0c74f8c"></a>org-mode settings<br ><div class="outline-text-5" id="text-org0c74f8c">
 <p>
 org-html-doctype: html5
 </p>
 
 <p>
 Uses org-ref, hask.bib
-[<a href="#wiki:xxx">wiki:xxx</a>]</p>
+cite:wiki:xxx
+</p>
+</div></li></ul>
 </div>
 </div>
 </div>
-</div>
+
+<div id="outline-container-org9e7e19f" class="outline-2">
+<h2 id="org9e7e19f"><span class="section-number-2">2</span> Bibliography</h2>
+<div class="outline-text-2" id="text-2">
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="wiki:xxx">[wiki:xxx] "Wikipedia"</a>, LaTeX -- Wikipedia, The Free Encyclopedia, <a href="https://en.wikipedia.org/w/index.php?title=LaTeX&oldid=413720397">https://en.wikipedia.org/w/index.php?title=LaTeX&oldid=413720397</a>, [Online; accessed 13-February-2011]</a></li>
-</ul>
+bibliography:hask.bib
 </p>
 </div>
+</div>
+</div>
 <div id="postamble" class="status">
-<p class="author">Author: jmn</p>
-<p class="date">Created: 2016-12-07 Wed 04:43</p>
+<p class="author">Author: Jussi Norlund</p>
+<p class="date">Created: 2017-12-08 Fri 04:24</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
