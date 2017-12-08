@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2017-12-08 Fri 04:24 -->
+<!-- 2017-12-08 Fri 06:10 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Learning Haskell in 2017</title>
@@ -178,7 +178,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="css/readtheorg.css"/>
 <style>#table-of-contents h2 {display: none;}</style>
 <script type="text/javascript" src="http://orgmode.org/org-keys.js"></script>
 <script src="https://carnivalapp.io/sites/20/init.js"></script>
@@ -237,70 +237,70 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8061289">1. Learning Haskell in 2017</a>
+<li><a href="#orge7ae2fe">1. Learning Haskell in 2017</a>
 <ul>
-<li><a href="#org474561a">1.1. Preface</a></li>
-<li><a href="#orgd26c79f">1.2. Tooling</a>
+<li><a href="#org9559e2b">1.1. Preface</a></li>
+<li><a href="#org58958df">1.2. Tooling</a>
 <ul>
-<li><a href="#org0fd22ed">1.2.1. Stack</a></li>
-<li><a href="#org403ef44">1.2.2. GHC</a></li>
-<li><a href="#org37dc111">1.2.3. Cabal</a></li>
-<li><a href="#org024061c">1.2.4. Other tools</a></li>
+<li><a href="#org2880d9a">1.2.1. Stack</a></li>
+<li><a href="#orgb5111c2">1.2.2. GHC</a></li>
+<li><a href="#orgec41c7d">1.2.3. Cabal</a></li>
+<li><a href="#orge6d9aaa">1.2.4. Other tools</a></li>
 </ul>
 </li>
-<li><a href="#org31fa0fe">1.3. Random Notes</a>
+<li><a href="#org0a03c77">1.3. Random Notes</a>
 <ul>
-<li><a href="#org3d268c4">1.3.1. Points of confusion</a></li>
-<li><a href="#org0fc3710">1.3.2. Packaging</a></li>
+<li><a href="#orgbf50d94">1.3.1. Points of confusion</a></li>
+<li><a href="#org5d96cde">1.3.2. Packaging</a></li>
 </ul>
 </li>
-<li><a href="#orgdf053f3">1.4. Resources</a>
+<li><a href="#org45302f3">1.4. Resources</a>
 <ul>
-<li><a href="#orge1281b0">1.4.1. Comprehensive articles - reference material</a></li>
-<li><a href="#orgaeb73a5">1.4.2. Online course</a></li>
+<li><a href="#org36958c7">1.4.1. Comprehensive articles - reference material</a></li>
+<li><a href="#orgaf51acb">1.4.2. Online course</a></li>
 </ul>
 </li>
-<li><a href="#orgb72ee2a">1.5. Books</a></li>
-<li><a href="#orgf1c7a4e">1.6. Video introductions</a>
+<li><a href="#orgb80244c">1.5. Books</a></li>
+<li><a href="#org903360e">1.6. Video introductions</a>
 <ul>
-<li><a href="#org453783f">1.6.1. Jekor</a></li>
-<li><a href="#org18319b7">1.6.2. Amuse-Bouce</a></li>
+<li><a href="#org53817a0">1.6.1. Jekor</a></li>
+<li><a href="#org1b05fca">1.6.2. Amuse-Bouce</a></li>
 </ul>
 </li>
-<li><a href="#org3c66cea">1.7. Package troubleshooting</a></li>
-<li><a href="#orgd870da6">1.8. Errors</a></li>
-<li><a href="#org9fa7697">1.9. Meta - About this document</a>
+<li><a href="#orgedf906e">1.7. Package troubleshooting</a></li>
+<li><a href="#org417bcd8">1.8. Errors</a></li>
+<li><a href="#orgaa908f6">1.9. Meta - About this document</a>
 <ul>
-<li><a href="#org248ae18">1.9.1. Exporting this file - source</a></li>
+<li><a href="#orga0acde0">1.9.1. Exporting this file - source</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org9e7e19f">2. Bibliography</a></li>
+<li><a href="#org28c7982">2. Bibliography</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8061289" class="outline-2">
-<h2 id="org8061289"><span class="section-number-2">1</span> Learning Haskell in 2017</h2>
+<div id="outline-container-orge7ae2fe" class="outline-2">
+<h2 id="orge7ae2fe"><span class="section-number-2">1</span> Learning Haskell in 2017</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org474561a" class="outline-3">
-<h3 id="org474561a"><span class="section-number-3">1.1</span> Preface</h3>
+<div id="outline-container-org9559e2b" class="outline-3">
+<h3 id="org9559e2b"><span class="section-number-3">1.1</span> Preface</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 This is some notes from when I was learning Haskell in 2017.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd26c79f" class="outline-3">
-<h3 id="orgd26c79f"><span class="section-number-3">1.2</span> Tooling</h3>
+<div id="outline-container-org58958df" class="outline-3">
+<h3 id="org58958df"><span class="section-number-3">1.2</span> Tooling</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The main three tools for most general Haskell development, are GHC, Stack and Cabal.
 </p>
 </div>
-<div id="outline-container-org0fd22ed" class="outline-4">
-<h4 id="org0fd22ed"><span class="section-number-4">1.2.1</span> Stack</h4>
+<div id="outline-container-org2880d9a" class="outline-4">
+<h4 id="org2880d9a"><span class="section-number-4">1.2.1</span> Stack</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Project <code>stack.yaml</code> is the 
@@ -320,8 +320,8 @@ stack install <span style="color: #3a3f4b;"># </span><span style="color: #8593AE
 </div>
 </div>
 
-<div id="outline-container-org403ef44" class="outline-4">
-<h4 id="org403ef44"><span class="section-number-4">1.2.2</span> GHC</h4>
+<div id="outline-container-orgb5111c2" class="outline-4">
+<h4 id="orgb5111c2"><span class="section-number-4">1.2.2</span> GHC</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 foo
@@ -329,13 +329,13 @@ foo
 </div>
 </div>
 
-<div id="outline-container-org37dc111" class="outline-4">
-<h4 id="org37dc111"><span class="section-number-4">1.2.3</span> Cabal</h4>
+<div id="outline-container-orgec41c7d" class="outline-4">
+<h4 id="orgec41c7d"><span class="section-number-4">1.2.3</span> Cabal</h4>
 </div>
-<div id="outline-container-org024061c" class="outline-4">
-<h4 id="org024061c"><span class="section-number-4">1.2.4</span> Other tools</h4>
+<div id="outline-container-orge6d9aaa" class="outline-4">
+<h4 id="orge6d9aaa"><span class="section-number-4">1.2.4</span> Other tools</h4>
 <div class="outline-text-4" id="text-1-2-4">
-</div><ul class="org-ul"><li><a id="orgc02affb"></a>Editor integration - Emacs<br ><div class="outline-text-5" id="text-orgc02affb">
+</div><ul class="org-ul"><li><a id="orgb49fc53"></a>Editor integration - Emacs<br ><div class="outline-text-5" id="text-orgb49fc53">
 <ul class="org-ul">
 <li>Intero-mode</li>
 </ul>
@@ -361,7 +361,7 @@ the former being active).</li>
 </ul>
 </div></li>
 
-<li><a id="org30d493a"></a>Git<br ><div class="outline-text-5" id="text-org30d493a">
+<li><a id="org2d5f8ce"></a>Git<br ><div class="outline-text-5" id="text-org2d5f8ce">
 <p>
 Git is a commonly used version control system. Specificially for developing Haskell in git repositories, you might want to consider adding some files to .gitignore
 <code>echo '.stack-work/' &gt;&gt; .gitignore</code>.
@@ -369,13 +369,13 @@ Git is a commonly used version control system. Specificially for developing Hask
 </div></li></ul>
 </div>
 </div>
-<div id="outline-container-org31fa0fe" class="outline-3">
-<h3 id="org31fa0fe"><span class="section-number-3">1.3</span> Random Notes</h3>
+<div id="outline-container-org0a03c77" class="outline-3">
+<h3 id="org0a03c77"><span class="section-number-3">1.3</span> Random Notes</h3>
 <div class="outline-text-3" id="text-1-3">
-</div><div id="outline-container-org3d268c4" class="outline-4">
-<h4 id="org3d268c4"><span class="section-number-4">1.3.1</span> Points of confusion</h4>
+</div><div id="outline-container-orgbf50d94" class="outline-4">
+<h4 id="orgbf50d94"><span class="section-number-4">1.3.1</span> Points of confusion</h4>
 <div class="outline-text-4" id="text-1-3-1">
-</div><ul class="org-ul"><li><a id="orgf865d0c"></a>Exception handling<br ><div class="outline-text-5" id="text-orgf865d0c">
+</div><ul class="org-ul"><li><a id="org198a588"></a>Exception handling<br ><div class="outline-text-5" id="text-org198a588">
 <p>
 There is seemingly no idiomatic and clearcut way of handling exceptions such as exist in other languages. There are options, some more dated than others. Some more complex than others. 
 </p>
@@ -385,7 +385,7 @@ There is seemingly no idiomatic and clearcut way of handling exceptions such as 
 </pre>
 </div>
 </div></li>
-<li><a id="org514cdca"></a>The many types of text. (tk)<br ><div class="outline-text-5" id="text-org514cdca">
+<li><a id="org114459c"></a>The many types of text. (tk)<br ><div class="outline-text-5" id="text-org114459c">
 <p>
 There is String, which is [Char],Data.Text.Internal.Text, Lazy and Strict, Char8, Word8, ByteString
 decode, unpack, pack.
@@ -402,10 +402,10 @@ Data.Text.Lens
 </div></li></ul>
 </div>
 
-<div id="outline-container-org0fc3710" class="outline-4">
-<h4 id="org0fc3710"><span class="section-number-4">1.3.2</span> Packaging</h4>
+<div id="outline-container-org5d96cde" class="outline-4">
+<h4 id="org5d96cde"><span class="section-number-4">1.3.2</span> Packaging</h4>
 <div class="outline-text-4" id="text-1-3-2">
-</div><ul class="org-ul"><li><a id="orge561647"></a>Version information<br ><div class="outline-text-5" id="text-orge561647">
+</div><ul class="org-ul"><li><a id="orga82df21"></a>Version information<br ><div class="outline-text-5" id="text-orga82df21">
 <p>
 <code>import Paths_pkgname (version)</code>
 Add <code>Paths_yourpackagename</code> to yourpackagename.cabal other-modules.
@@ -417,19 +417,19 @@ Add <code>Paths_yourpackagename</code> to yourpackagename.cabal other-modules.
 </div>
 </div>
 
-<div id="outline-container-orgdf053f3" class="outline-3">
-<h3 id="orgdf053f3"><span class="section-number-3">1.4</span> Resources</h3>
+<div id="outline-container-org45302f3" class="outline-3">
+<h3 id="org45302f3"><span class="section-number-3">1.4</span> Resources</h3>
 <div class="outline-text-3" id="text-1-4">
-</div><div id="outline-container-orge1281b0" class="outline-4">
-<h4 id="orge1281b0"><span class="section-number-4">1.4.1</span> Comprehensive articles - reference material</h4>
+</div><div id="outline-container-org36958c7" class="outline-4">
+<h4 id="org36958c7"><span class="section-number-4">1.4.1</span> Comprehensive articles - reference material</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <ul class="org-ul">
 <li><a href="http://dev.stephendiehl.com/hask/">WHAT I WISH I KNEW WHEN LEARNING HASKELL</a>, Stephen Diehl (@smdiehl ), updated (as of writing) March 2016.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaeb73a5" class="outline-4">
-<h4 id="orgaeb73a5"><span class="section-number-4">1.4.2</span> Online course</h4>
+<div id="outline-container-orgaf51acb" class="outline-4">
+<h4 id="orgaf51acb"><span class="section-number-4">1.4.2</span> Online course</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <ul class="org-ul">
 <li>CIS194 Spring 2014, Brent Yorgey is a praised Haskell course. Yorgey has much experience developing freely available Haskell code (see e.g. the diagrams library and typeclassopedia).</li>
@@ -437,8 +437,8 @@ Add <code>Paths_yourpackagename</code> to yourpackagename.cabal other-modules.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb72ee2a" class="outline-3">
-<h3 id="orgb72ee2a"><span class="section-number-3">1.5</span> Books</h3>
+<div id="outline-container-orgb80244c" class="outline-3">
+<h3 id="orgb80244c"><span class="section-number-3">1.5</span> Books</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 The most commonly mentioned, and freely available <a href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good</a> by Miran Lipovača is a popular choice among beginners. A somewhat dated but much respected book for intermediate Haskell programmers is Real World Haskell by Bryan O'Sullivan, Don Stewart, and John Goerzen.
@@ -446,14 +446,14 @@ The most commonly mentioned, and freely available <a href="http://learnyouahaske
 </div>
 </div>
 
-<div id="outline-container-orgf1c7a4e" class="outline-3">
-<h3 id="orgf1c7a4e"><span class="section-number-3">1.6</span> Video introductions</h3>
+<div id="outline-container-org903360e" class="outline-3">
+<h3 id="org903360e"><span class="section-number-3">1.6</span> Video introductions</h3>
 <div class="outline-text-3" id="text-1-6">
-</div><div id="outline-container-org453783f" class="outline-4">
-<h4 id="org453783f"><span class="section-number-4">1.6.1</span> Jekor</h4>
+</div><div id="outline-container-org53817a0" class="outline-4">
+<h4 id="org53817a0"><span class="section-number-4">1.6.1</span> Jekor</h4>
 </div>
-<div id="outline-container-org18319b7" class="outline-4">
-<h4 id="org18319b7"><span class="section-number-4">1.6.2</span> Amuse-Bouce</h4>
+<div id="outline-container-org1b05fca" class="outline-4">
+<h4 id="org1b05fca"><span class="section-number-4">1.6.2</span> Amuse-Bouce</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <ul class="org-ul">
 <li>Haskell Amuse-Bouche, Gogole Tech tach: <a href="https://www.youtube.com/watch?v=b9FagOVqxmI">https://www.youtube.com/watch?v=b9FagOVqxmI</a></li>
@@ -461,8 +461,8 @@ The most commonly mentioned, and freely available <a href="http://learnyouahaske
 </div>
 </div>
 </div>
-<div id="outline-container-org3c66cea" class="outline-3">
-<h3 id="org3c66cea"><span class="section-number-3">1.7</span> Package troubleshooting</h3>
+<div id="outline-container-orgedf906e" class="outline-3">
+<h3 id="orgedf906e"><span class="section-number-3">1.7</span> Package troubleshooting</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 A dependency package broke during compilation, to fix (with cabal) use "cabal get", fix the error and <code>cabal install</code>.
@@ -473,8 +473,8 @@ A dependency package broke during compilation, to fix (with cabal) use "cabal ge
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd870da6" class="outline-3">
-<h3 id="orgd870da6"><span class="section-number-3">1.8</span> Errors</h3>
+<div id="outline-container-org417bcd8" class="outline-3">
+<h3 id="org417bcd8"><span class="section-number-3">1.8</span> Errors</h3>
 <div class="outline-text-3" id="text-1-8">
 <ul class="org-ul">
 <li><code>Control.Exception</code> (exceptions),</li>
@@ -526,13 +526,13 @@ baz
 </div>
 </div>
 </div>
-<div id="outline-container-org9fa7697" class="outline-3">
-<h3 id="org9fa7697"><span class="section-number-3">1.9</span> Meta - About this document</h3>
+<div id="outline-container-orgaa908f6" class="outline-3">
+<h3 id="orgaa908f6"><span class="section-number-3">1.9</span> Meta - About this document</h3>
 <div class="outline-text-3" id="text-1-9">
-</div><div id="outline-container-org248ae18" class="outline-4">
-<h4 id="org248ae18"><span class="section-number-4">1.9.1</span> Exporting this file - source</h4>
+</div><div id="outline-container-orga0acde0" class="outline-4">
+<h4 id="orga0acde0"><span class="section-number-4">1.9.1</span> Exporting this file - source</h4>
 <div class="outline-text-4" id="text-1-9-1">
-</div><ul class="org-ul"><li><a id="org0c74f8c"></a>org-mode settings<br ><div class="outline-text-5" id="text-org0c74f8c">
+</div><ul class="org-ul"><li><a id="org37d06c6"></a>org-mode settings<br ><div class="outline-text-5" id="text-org37d06c6">
 <p>
 org-html-doctype: html5
 </p>
@@ -546,8 +546,8 @@ cite:wiki:xxx
 </div>
 </div>
 
-<div id="outline-container-org9e7e19f" class="outline-2">
-<h2 id="org9e7e19f"><span class="section-number-2">2</span> Bibliography</h2>
+<div id="outline-container-org28c7982" class="outline-2">
+<h2 id="org28c7982"><span class="section-number-2">2</span> Bibliography</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 bibliography:hask.bib
@@ -557,7 +557,7 @@ bibliography:hask.bib
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jussi Norlund</p>
-<p class="date">Created: 2017-12-08 Fri 04:24</p>
+<p class="date">Created: 2017-12-08 Fri 06:10</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
