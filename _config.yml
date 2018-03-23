@@ -22,4 +22,4 @@ version:             1.0.0
 
 remote_theme: mmistakes/so-simple-theme
 
-theme: jekyll-theme-tactile
+theme: jekyll-theme-hacker
