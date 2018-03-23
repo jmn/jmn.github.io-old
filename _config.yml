@@ -1,7 +1,7 @@
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
-#permalink:           pretty
+
 permalink: 'log/:year/:month/:title'
 relative_permalinks: false
 
@@ -19,6 +19,7 @@ author: jmn
 # 
 # Custom vars
 version:             1.0.0
-
+plugins:
+  - jekyll-remote-theme
 
 remote_theme: jekyll/minima
