@@ -36,7 +36,7 @@ highlighter: rouge
 
 theme_settings:
   # Meta
-  title: Type on Strap # blog's title
+  title: jmn # blog's title
   avatar: assets/img/triangle.svg
   favicon: assets/favicon.ico
   gravatar: # Email MD5 hash
