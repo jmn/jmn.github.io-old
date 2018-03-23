@@ -19,26 +19,6 @@
     
     <!-- Menu -->
     <ul>
-        {% if site.theme_settings.portfolio %}
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="{{ site.url }}{{ site.baseurl }}/portfolio">
-                Portfolio
-            </a>
-        </li>
-        {% endif %}
-        {% if site.theme_settings.search %}
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="{{ site.url }}{{ site.baseurl }}/search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-        </li>
-        {% endif %}
         {% if site.theme_settings.tags %}
         <li class="separator">
             |
@@ -49,7 +29,18 @@
             </a>
         </li>
         {% endif %}
+
+        <li class="separator">
+            |
+        </li>
+        <li>
+            <a class="clear" href="{{ site.url }}{{ site.baseurl }}/archive">
+                <i class="fa fa-tags" aria-hidden="true"></i>
+            </a>
+        </li>
+
         
+    </ul>
     </ul>
         
 	</nav>
