@@ -19,22 +19,19 @@
     
     <!-- Menu -->
     <ul>
-        {% if site.theme_settings.tags %}
+      <li class="separator">
+            |
+        </li>
+        <li>
+            <a class="clear" href="{{ site.url }}{{ site.baseurl }}/archive">
+                Archive
+            </a>
+        </li>
         <li class="separator">
             |
         </li>
         <li>
             <a class="clear" href="{{ site.url }}{{ site.baseurl }}/tags">
-                <i class="fa fa-tags" aria-hidden="true"></i>
-            </a>
-        </li>
-        {% endif %}
-
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="{{ site.url }}{{ site.baseurl }}/archive">
                 <i class="fa fa-tags" aria-hidden="true"></i>
             </a>
         </li>
