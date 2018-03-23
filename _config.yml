@@ -35,7 +35,7 @@ remote_theme: Sylhare/Type-on-Strap
 highlighter: rouge
 theme_settings:
   # Meta
-  title: jmn's log
+  title: jnorlund.net
   avatar: 
   favicon: assets/favicon.ico
   gravatar: df5a6f68e6de417f563d5deaf26ea4e8 # Email MD5 hash
