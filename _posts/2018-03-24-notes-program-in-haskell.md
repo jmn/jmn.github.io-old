@@ -3,7 +3,7 @@ title: "Note recording haskell program"
 layout: "post"
 CATEGORY: "Haskell"
 ON: "2018-03-23 09:06"
-tags: [haskell]
+tags: "haskell"
 excerpt: "An introduction."
 ---
 A small haskell program that manages short notes in a sqlite database. Uses <a href="https://hackage.haskell.org/package/sqlite-simple">sqlite-simple</a> and <a href="https://hackage.haskell.org/package/cmdargs">CmdArgs</a>.
