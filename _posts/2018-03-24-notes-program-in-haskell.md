@@ -7,7 +7,7 @@ tags: "haskell"
 excerpt: "An introduction."
 ---
 A small Haskell program that manages short notes in a SQLite database. Uses <a href="https://hackage.haskell.org/package/sqlite-simple">sqlite-simple</a> and <a href="https://hackage.haskell.org/package/cmdargs">CmdArgs</a>.
-
+<!--more-->
 ```haskell 
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE DeriveDataTypeable #-}
