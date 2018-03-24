@@ -12,8 +12,10 @@ A small haskell program that manages short notes in a sqlite database. Uses <a h
 
 
 <div class="org-src-container">
+{% highlight haskell %}
+<pre class="src src-haskell">
 
-<pre class="src src-haskell">{% highlight haskell %}{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE DeriveDataTypeable #-}
 
 module Main where
@@ -129,8 +131,9 @@ main = do
         then mapM_ (showNote True) r
         else mapM_ (showNote False) r
     close conn
-    {% endhighlight %}
+   
 </pre>
+{% endhighlight %}
 </div>
 </div>
 </div>
