@@ -7,7 +7,7 @@ tags: [meta, jekyll]
 excerpt: "An introduction."
 ---
 
-```
+```haskell
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE DeriveDataTypeable #-}
 
