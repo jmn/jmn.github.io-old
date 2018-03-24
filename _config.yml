@@ -39,7 +39,7 @@ kramdown:
     default_lang: csharp
     css_class: 'highlight'
     span:
-      line_numbers: false
+      line_numbers: true
     block:
       line_numbers: true
       
