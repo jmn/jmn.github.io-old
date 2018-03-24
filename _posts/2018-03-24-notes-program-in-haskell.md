@@ -14,7 +14,6 @@ A small haskell program that manages short notes in a sqlite database. Uses <a h
 
 module Main where
 
-import Lib
 import System.Environment (getArgs)
 import Database.SQLite.Simple
 import System.Console.CmdArgs
