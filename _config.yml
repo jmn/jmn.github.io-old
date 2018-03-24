@@ -31,11 +31,18 @@ plugins:
 remote_theme: Sylhare/Type-on-Strap
 # mmistakes/hpstr-jekyll-theme
 # swanson/lagom
-
+markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-
+  syntax_highlighter_opts:
+    default_lang: csharp
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      
 theme_settings:
   # Meta
   title: jmnorlund.net # blog's title
