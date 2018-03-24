@@ -28,7 +28,7 @@ plugins:
   - jekyll-remote-theme
 
 
-remote_theme: Sylhare/Type-on-Strap
+remote_theme: jmn/Type-on-Strap
 # mmistakes/hpstr-jekyll-theme
 # swanson/lagom
 markdown: kramdown
