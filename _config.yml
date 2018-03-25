@@ -39,7 +39,7 @@ kramdown:
     default_lang: haskell
     css_class: 'highlight'
     span:
-      line_numbers: true
+      line_numbers: false
     block:
       line_numbers: true
       
