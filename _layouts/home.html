@@ -26,7 +26,7 @@ layout: default
               </a>
             </h1>
             <p class="meta">
-              {{ post.date | date: "%B %-d, %Y" }}
+              {{ post.date | date: "%B %-d, %Y" }} {% assign words = content | number_of_words %} {{ words }} words
             </p>
           </header>
           <div class="excerpt">
