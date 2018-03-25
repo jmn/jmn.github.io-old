@@ -1,3 +1,8 @@
+---
+title: "From org to markdown
+tags: "meta"
+---
+
 # From org to markdown
 
 Configure Emacs to enable orgmode markdown exports.
