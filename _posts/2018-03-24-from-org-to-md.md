@@ -32,6 +32,6 @@ Add the YAML front-matter to make Jekyll display the post.
 {% endhighlight %}
 
 
-Add your configured excerpt_delimiter
-e.g.
-{% raw %} <!--more--> {% endraw %} to the post.
+Add your configured `excerpt_separator`
+e.g:
+`<!--more-->` to the post.
