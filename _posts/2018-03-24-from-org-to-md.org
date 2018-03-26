@@ -1,0 +1,36 @@
+* From org to markdown
+Configure Emacs to enable orgmode markdown exports.
+
+
+Code blocks
+
+#+BEGIN_SRC haskell
+putStrln "Hello World!"
+
+#+END_SRC
+
+Use the =org-export-dispatch= (=C-c e=) and export to a temporary buffer.
+
+Add highlighting tags, eg {% raw %} {% highlight python %} ... {% endhighlight %}
+{% endraw %} for non-default languages.
+
+{% highlight python %}
+#+BEGIN_SRC python
+
+print("Hello world!")
+
+#+END_SRC
+{% endhighlight %}
+
+Add the YAML front-matter to make Jekyll display the post.
+
+{% highlight yaml %}
+#+BEGIN_SRC 
+---
+title: "From org to markdown
+tags: "meta"
+---
+
+#+END_SRC
+{% endhighlight %}
+
