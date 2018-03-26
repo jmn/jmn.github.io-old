@@ -1,6 +1,7 @@
 ---
 title: "Markdown and syntax highlighting"
 tags: markdown
+layout: post
 ---
 
 With using Github Flavored Markdown, it is possible to set syntax
