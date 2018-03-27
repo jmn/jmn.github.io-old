@@ -16,10 +16,11 @@ putStrln "Hello World!"
 
 But what about code blocks that are made using four spaces? The only
 
-option is to add ´{% raw %}{% highlight haskell %}{% endraw %}´ and
-´{% raw %}{% endhighlight %}{% endraw %}´ after.
+option is to add Â´{% raw %}{% highlight haskell %}{% endraw %}Â´ and
+Â´{% raw %}{% endhighlight %}{% endraw %}Â´ after.
 
 > Blocks of code are either fenced by lines with three back-ticks ```,
 > or are indented with four spaces. I recommend only using the fenced
 > code blocks -- they're easier and only they support syntax
 > highlighting. -- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#blockquotes)
+
