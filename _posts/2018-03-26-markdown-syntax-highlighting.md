@@ -2,6 +2,7 @@
 title: "Markdown and syntax highlighting"
 tags: markdown
 layout: post
+
 ---
 
 With using Github Flavored Markdown, it is possible to set syntax
@@ -14,8 +15,8 @@ putStrln "Hello World!"
 {% endraw %}
 
 But what about code blocks that are made using four spaces? The only
-option is to add ´{%highlighting haskell %}´ and ´{% endhighlighting
-%}´ after.
+option is to add Â´{%highlighting haskell %}Â´ and Â´{% endhighlighting
+%}Â´ after.
 
 > Blocks of code are either fenced by lines with three back-ticks ```,
 > or are indented with four spaces. I recommend only using the fenced
