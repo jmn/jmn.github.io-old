@@ -9,9 +9,9 @@ With using Github Flavored Markdown, it is possible to set syntax
 highlighting in [fenced code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks/#fenced-code-blocks) like so:
 
 {% raw %}
-```haskell
-putStrln "Hello World!"
-```
+    ```haskell
+    putStrln "Hello World!"
+    ```
 {% endraw %}
 
 But what about code blocks that are made up using four initial spaces on each line? The only option is to add {% raw %}{% highlight haskell %}{% endraw %}` and
