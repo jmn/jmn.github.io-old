@@ -26,7 +26,8 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-remote-theme
-  - jekyll-youtube
+# see possible plugins on github pages here: 
+# https://github.com/github/pages-gem/blob/master/lib/github-pages/plugins.rb
 
 
 remote_theme: jmn/Type-on-Strap
