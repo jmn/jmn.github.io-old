@@ -4,7 +4,7 @@ tags: markdown
 layout: post
 
 ---
-
+<!--more-->
 With using Github Flavored Markdown, it is possible to set syntax
 highlighting in [fenced code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks/#fenced-code-blocks) like so:
 
