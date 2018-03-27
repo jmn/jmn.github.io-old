@@ -15,7 +15,10 @@ highlighting in [fenced code blocks](https://help.github.com/articles/creating-a
 {% endraw %}
 
 But what about code blocks that are made up using four initial spaces on each lin?? Like so:
->    print "bar"
+
+<code>
+    print "bar"
+</code>
 
 The only option is to add {% raw %}{% highlight haskell %}{% endraw %}` and
 `{% raw %}{% endhighlight %}{% endraw %}` after:
@@ -30,6 +33,7 @@ The only option is to add {% raw %}{% highlight haskell %}{% endraw %}` and
 > highlighting. -- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#blockquotes)
 
 You can check out the [source code of this blog post](https://github.com/jmn/jmn.github.io/blob/master/_posts/2018-03-26-markdown-syntax-highlighting.md) also.
+
 Sidenote: Make sure to keep your post in UTF-8 format or Jekyll might spaz out.
 
 ## References
