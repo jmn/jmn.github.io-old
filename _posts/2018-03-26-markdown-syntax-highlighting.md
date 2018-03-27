@@ -37,3 +37,4 @@ Sidenote: Make sure to keep your post in UTF-8 format or Jekyll might spaz out.
 
 ## References
 - [the source of the markdown cheatsheet](https://raw.githubusercontent.com/wiki/adam-p/markdown-here/Markdown-Cheatsheet.md?login=login&token=token)
+- [Github Flavored Markdown](https://github.github.com/gfm/)
