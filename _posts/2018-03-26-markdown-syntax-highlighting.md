@@ -4,6 +4,7 @@ tags: markdown
 layout: post
 
 ---
+Jekyll and escape sequences can be strange.
 <!--more-->
 With Github Flavored Markdown, it is possible to set syntax
 highlighting in [fenced code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks/#fenced-code-blocks) like so:
