@@ -15,11 +15,9 @@ highlighting in [fenced code blocks](https://help.github.com/articles/creating-a
 {% endraw %}
 
 But what about code blocks that are made up using four initial spaces on each line? Like so:
-<pre>
-<code>
+<pre><code>
     print "bar"
-</code>
-</pre>
+</code></pre>
 The only option is to add {% raw %}{% highlight haskell %}{% endraw %}` and
 `{% raw %}{% endhighlight %}{% endraw %}` after:
 
