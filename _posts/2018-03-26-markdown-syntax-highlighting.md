@@ -14,10 +14,8 @@ putStrln "Hello World!"
 ```
 {% endraw %}
 
-But what about code blocks that are made using four spaces? The only
-
-option is to add ´{% raw %}{% highlight haskell %}{% endraw %}´ and
-´{% raw %}{% endhighlight %}{% endraw %}´ after.
+But what about code blocks that are made using four spaces? The only option is to add `{% raw %}{% highlight haskell %}{% endraw %}` and
+`{% raw %}{% endhighlight %}{% endraw %}` after.
 
 > Blocks of code are either fenced by lines with three back-ticks ```,
 > or are indented with four spaces. I recommend only using the fenced
