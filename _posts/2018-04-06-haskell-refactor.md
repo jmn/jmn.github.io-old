@@ -2,7 +2,7 @@
 title: Improving basic haskell programs
 tags: haskell
 ---
-Using the symbols `>>=` (bind) `<$>`(fmap) and `<*>` we can improve our Haskell programs.
+Using the symbols `>>=` (bind) `<$>` (fmap) and `<*>` we can improve our Haskell programs.
 For example:
 
 
