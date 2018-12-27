@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: "/jmn.github.io",
   siteMetadata: {
     title: `jmn's blog`,
     description: ``,
