@@ -3,7 +3,7 @@ title: "Haskell Persistent note recording program"
 layout: "post"
 tags: ["haskell"]
 ---
-Here's a version of [the previous notes program](/2018/03/notes-program-in-haskell) that uses Persistent. 
+Here's a version of [the previous notes program](/2018/03/24/notes-program-in-haskell) that uses Persistent. 
 <!--more-->
 The imports are: 
 - text
