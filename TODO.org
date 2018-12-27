@@ -1,3 +1,0 @@
-* jmn.github.io
-- [ ] Improve the "Archives" page.
-  Display posts under year headings - compare old layout (JB).
