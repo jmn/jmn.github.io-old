@@ -1,7 +1,6 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { Link } from 'gatsby'
-import 'prismjs/themes/prism-tomorrow.css'
+import React from "react";
+import { graphql } from "gatsby";
+import { Link } from "gatsby";
 
 /*
 import Layout from '../components/layout'
@@ -22,7 +21,7 @@ import SEO from '../components/seo' */
 )
  */
 const IndexPage = ({ data }) => {
-  console.log(data)
+  console.log(data);
   return (
     <div style={{ margin: `3rem auto`, maxWidth: 600 }}>
       <h1>jmn's blog</h1>
@@ -30,7 +29,7 @@ const IndexPage = ({ data }) => {
         <div key={node.id} className="article-box">
           <Link
             to={node.fields.slug}
-            style={{ textDecoration: 'none', color: 'inherit' }}
+            style={{ textDecoration: "none", color: "inherit" }}
           >
             <h3 className="title">{node.frontmatter.title}</h3>
           </Link>
@@ -42,10 +41,10 @@ const IndexPage = ({ data }) => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const query = graphql`
   query IndexQuery {
@@ -66,4 +65,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
