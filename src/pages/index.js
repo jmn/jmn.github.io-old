@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { Link } from "gatsby";
+import Search from "../components/Search";
 
 /*
 import Layout from '../components/layout'
@@ -25,6 +26,7 @@ const IndexPage = ({ data }) => {
   return (
     <div style={{ margin: `3rem auto`, maxWidth: 600 }}>
       <h1>jmn's blog</h1>
+      <Search />
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id} className="article-box">
           <Link

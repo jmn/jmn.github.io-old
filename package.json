@@ -17,6 +17,7 @@
     "gatsby-source-filesystem": "^2.0.12",
     "gatsby-transformer-remark": "^2.1.17",
     "gatsby-transformer-sharp": "^2.1.8",
+    "lodash.camelcase": "^4.3.0",
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
@@ -41,7 +42,9 @@
     "deploy": "gatsby build && gh-pages -d public -b master"
   },
   "devDependencies": {
+    "@andrew-codes/gatsby-plugin-elasticlunr-search": "^1.0.4",
     "gh-pages": "^2.0.1",
+    "lunr": "^2.3.5",
     "prettier": "^1.15.2"
   },
   "repository": {
@@ -50,5 +53,8 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  },
+    "resolutions": {
+    "graphql": "^0.13.2"
+}
 }
