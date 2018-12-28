@@ -63,7 +63,8 @@ module.exports = {
           // For any node of type MarkdownRemark, list how to resolve the fields' values
           MarkdownRemark: {
             title: node => node.frontmatter.title,
-            keywords: node => node.frontmatter.tags
+            keywords: node => node.frontmatter.tags,
+            path: node => node.fields.slug
           }
         }
       }

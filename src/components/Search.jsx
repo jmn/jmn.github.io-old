@@ -1,15 +1,6 @@
 import React, { Component } from "react";
 import { Index } from "elasticlunr";
-import { graphql } from "gatsby";
-
-// Graphql query used to retrieve the serialized search index.
-export const query = graphql`
-  query SearchIndexExampleQuery {
-    siteSearchIndex {
-      index
-    }
-  }
-`;
+import { graphql, Link } from "gatsby";
 
 // Search component
 export default class Search extends Component {
@@ -24,11 +15,17 @@ export default class Search extends Component {
   render() {
     return (
       <div>
-        <input type="text" value={this.state.query} onChange={this.search} />
+        <input
+          type="text"
+          value={this.state.query}
+          onChange={this.search}
+          placeholder="Search..."
+        />
         <ul>
           {this.state.results.map(page => (
             <li key={page.id}>
-              {page.title}: {page.keywords.join(`,`)}
+              <Link to={page.path}>{page.title}</Link>:{" "}
+              {page.keywords.join(`,`)}
             </li>
           ))}
         </ul>
