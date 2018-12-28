@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Index } from "elasticlunr";
-import { graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 
 // Search component
 export default class Search extends Component {
