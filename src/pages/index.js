@@ -22,11 +22,10 @@ import SEO from '../components/seo' */
 )
  */
 const IndexPage = ({ data }) => {
-  console.log(data);
   return (
     <div style={{ margin: `3rem auto`, maxWidth: 600 }}>
       <h1>jmn's blog</h1>
-      <Search />
+      <Search searchIndex={data.siteSearchIndex.index} />
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id} className="article-box">
           <Link
@@ -65,6 +64,9 @@ export const query = graphql`
           timeToRead
         }
       }
+    }
+    siteSearchIndex {
+      index
     }
   }
 `;

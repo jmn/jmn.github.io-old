@@ -27,7 +27,7 @@ export default class Search extends Component {
         <input type="text" value={this.state.query} onChange={this.search} />
         <ul>
           {this.state.results.map(page => (
-            <li>
+            <li key={page.id}>
               {page.title}: {page.keywords.join(`,`)}
             </li>
           ))}
@@ -40,7 +40,7 @@ export default class Search extends Component {
     this.index
       ? this.index
       : // Create an elastic lunr index and hydrate with graphql query results
-        Index.load(this.props.data.siteSearchIndex.index);
+        Index.load(this.props.searchIndex);
 
   search = evt => {
     const query = evt.target.value;
@@ -49,7 +49,7 @@ export default class Search extends Component {
       query,
       // Query the index with search string to get an [] of IDs
       results: this.index
-        .search(query)
+        .search(query, {})
         // Map over each ID and return the full document
         .map(({ ref }) => this.index.documentStore.getDoc(ref))
     });
