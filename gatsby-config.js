@@ -100,20 +100,19 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownRemark(
-                  limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: {frontmatter: { draft: { ne: true } }}
-                ) {
+                allMarkdownRemark(sort: { order: DESC, fields: [fields___date] }) {
                   edges {
                     node {
-                      excerpt
-                      html
-                      fields { slug }
+                      id
                       frontmatter {
                         title
+                      }
+                      fields {
+                        slug
                         date
                       }
+                      excerpt
+                      timeToRead
                     }
                   }
                 }
