@@ -119,7 +119,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Gatsby RSS Feed"
+            title: "jmn's blog"
           }
         ]
       }
