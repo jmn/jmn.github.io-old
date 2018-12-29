@@ -103,4 +103,4 @@ export const query = graphql`
 `;
 ```
 
-All code available here: [https://github.com/jmn/jmn.github.io/tree/dev]().
+All code available here: https://github.com/jmn/jmn.github.io/tree/dev.
