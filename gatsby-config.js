@@ -128,4 +128,10 @@ module.exports = {
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ]
+  /*   __experimentalThemes: [
+    {
+      resolve: "themes/gatsby-theme-blog",
+      options: {}
+    }
+  ] */
 };
