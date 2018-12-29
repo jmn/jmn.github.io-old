@@ -1,7 +1,7 @@
 ---
 title: "the great Gatsby"
 layout: "post"
-tags: ["blog", "meta", "gatsby"]
+tags: [blog, meta, gatsby]
 ---
 
 I migrated my blog (from Jekyll) to [Gatsby](https://www.gatsbyjs.org/). Here are the details.
