@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 export default ({ data }) => {
   const post = data.markdownRemark;
   return (
-    <div style={{ margin: `3rem auto`, maxWidth: 600 }}>
+    <div style={{ margin: `1rem auto`, maxWidth: 600 }}>
       <h1>{post.frontmatter.title}</h1>
       <h4 style={{ color: "rgb(165, 164, 164)" }}>
         <span style={{ fontSize: "0.8em" }}>{post.fields.date}</span>

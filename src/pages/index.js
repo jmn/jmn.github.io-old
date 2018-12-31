@@ -27,7 +27,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" keywords={[`jmn`, `blog`, `react`]} />
-      <div style={{ margin: `3rem auto`, maxWidth: 600 }}>
+      <div style={{ margin: `1rem auto`, maxWidth: 600 }}>
         <Search searchIndex={data.siteSearchIndex.index} />
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id} className="article-box">

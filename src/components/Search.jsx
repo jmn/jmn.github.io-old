@@ -20,6 +20,7 @@ export default class Search extends Component {
           value={this.state.query}
           onChange={this.search}
           placeholder="Search..."
+          aria-label="Search"
         />
         <ul>
           {this.state.results.map(page => (
