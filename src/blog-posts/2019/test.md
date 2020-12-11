@@ -4,4 +4,4 @@ layout: "post"
 tags: ["test"]
 ---
 
-testpost
+testpost2
